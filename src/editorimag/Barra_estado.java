@@ -10,13 +10,6 @@ package editorimag;
  *
  * @author jonay
  */
-public class EditorImag {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        interfaz ventana = new interfaz();
-    }
+public class Barra_estado {
     
 }

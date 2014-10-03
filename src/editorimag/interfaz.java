@@ -6,17 +6,20 @@
 
 package editorimag;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author jonay
  */
-public class EditorImag {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        interfaz ventana = new interfaz();
+public class interfaz extends JFrame {
+    
+    public interfaz(){
+        setTitle("EditorImag");
+        setVisible(true);
+        setSize(800, 600);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        
     }
     
 }

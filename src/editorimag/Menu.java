@@ -6,17 +6,14 @@
 
 package editorimag;
 
+import javax.swing.JMenu;
+
 /**
  *
  * @author jonay
  */
-public class EditorImag {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        interfaz ventana = new interfaz();
-    }
+public class Menu extends JMenu{
+    
+    
     
 }
