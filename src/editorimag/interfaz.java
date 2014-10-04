@@ -20,6 +20,8 @@ public class interfaz extends JFrame {
         setSize(800, 600);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         
+        Menu menu_principal = new Menu();
+        
     }
     
 }
