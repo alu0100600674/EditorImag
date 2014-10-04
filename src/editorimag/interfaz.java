@@ -17,7 +17,7 @@ public class interfaz extends JFrame {
     
     public interfaz(){
         setTitle("EditorImag");
-        setLayout(null);
+//        setLayout(null);
         setVisible(true);
         setSize(800, 600);
         setDefaultCloseOperation(EXIT_ON_CLOSE);

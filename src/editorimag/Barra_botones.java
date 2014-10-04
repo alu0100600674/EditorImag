@@ -15,14 +15,15 @@ import javax.swing.JToolBar;
  */
 public class Barra_botones extends JToolBar{
     
-    private JButton Abrir;
-    private JButton Guardar;
+    private Boton Abrir;
+    private Boton Guardar;
+    private Boton prueba;
     
     public Barra_botones(){
         
-        Abrir = new JButton("Abrir");
+        Abrir = new Boton("Abrir", "Icono");
         this.add(Abrir);
-        Guardar = new JButton("Guardar");
+        Guardar = new Boton("Guardar", "Icono");
         this.add(Guardar);
         
     }
