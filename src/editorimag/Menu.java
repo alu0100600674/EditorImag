@@ -16,21 +16,41 @@ import javax.swing.JMenuItem;
  */
 public class Menu extends JMenuBar{
     
-    //Elementos del menú
+    //Elementos del menú Archivo
     private JMenu Archivo;
     private JMenuItem Abrir;
     private JMenuItem Guardar;
     private JMenuItem Salir;
     
+    //Elementos del menú Herramientas
+    private JMenu Herramientas;
+    
+    //Elementos del menú Ayuda
+    private JMenu Ayuda;
+    private JMenuItem Acerca_de;
+    
     
     public Menu(){
+        
+        //Menú Archivo
         Archivo = new JMenu("Archivo");
-        Abrir = new JMenuItem();
+        this.add(Archivo);
+        Abrir = new JMenuItem("Abrir");
         Archivo.add(Abrir);
-        Guardar = new JMenuItem();
+        Guardar = new JMenuItem("Guardar");
         Archivo.add(Guardar);
-        Salir = new JMenuItem();
+        Salir = new JMenuItem("Salir");
         Archivo.add(Salir);
+        
+        //Menú Herramientas
+        Herramientas = new JMenu("Herramientas");
+        this.add(Herramientas);
+        
+        //Menú Ayuda
+        Ayuda = new JMenu("Ayuda");
+        this.add(Ayuda);
+        Acerca_de = new JMenuItem("Acerca de");
+        Ayuda.add(Acerca_de);
         
     }
     

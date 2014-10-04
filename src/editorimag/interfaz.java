@@ -16,11 +16,15 @@ public class interfaz extends JFrame {
     
     public interfaz(){
         setTitle("EditorImag");
+        setLayout(null);
         setVisible(true);
         setSize(800, 600);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         
         Menu menu_principal = new Menu();
+        
+        
+        setJMenuBar(menu_principal);
         
     }
     
