@@ -6,6 +6,7 @@
 
 package editorimag;
 
+import java.awt.BorderLayout;
 import javax.swing.JFrame;
 
 /**
@@ -22,9 +23,10 @@ public class interfaz extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         
         Menu menu_principal = new Menu();
-        
-        
         setJMenuBar(menu_principal);
+        
+        Barra_botones barra_botones = new Barra_botones();
+        getContentPane().add(barra_botones, BorderLayout.NORTH);
         
     }
     

@@ -24,6 +24,9 @@ public class Menu extends JMenuBar{
     
     //Elementos del menú Herramientas
     private JMenu Herramientas;
+    private JMenu Transformaciones;
+    private JMenuItem T_rotacion;
+    private JMenuItem T_escalado;
     
     //Elementos del menú Ayuda
     private JMenu Ayuda;
@@ -32,7 +35,13 @@ public class Menu extends JMenuBar{
     
     public Menu(){
         
-        //Menú Archivo
+        menuArchivo();
+        menuHerramientas();
+        menuAyuda();
+        
+    }
+    
+    private void menuArchivo(){
         Archivo = new JMenu("Archivo");
         this.add(Archivo);
         Abrir = new JMenuItem("Abrir");
@@ -41,17 +50,24 @@ public class Menu extends JMenuBar{
         Archivo.add(Guardar);
         Salir = new JMenuItem("Salir");
         Archivo.add(Salir);
-        
-        //Menú Herramientas
+    }
+    
+    private void menuHerramientas(){
         Herramientas = new JMenu("Herramientas");
         this.add(Herramientas);
-        
-        //Menú Ayuda
+        Transformaciones = new JMenu("Transformaciones");
+        Herramientas.add(Transformaciones);
+        T_rotacion = new JMenuItem("De rotación");
+        Transformaciones.add(T_rotacion);
+        T_escalado = new JMenuItem("De escalado");
+        Transformaciones.add(T_escalado);
+    }
+    
+    private void menuAyuda(){
         Ayuda = new JMenu("Ayuda");
         this.add(Ayuda);
         Acerca_de = new JMenuItem("Acerca de");
         Ayuda.add(Acerca_de);
-        
     }
     
 }
