@@ -6,7 +6,6 @@
 
 package editorimag;
 
-import javax.swing.JButton;
 import javax.swing.JToolBar;
 
 /**

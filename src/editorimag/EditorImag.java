@@ -19,7 +19,6 @@ public class EditorImag {
      */
     public static void main(String[] args) {
         interfaz ventana = new interfaz();
-        Imagen a = new Imagen();
     }
     
 }
