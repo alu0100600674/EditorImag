@@ -6,6 +6,8 @@
 
 package editorimag;
 
+import imagen.Imagen;
+
 /**
  *
  * @author jonay
@@ -17,6 +19,7 @@ public class EditorImag {
      */
     public static void main(String[] args) {
         interfaz ventana = new interfaz();
+        Imagen a = new Imagen();
     }
     
 }
