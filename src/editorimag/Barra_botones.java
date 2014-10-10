@@ -22,14 +22,14 @@ public class Barra_botones extends JToolBar{
     
     public Barra_botones(){
         
-        Abrir = new Boton("Abrir", new ImageIcon("src/images/brilloCon.png") );
+        Abrir = new Boton("Abrir", new ImageIcon("src/images/abrir2.png") );
         this.add(Abrir);
-        Guardar = new Boton("Guardar", new ImageIcon("src/images/guardar.png") );
+        Guardar = new Boton("Guardar", new ImageIcon("src/images/guardar2.png") );
         this.add(Guardar);
         
         this.addSeparator();
         
-        Prueba = new Boton("Prueba", new ImageIcon("src/images/abrir.png") );
+        Prueba = new Boton("Prueba", new ImageIcon("src/images/abrir2.png") );
         this.add(Prueba);
         
     }
