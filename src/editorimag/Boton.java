@@ -23,5 +23,5 @@ public class Boton extends JButton{
         this.setIcon(icono);
         
     }
-    
+       
 }

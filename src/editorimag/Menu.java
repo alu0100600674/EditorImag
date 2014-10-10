@@ -6,6 +6,8 @@
 
 package editorimag;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -44,12 +46,30 @@ public class Menu extends JMenuBar{
     private void menuArchivo(){
         Archivo = new JMenu("Archivo");
         this.add(Archivo);
+        
         Abrir = new JMenuItem("Abrir");
         Archivo.add(Abrir);
+        Abrir.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                System.out.println("Abrir");
+            }
+        });
+        
         Guardar = new JMenuItem("Guardar");
         Archivo.add(Guardar);
+        Guardar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                System.out.println("Guardar");
+            }
+        });
+        
         Salir = new JMenuItem("Salir");
         Archivo.add(Salir);
+        Salir.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                System.out.println("Salir");
+            }
+        });
     }
     
     private void menuHerramientas(){

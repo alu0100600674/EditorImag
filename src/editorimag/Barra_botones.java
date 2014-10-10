@@ -6,6 +6,8 @@
 
 package editorimag;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JToolBar;
 
@@ -31,6 +33,24 @@ public class Barra_botones extends JToolBar{
         
         Prueba = new Boton("Prueba", new ImageIcon("src/images/abrir2.png") );
         this.add(Prueba);
+        
+        activarBotones();
+        
+    }
+    
+    private void activarBotones(){
+        
+        Abrir.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                System.out.println("Abrir"); //Sustituir por función adecuada.
+            }
+        });
+        
+        Guardar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                System.out.println("Guardar"); //Sustituir por función adecuada.
+            }
+        });
         
     }
     
