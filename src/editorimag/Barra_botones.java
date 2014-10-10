@@ -6,6 +6,7 @@
 
 package editorimag;
 
+import javax.swing.ImageIcon;
 import javax.swing.JToolBar;
 
 /**
@@ -21,14 +22,14 @@ public class Barra_botones extends JToolBar{
     
     public Barra_botones(){
         
-        Abrir = new Boton("Abrir", "Icono");
+        Abrir = new Boton("Abrir", new ImageIcon("src/images/brilloCon.png") );
         this.add(Abrir);
-        Guardar = new Boton("Guardar", "Icono");
+        Guardar = new Boton("Guardar", new ImageIcon("src/images/guardar.png") );
         this.add(Guardar);
         
         this.addSeparator();
         
-        Prueba = new Boton("Prueba", "Icono");
+        Prueba = new Boton("Prueba", new ImageIcon("src/images/abrir.png") );
         this.add(Prueba);
         
     }

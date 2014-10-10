@@ -6,6 +6,7 @@
 
 package editorimag;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 /**
@@ -14,12 +15,12 @@ import javax.swing.JButton;
  */
 public class Boton extends JButton{
     
-    private int tamano = 20;
+//    private int tamano = 20;
     
-    public Boton(String nombre, String icono){
+    public Boton(String nombre, ImageIcon icono){
         
-        this.setText(nombre);
-        this.setIcon(null);
+//        this.setText(nombre);
+        this.setIcon(icono);
         
     }
     
