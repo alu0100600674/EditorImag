@@ -22,10 +22,22 @@ public class Menu extends JMenuBar{
     private JMenu Archivo;
     private JMenuItem Abrir;
     private JMenuItem Guardar;
+    private JMenuItem Propiedades;
     private JMenuItem Salir;
     
     //Elementos del menú Herramientas
     private JMenu Herramientas;
+    private JMenuItem Brillo_Contraste;
+    
+    private JMenu Histograma;
+    private JMenuItem H_Ecualizacion;
+    private JMenuItem H_Especificacion;
+    
+    private JMenuItem C_Gamma;
+    private JMenuItem Perfil;
+    private JMenuItem Sim_Dig_Imag;
+    private JMenuItem Dif_Imags;
+    
     private JMenu Transformaciones;
     private JMenuItem T_rotacion;
     private JMenuItem T_escalado;
@@ -63,6 +75,14 @@ public class Menu extends JMenuBar{
             }
         });
         
+        Propiedades = new JMenuItem("Propiedades");
+        Archivo.add(Propiedades);
+        Propiedades.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                System.out.println("Propiedades");
+            }
+        });
+        
         Salir = new JMenuItem("Salir");
         Archivo.add(Salir);
         Salir.addActionListener(new ActionListener() {
@@ -75,10 +95,72 @@ public class Menu extends JMenuBar{
     private void menuHerramientas(){
         Herramientas = new JMenu("Herramientas");
         this.add(Herramientas);
+        
+        Brillo_Contraste = new JMenuItem("Brillo y Contraste");
+        Herramientas.add(Brillo_Contraste);
+        Brillo_Contraste.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                System.out.println("Brillo y Constraste");
+            }
+        });
+        
+        Histograma = new JMenu("Histograma");
+        Herramientas.add(Histograma);
+        
+        H_Ecualizacion = new JMenuItem("Ecualización");
+        Histograma.add(H_Ecualizacion);
+        H_Ecualizacion.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                System.out.println("Ecualización del Histograma");
+            }
+        });
+        
+        H_Especificacion = new JMenuItem("Especificación");
+        Histograma.add(H_Especificacion);
+        H_Especificacion.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                System.out.println("Especificación del Histograma");
+            }
+        });
+        
+        C_Gamma = new JMenuItem("Correción Gamma");
+        Herramientas.add(C_Gamma);
+        C_Gamma.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                System.out.println("Correción Gamma");
+            }
+        });
+        
+        Perfil = new JMenuItem("Perfil");
+        Herramientas.add(Perfil);
+        Perfil.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                System.out.println("Perfil (Image-Cross Section)");
+            }
+        });
+        
+        Sim_Dig_Imag = new JMenuItem("Simulación de la digitalización de una Imagen");
+        Herramientas.add(Sim_Dig_Imag);
+        Sim_Dig_Imag.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                System.out.println("Simulación de la digitalización de una Imagen");
+            }
+        });
+        
+        Dif_Imags = new JMenuItem("Diferencia entre dos imágenes");
+        Herramientas.add(Dif_Imags);
+        Dif_Imags.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                System.out.println("Diferencia entre dos imágenes");
+            }
+        });
+        
         Transformaciones = new JMenu("Transformaciones");
         Herramientas.add(Transformaciones);
+        
         T_rotacion = new JMenuItem("De rotación");
         Transformaciones.add(T_rotacion);
+        
         T_escalado = new JMenuItem("De escalado");
         Transformaciones.add(T_escalado);
     }
