@@ -8,6 +8,7 @@ package editorimag;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -24,6 +25,11 @@ public class Menu extends JMenuBar{
     private JMenuItem Guardar;
     private JMenuItem Propiedades;
     private JMenuItem Salir;
+    
+    //Elementos del menú Ver
+    private JMenu Ver;
+    private JCheckBoxMenuItem Ver_Barra_Botones;
+    private JCheckBoxMenuItem Ver_Barra_Estado;
     
     //Elementos del menú Herramientas
     private JMenu Herramientas;
@@ -50,6 +56,7 @@ public class Menu extends JMenuBar{
     public Menu(){
         
         menuArchivo();
+        menuVer();
         menuHerramientas();
         menuAyuda();
         
@@ -90,6 +97,17 @@ public class Menu extends JMenuBar{
                 System.out.println("Salir");
             }
         });
+    }
+    
+    private void menuVer(){
+        Ver = new JMenu("Ver");
+        this.add(Ver);
+        
+        Ver_Barra_Botones = new JCheckBoxMenuItem("Barra de Botones");
+        Ver.add(Ver_Barra_Botones);
+        
+        Ver_Barra_Estado = new JCheckBoxMenuItem("Barra de Estado");
+        Ver.add(Ver_Barra_Estado);
     }
     
     private void menuHerramientas(){
