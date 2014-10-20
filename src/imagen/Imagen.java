@@ -8,6 +8,10 @@ package imagen;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -43,5 +47,37 @@ public class Imagen {
         }
         return imgGris;
     }
+    
+    public void abrirImagen() throws IOException{
+        BufferedImage temp=null;
+        
+        JFileChooser selector = new JFileChooser();
+        selector.setDialogTitle("Seleccione una imagen");
+        FileNameExtensionFilter filtro_jpg = new FileNameExtensionFilter("JPG", "jpg");
+        FileNameExtensionFilter filtro_png = new FileNameExtensionFilter("PNG", "png");
+        FileNameExtensionFilter filtro_gif = new FileNameExtensionFilter("GIF", "gif");
+        selector.setFileFilter(filtro_jpg);
+        selector.setFileFilter(filtro_png);
+        selector.setFileFilter(filtro_gif);
+        selector.showOpenDialog(null);
+        temp = ImageIO.read(selector.getSelectedFile());
+        pasarAEscalaGrises(temp);
+        //if ()
+       /* int opcion = selector.showOpenDialog(this);
+        if (opcion == JFileChooser.APPROVE_OPTION)*/
+        
+                
+    } 
+    
+    public void guardarImagen(){
+        JFileChooser selector = new JFileChooser();
+        FileNameExtensionFilter filtroextensiones = new FileNameExtensionFilter("JPG y GIF", "jpg","gif");
+        selector.setFileFilter(filtroextensiones);
+    
+       /* int opcion = selector.showOpenDialog(this);
+        if (opcion == JFileChooser.APPROVE_OPTION)*/
+        
+                
+    } 
     
 }

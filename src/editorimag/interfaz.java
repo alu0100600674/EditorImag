@@ -27,7 +27,7 @@ public class interfaz extends JFrame {
         
         Barra_botones barra_botones = new Barra_botones();
         getContentPane().add(barra_botones, BorderLayout.NORTH);
-        
+       
     }
     
 }

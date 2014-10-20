@@ -6,8 +6,12 @@
 
 package editorimag;
 
+import imagen.Imagen;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -70,7 +74,13 @@ public class Menu extends JMenuBar{
         Archivo.add(Abrir);
         Abrir.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                System.out.println("Abrir");
+                Imagen i = new Imagen();
+                try {
+                    i.abrirImagen();
+                    //System.out.println("Abrir");
+                } catch (IOException ex) {
+                    Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
         
