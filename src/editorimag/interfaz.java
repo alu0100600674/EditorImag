@@ -25,8 +25,8 @@ public class interfaz extends JFrame {
         Menu menu_principal = new Menu();
         setJMenuBar(menu_principal);
         
-        Barra_botones barra_botones = new Barra_botones();
-        getContentPane().add(barra_botones, BorderLayout.NORTH);
+//        Barra_botones barra_botones = new Barra_botones();
+//        getContentPane().add(barra_botones, BorderLayout.NORTH);
        
     }
     

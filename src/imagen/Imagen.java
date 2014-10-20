@@ -6,7 +6,9 @@
 
 package imagen;
 
+import editorimag.Subventana;
 import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
@@ -48,6 +50,10 @@ public class Imagen {
         return imgGris;
     }
     
+    private void pintarImagen(Graphics g, BufferedImage temp){
+        g.drawImage(temp, 100, 100, null);
+    }
+    
     public void abrirImagen() throws IOException{
         BufferedImage temp=null;
         
@@ -66,7 +72,8 @@ public class Imagen {
        /* int opcion = selector.showOpenDialog(this);
         if (opcion == JFileChooser.APPROVE_OPTION)*/
         
-                
+        Subventana ventana = new Subventana();
+        
     } 
     
     public void guardarImagen(){
