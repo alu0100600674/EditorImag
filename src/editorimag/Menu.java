@@ -104,7 +104,8 @@ public class Menu extends JMenuBar{
         Archivo.add(Salir);
         Salir.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                System.out.println("Salir");
+                System.exit(0);
+                //System.out.println("Salir");
             }
         });
     }
