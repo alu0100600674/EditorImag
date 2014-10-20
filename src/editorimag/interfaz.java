@@ -7,6 +7,7 @@
 package editorimag;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import javax.swing.JFrame;
 
 /**
@@ -27,6 +28,9 @@ public class interfaz extends JFrame {
         
         Barra_botones barra_botones = new Barra_botones();
         getContentPane().add(barra_botones, BorderLayout.NORTH);
+        
+        //PRUEBA
+        Dimension tamanyo = getSize();
        
     }
     

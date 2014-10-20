@@ -9,6 +9,7 @@ package editorimag;
 import imagen.Imagen;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -56,6 +57,9 @@ public class Menu extends JMenuBar{
     private JMenu Ayuda;
     private JMenuItem Acerca_de;
     
+    private Imagen i;
+
+    
     
     public Menu(){
         
@@ -72,15 +76,15 @@ public class Menu extends JMenuBar{
         
         Abrir = new JMenuItem("Abrir");
         Archivo.add(Abrir);
+        //private Imagen i;
         Abrir.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                Imagen i = new Imagen();
                 try {
-                    i.abrirImagen();
-                    //System.out.println("Abrir");
+                    i = new Imagen();
                 } catch (IOException ex) {
                     Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                
             }
         });
         
@@ -88,15 +92,26 @@ public class Menu extends JMenuBar{
         Archivo.add(Guardar);
         Guardar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                System.out.println("Guardar");
+                
+                try {
+                    i.guardarImagen();
+                    //System.out.println("Guardar");
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
+        
+        
+        
         
         Propiedades = new JMenuItem("Propiedades");
         Archivo.add(Propiedades);
         Propiedades.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                System.out.println("Propiedades");
+                //Imagen i = new Imagen();
+                i.propiedades();
+                //System.out.println("Propiedades");
             }
         });
         

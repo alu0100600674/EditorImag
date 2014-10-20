@@ -6,11 +6,19 @@
 
 package imagen;
 
+import com.sun.awt.SecurityWarning;
+import static com.sun.org.apache.xerces.internal.util.FeatureState.is;
+import static com.sun.org.apache.xerces.internal.util.PropertyState.is;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
+import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
@@ -20,8 +28,8 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class Imagen {
     
     
-    public Imagen(){
-        
+    public Imagen() throws IOException{
+        abrirImagen();
     }
     
     public BufferedImage pasarAEscalaGrises(BufferedImage img){
@@ -69,15 +77,45 @@ public class Imagen {
                 
     } 
     
-    public void guardarImagen(){
+    public void guardarImagen() throws FileNotFoundException{
+        /*BufferedImage temp=null;
+        File selec = null;
         JFileChooser selector = new JFileChooser();
-        FileNameExtensionFilter filtroextensiones = new FileNameExtensionFilter("JPG y GIF", "jpg","gif");
-        selector.setFileFilter(filtroextensiones);
-    
-       /* int opcion = selector.showOpenDialog(this);
-        if (opcion == JFileChooser.APPROVE_OPTION)*/
+        selector.setDialogTitle("Guarde la imagen con el nombre y extension que desee");
+        FileNameExtensionFilter filtro_jpg = new FileNameExtensionFilter("JPG", "jpg");
+        FileNameExtensionFilter filtro_png = new FileNameExtensionFilter("PNG", "png");
+        FileNameExtensionFilter filtro_gif = new FileNameExtensionFilter("GIF", "gif");
+        selector.setFileFilter(filtro_jpg);
+        selector.setFileFilter(filtro_png);
+        selector.setFileFilter(filtro_gif);
+        selector.showOpenDialog(null);
+        selec = selector.getSelectedFile();
+        try ( //selec = new File(selector.getSelectedFile());
+                FileOutputStream fos = new FileOutputStream(selec)) {
+            byte[] array;
+            array = new byte[1000];
+            int leido = is.read(array);
+            while(leido>0){
+                fos.write(array,, 0, leido);
+                leido= is.read(array);
+            }
+            is.close();
+        }*/
+    }
+    //VENTANA PROPIEDADES
+    public void propiedades() {
+        
+    /*    
+        setTitle("Propiedades de la imagen");
+        setVisible(true);
+        setSize(200, 300);
+     */   
+        //setDefaultCloseOperation(EXIT_ON_CLOSE);
+    }
+        
+        
         
                 
     } 
     
-}
+
