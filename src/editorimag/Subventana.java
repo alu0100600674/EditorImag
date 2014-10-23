@@ -22,7 +22,9 @@ public class Subventana extends JFrame {
     public Subventana(BufferedImage tmp2) {
         setTitle("Subventana"); //Cambiar el nombre por el de la función o lo que sea.
         setVisible(true);
-        setSize(400,300);
+//        setSize(400,300);
+        setSize(tmp2.getWidth()+10, tmp2.getHeight()+35);
+        setResizable(false);
         
         tmp = tmp2;
         
@@ -33,7 +35,7 @@ public class Subventana extends JFrame {
     
     public void paint(Graphics g){ //Prueba de dibujar una línea.
 //        g.drawLine(30, 30, 30, 30);
-        g.drawImage(tmp, 30, 30, this);
+        g.drawImage(tmp, 5, 30, this);
     }
     
 }
