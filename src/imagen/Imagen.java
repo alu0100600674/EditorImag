@@ -75,13 +75,13 @@ public class Imagen {
         selector.setFileFilter(filtro_gif);
         selector.showOpenDialog(null);
         temp = ImageIO.read(selector.getSelectedFile());
-        pasarAEscalaGrises(temp);
+        
         //if ()
        /* int opcion = selector.showOpenDialog(this);
         if (opcion == JFileChooser.APPROVE_OPTION)*/
         
-        Subventana ventana = new Subventana();
-        
+        Subventana ventana = new Subventana(pasarAEscalaGrises(temp));
+//        ventana.repaint();
     } 
     
     public void guardarImagen() throws FileNotFoundException{
