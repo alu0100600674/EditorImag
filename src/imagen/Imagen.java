@@ -6,21 +6,14 @@
 
 package imagen;
 
-import com.sun.awt.SecurityWarning;
-import static com.sun.org.apache.xerces.internal.util.FeatureState.is;
-import static com.sun.org.apache.xerces.internal.util.PropertyState.is;
 import java.awt.Color;
-import java.awt.Dimension;
 import editorimag.Subventana;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
-import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
