@@ -12,7 +12,7 @@ package herramientas;
  */
 public class Lanzador {
     
-    public Lanzador(int opcion){
+    public void lanzar(int opcion){
         
         switch(opcion){
             case 1:
