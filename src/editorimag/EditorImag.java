@@ -6,6 +6,7 @@
 
 package editorimag;
 
+import herramientas.Brillo_y_contraste;
 import imagen.Imagen;
 
 /**
@@ -19,6 +20,8 @@ public class EditorImag {
      */
     public static void main(String[] args) {
         interfaz ventana = new interfaz();
+        
+        Brillo_y_contraste aa = new Brillo_y_contraste();
     }
     
 }
