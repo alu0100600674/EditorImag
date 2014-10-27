@@ -17,6 +17,7 @@ import javax.swing.JFrame;
  */
 public class interfaz extends JFrame {
     
+
     public interfaz(){
         setTitle("EditorImag");
 //        setLayout(null);
@@ -30,10 +31,13 @@ public class interfaz extends JFrame {
         Barra_botones barra_botones = new Barra_botones();
         getContentPane().add(barra_botones, BorderLayout.NORTH);
         
-        //PRUEBA
-        Dimension tamanyo = getSize();
         PanelInfoColoresPixel panel = new PanelInfoColoresPixel();
         getContentPane().add(panel);
+        panel.paintComponent();
+        
+        //PRUEBA
+        Dimension tamanyo = getSize();
+        
         
     }
     

@@ -76,10 +76,9 @@ public class PanelInfoColoresPixel extends JPanel{
 		setFont(getletra());
 	}
 	
-	protected void paintComponent (Graphics gr) {
+	public void paintComponent (Graphics gr) {
 		gr.setColor(Color.WHITE);
 		gr.fillRect(0, 0, this.getWidth(), this.getHeight());
-		
 		gr.setFont(getletra());
 		gr.setColor(Color.RED);
 		gr.drawString("R ["+ getr() +"]", 10, 20);
