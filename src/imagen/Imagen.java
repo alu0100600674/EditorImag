@@ -21,6 +21,10 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class Imagen {
     
+    //guardamos la imagen abierta y ya la pintaremos en gestion de ventanas
+    private BufferedImage imagenGuardada;
+    
+    
     
     public Imagen() throws IOException{
         abrirImagen();
@@ -67,14 +71,20 @@ public class Imagen {
         selector.setFileFilter(filtro_gif);
         selector.showOpenDialog(null);
         temp = ImageIO.read(selector.getSelectedFile());
-        
+        pasarAEscalaGrises(temp);
+        setimagenGuardada(temp); //guardada imagen en escala de grises
         //if ()
        /* int opcion = selector.showOpenDialog(this);
         if (opcion == JFileChooser.APPROVE_OPTION)*/
         
-        Subventana ventana = new Subventana(pasarAEscalaGrises(temp));
-//        ventana.repaint();
+        //Subventana ventana = new Subventana(pasarAEscalaGrises(temp));
+//      
     } 
+    
+    public void setimagenGuardada(BufferedImage a){ this.imagenGuardada =a;}
+    
+    public BufferedImage getimagenGuardada(){ return imagenGuardada;}
+    
     
     public void guardarImagen() throws FileNotFoundException{
         /*BufferedImage temp=null;
