@@ -7,7 +7,6 @@
 package imagen;
 
 import java.awt.Color;
-import editorimag.Subventana;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.FileNotFoundException;
