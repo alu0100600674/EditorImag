@@ -19,7 +19,7 @@ public class Lanzador {
                 transfLinealesTramos();
                 break;
             case 2:
-                ecualizaciónHistograma();
+                ecualizacionHistograma();
                 break;
             case 3:
                 especificacionHistograma();
@@ -41,7 +41,7 @@ public class Lanzador {
         
     }
     
-    private void ecualizaciónHistograma(){
+    private void ecualizacionHistograma(){
         
     }
     
