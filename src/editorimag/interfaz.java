@@ -17,13 +17,19 @@ import javax.swing.JFrame;
  */
 public class interfaz extends JFrame {
     
-
+    private PanelInfoColoresPixel panel;
+    
+    public PanelInfoColoresPixel getPanel(){return panel;}
+    public void setPanel(PanelInfoColoresPixel panel1){this.panel=panel1;}
+    
+    
     public interfaz(){
         setTitle("EditorImag");
 //        setLayout(null);
         setVisible(true);
-        setSize(800, 600);
+        setSize(800, 600); //ancho, largo
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        
         
         Menu menu_principal = new Menu();
         setJMenuBar(menu_principal);
@@ -31,8 +37,9 @@ public class interfaz extends JFrame {
         Barra_botones barra_botones = new Barra_botones();
         getContentPane().add(barra_botones, BorderLayout.NORTH);
         
-        PanelInfoColoresPixel panel = new PanelInfoColoresPixel();
-        getContentPane().add(panel);
+        
+       // PanelInfoColoresPixel panel = new PanelInfoColoresPixel();
+       // getContentPane().add(panel);
         panel.paintComponent();
         
         //PRUEBA

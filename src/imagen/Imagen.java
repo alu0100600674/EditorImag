@@ -71,8 +71,8 @@ public class Imagen {
         selector.setFileFilter(filtro_gif);
         selector.showOpenDialog(null);
         temp = ImageIO.read(selector.getSelectedFile());
-        pasarAEscalaGrises(temp);
-        setimagenGuardada(temp); //guardada imagen en escala de grises
+        imagenGuardada = pasarAEscalaGrises(temp);
+        //setimagenGuardada(temp); //guardada imagen en escala de grises
         //if ()
        /* int opcion = selector.showOpenDialog(this);
         if (opcion == JFileChooser.APPROVE_OPTION)*/
