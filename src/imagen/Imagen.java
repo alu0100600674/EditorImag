@@ -9,6 +9,7 @@ package imagen;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import javax.imageio.ImageIO;
@@ -21,6 +22,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class Imagen {
     
+    private BufferedImage imgGris;
     
     public Imagen() throws IOException{
         abrirImagen();
@@ -32,7 +34,7 @@ public class Imagen {
         int gris;
         int rgb;
         
-        BufferedImage imgGris = new BufferedImage(img.getWidth(), img.getHeight(), img.getType());
+        /*BufferedImage */imgGris = new BufferedImage(img.getWidth(), img.getHeight(), img.getType());
         
         for(int i = 0; i < img.getWidth(); i++){
             for(int j = 0; j < img.getHeight(); j++){
@@ -76,30 +78,23 @@ public class Imagen {
 //        ventana.repaint();
     } 
     
-    public void guardarImagen() throws FileNotFoundException{
-        /*BufferedImage temp=null;
+    public void guardarImagen() throws FileNotFoundException, IOException{
+//        BufferedImage temp=null;
         File selec = null;
         JFileChooser selector = new JFileChooser();
+        selector.setApproveButtonText("Guardar");
         selector.setDialogTitle("Guarde la imagen con el nombre y extension que desee");
-        FileNameExtensionFilter filtro_jpg = new FileNameExtensionFilter("JPG", "jpg");
+//        FileNameExtensionFilter filtro_jpg = new FileNameExtensionFilter("JPG", "jpg");
         FileNameExtensionFilter filtro_png = new FileNameExtensionFilter("PNG", "png");
-        FileNameExtensionFilter filtro_gif = new FileNameExtensionFilter("GIF", "gif");
-        selector.setFileFilter(filtro_jpg);
+//        FileNameExtensionFilter filtro_gif = new FileNameExtensionFilter("GIF", "gif");
+//        selector.setFileFilter(filtro_jpg);
         selector.setFileFilter(filtro_png);
-        selector.setFileFilter(filtro_gif);
+//        selector.setFileFilter(filtro_gif);
         selector.showOpenDialog(null);
         selec = selector.getSelectedFile();
-        try ( //selec = new File(selector.getSelectedFile());
-                FileOutputStream fos = new FileOutputStream(selec)) {
-            byte[] array;
-            array = new byte[1000];
-            int leido = is.read(array);
-            while(leido>0){
-                fos.write(array,, 0, leido);
-                leido= is.read(array);
-            }
-            is.close();
-        }*/
+        
+        ImageIO.write(imgGris, "png", selec); //Guardando imagenes en PNG.
+        
     }
     //VENTANA PROPIEDADES
     public void propiedades() {

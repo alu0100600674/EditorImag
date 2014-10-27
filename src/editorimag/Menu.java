@@ -96,7 +96,7 @@ public class Menu extends JMenuBar{
                 try {
                     i.guardarImagen();
                     //System.out.println("Guardar");
-                } catch (FileNotFoundException ex) {
+                } catch (IOException ex) {
                     Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
