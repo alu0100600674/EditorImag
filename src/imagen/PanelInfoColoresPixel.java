@@ -5,8 +5,13 @@
  */
 package imagen;
 
+import java.awt.Color;
 import java.awt.Font;
+import java.awt.Graphics;
+
+
 import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
 
 /**
  *
@@ -51,13 +56,41 @@ public class PanelInfoColoresPixel extends JPanel{
     public int getb(){ return b;}
     public void setb( int valor){ this.b = valor;}
     
-    public int getPosx(){ return PosX;}
-    public void setPosx( int x){ this.posX = x;}
+    public int getPosX(){ return posX;}
+    public void setPosX( int x){ this.posX = x;}
     
-    public int getPosy(){ return PosY;}
-    public void setPosy( int y){this.posY = y;}
+    public int getPosY(){ return posY;}
+    public void setPosY( int y){this.posY = y;}
     
-    
+    public PanelInfoColoresPixel () {
+		setY(700 - 100);
+		setAlto(alto);
+		setBorder(new LineBorder(Color.BLACK, 3));
+		setBounds(getX(), getY(), 1000 / 3, getAlto());
+		setBackground(Color.RED);
+	}
+	
+	public void setDim (int ancVen, int altVen) {
+		setY(altVen - 115);
+		setBounds(getX(), getY(), ancVen / 3, getAlto());
+		setFont(getletra());
+	}
+	
+	protected void paintComponent (Graphics gr) {
+		gr.setColor(Color.WHITE);
+		gr.fillRect(0, 0, this.getWidth(), this.getHeight());
+		
+		gr.setFont(getletra());
+		gr.setColor(Color.RED);
+		gr.drawString("R ["+ getr() +"]", 10, 20);
+		gr.setColor(Color.GREEN);
+		gr.drawString("G ["+ getg() +"]", 80, 20);
+		gr.setColor(Color.BLUE);
+		gr.drawString("B ["+ getb() +"]", 150, 20);
+		
+		gr.setColor(Color.BLACK);
+		gr.drawString("Píxel [" + getPosX() + ", " + getPosY() + "]", 220, 20);
+	}
             
     
     

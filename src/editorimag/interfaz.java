@@ -6,6 +6,7 @@
 
 package editorimag;
 
+import imagen.PanelInfoColoresPixel;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import javax.swing.JFrame;
@@ -31,7 +32,9 @@ public class interfaz extends JFrame {
         
         //PRUEBA
         Dimension tamanyo = getSize();
-       
+        PanelInfoColoresPixel panel = new PanelInfoColoresPixel();
+        getContentPane().add(panel);
+        
     }
     
 }
