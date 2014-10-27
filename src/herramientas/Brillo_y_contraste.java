@@ -11,6 +11,7 @@ import java.awt.Scrollbar;
 import java.awt.image.BufferedImage;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
@@ -42,18 +43,22 @@ public class Brillo_y_contraste {
         control.setVisible(true);
 //        control.setResizable(false);
         
+        JLabel L_Brillo = new JLabel("Brillo");
         Scrollbar Brillo = new Scrollbar(HORIZONTAL, 0, 0, 0, 255);
         Brillo.setSize(270, 20);
         
+        JLabel L_Contraste = new JLabel("Contraste");
         Scrollbar Contraste = new Scrollbar(HORIZONTAL, 0, 0, 0, 255);
         Contraste.setSize(270, 20);
         
         JButton Aceptar = new JButton();
         Aceptar.setSize(100, 30);
         
+        control.add(L_Brillo).setLocation(30, 15);
         control.add(Brillo).setLocation(15, 30);
+        control.add(L_Contraste);
         control.add(Contraste).setLocation(15, 80);
-        control.add(Aceptar).setLocation(200, 150);
+//        control.add(Aceptar).setLocation(200, 150);
     }
     
     private void imagenResultado(){
