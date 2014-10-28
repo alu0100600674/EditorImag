@@ -18,6 +18,10 @@ public class Gestion_subventanas {
     
     private ArrayList<Imagen> img_list;
     
+    public Gestion_subventanas(){
+        img_list = new ArrayList<>();
+    }
+    
     public void nuevaImagen() throws IOException{
         img_list.add(new Imagen());
     }
@@ -26,9 +30,7 @@ public class Gestion_subventanas {
         //Buscar la ventana actual.
         
         //Guardar sobre la imagen actual.
-//        img_list.get(0).guardarImagen();
-        Imagen g = img_list.get(0);
-        g.guardarImagen();
+        img_list.get(0).guardarImagen(); //Cambiar el 0 por la ventana actual.
     }
     
 }
