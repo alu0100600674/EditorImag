@@ -7,6 +7,8 @@
 package imagen;
 
 import java.awt.Graphics;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -30,7 +32,13 @@ public class Subventana extends JFrame {
         
         JPanel panel = new JPanel();
         this.repaint();
-            
+        
+        addWindowListener(new WindowAdapter() {
+            public void windowActivated(WindowEvent e){
+                System.out.println("activadaaaaaaaaaaaaaaa"); //Cambiar por referencia a ventana activa.
+            }
+        });
+        
     }
     
     public void paint(Graphics g){ //Prueba de dibujar una línea.
