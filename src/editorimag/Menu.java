@@ -6,6 +6,7 @@
 
 package editorimag;
 
+import imagen.Gestion_subventanas;
 import imagen.Imagen;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -57,7 +58,8 @@ public class Menu extends JMenuBar{
     private JMenu Ayuda;
     private JMenuItem Acerca_de;
     
-    private Imagen i;
+//    private Imagen i;
+    private Gestion_subventanas gestor_img; //Usando gestor de subventanas.
 
     
     
@@ -67,6 +69,8 @@ public class Menu extends JMenuBar{
         menuVer();
         menuHerramientas();
         menuAyuda();
+        
+        gestor_img = new Gestion_subventanas(); //Usando gestor de subventanas.
         
     }
     
@@ -80,7 +84,7 @@ public class Menu extends JMenuBar{
         Abrir.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
                 try {
-                    i = new Imagen();
+                    gestor_img.nuevaImagen();
                 } catch (IOException ex) {
                     Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -92,10 +96,8 @@ public class Menu extends JMenuBar{
         Archivo.add(Guardar);
         Guardar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                
                 try {
-                    i.guardarImagen();
-                    //System.out.println("Guardar");
+                    gestor_img.guardarImagen();
                 } catch (IOException ex) {
                     Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -110,7 +112,7 @@ public class Menu extends JMenuBar{
         Propiedades.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
                 //Imagen i = new Imagen();
-                i.propiedades();
+//                i.propiedades();
                 //System.out.println("Propiedades");
             }
         });
