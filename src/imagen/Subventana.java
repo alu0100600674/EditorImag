@@ -49,8 +49,6 @@ public class Subventana extends JFrame {
         
         addWindowListener(new WindowAdapter() {
             public void windowActivated(WindowEvent e){
-                System.out.println("activadaaaaaaaaaaaaaaa"); //Cambiar por referencia a ventana activa.
-                System.out.println(num_subv); 
                 activa = num_subv;
             }
         });
