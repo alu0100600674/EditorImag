@@ -20,8 +20,13 @@ import javax.swing.JPanel;
 public class Subventana extends JFrame {
     
     private BufferedImage tmp;
+    private int num_subv;
     
-    public Subventana(BufferedImage tmp2) {
+    public int getNumSubv(){
+        return num_subv;
+    }
+    
+    public Subventana(BufferedImage tmp2, int tam) {
         setTitle("Subventana"); //Cambiar el nombre por el de la función o lo que sea.
         setVisible(true);
 //        setSize(400,300);
@@ -33,9 +38,13 @@ public class Subventana extends JFrame {
         JPanel panel = new JPanel();
         this.repaint();
         
+        //Asignar un número de subventana
+        num_subv = tam;
+        
         addWindowListener(new WindowAdapter() {
             public void windowActivated(WindowEvent e){
                 System.out.println("activadaaaaaaaaaaaaaaa"); //Cambiar por referencia a ventana activa.
+                System.out.println(num_subv); 
             }
         });
         

@@ -24,8 +24,8 @@ public class Imagen {
     
     private BufferedImage imgGris;
     
-    public Imagen() throws IOException{
-        abrirImagen();
+    public Imagen(int tam) throws IOException{
+        abrirImagen(tam);
     }
     
     public BufferedImage pasarAEscalaGrises(BufferedImage img){
@@ -56,7 +56,7 @@ public class Imagen {
         g.drawImage(temp, 100, 100, null);
     }
     
-    public void abrirImagen() throws IOException{
+    public void abrirImagen(int tam) throws IOException{
         BufferedImage temp=null;
         
         JFileChooser selector = new JFileChooser();
@@ -74,7 +74,7 @@ public class Imagen {
        /* int opcion = selector.showOpenDialog(this);
         if (opcion == JFileChooser.APPROVE_OPTION)*/
         
-        Subventana ventana = new Subventana(pasarAEscalaGrises(temp));
+        Subventana ventana = new Subventana(pasarAEscalaGrises(temp), tam);
 //        ventana.repaint();
     } 
     

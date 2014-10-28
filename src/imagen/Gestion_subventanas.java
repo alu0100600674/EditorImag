@@ -18,12 +18,28 @@ public class Gestion_subventanas {
     
     private ArrayList<Imagen> img_list;
     
+    private int Subv_actual;
+    
+    public void setSubvActual(int v){
+        Subv_actual = v;
+    }
+    
+    public ArrayList<Imagen> getListaImg(){
+        return img_list;
+    }
+    
     public Gestion_subventanas(){
         img_list = new ArrayList<>();
     }
     
     public void nuevaImagen() throws IOException{
-        img_list.add(new Imagen());
+        int tam;
+        if(img_list.size() == 0)
+            tam = 0;
+        else
+            tam = img_list.size();
+        
+        img_list.add(new Imagen(tam));
     }
     
     public void guardarImagen() throws IOException{
