@@ -35,6 +35,10 @@ public class Gestion_subventanas {
         }
     }
     
+    public void abrirPropiedades(){
+        img_list.get(0).propiedades(); //Cambiar el 0 por la ventana actual.
+    }
+    
     public void buscarSubventanaActual(){
         
     }
