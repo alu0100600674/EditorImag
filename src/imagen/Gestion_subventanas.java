@@ -27,10 +27,16 @@ public class Gestion_subventanas {
     }
     
     public void guardarImagen() throws IOException{
-        //Buscar la ventana actual.
+        if(!img_list.isEmpty()){
+            //Buscar la ventana actual.
+            
+            //Guardar sobre la imagen actual.
+            img_list.get(0).guardarImagen(); //Cambiar el 0 por la ventana actual.
+        }
+    }
+    
+    public void buscarSubventanaActual(){
         
-        //Guardar sobre la imagen actual.
-        img_list.get(0).guardarImagen(); //Cambiar el 0 por la ventana actual.
     }
     
 }
