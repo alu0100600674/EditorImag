@@ -6,6 +6,7 @@
 
 package imagen;
 
+import static editorimag.EditorImag.activa;
 import java.awt.Graphics;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -21,9 +22,14 @@ public class Subventana extends JFrame {
     
     private BufferedImage tmp;
     private int num_subv;
+    private int num_subv2;
     
     public int getNumSubv(){
         return num_subv;
+    }
+    
+    public void setSubv(int v){
+        num_subv2 = v;
     }
     
     public Subventana(BufferedImage tmp2, int tam) {
@@ -45,6 +51,7 @@ public class Subventana extends JFrame {
             public void windowActivated(WindowEvent e){
                 System.out.println("activadaaaaaaaaaaaaaaa"); //Cambiar por referencia a ventana activa.
                 System.out.println(num_subv); 
+                activa = num_subv;
             }
         });
         

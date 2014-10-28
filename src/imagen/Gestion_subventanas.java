@@ -6,6 +6,7 @@
 
 package imagen;
 
+import static editorimag.EditorImag.activa;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -19,6 +20,7 @@ public class Gestion_subventanas {
     private ArrayList<Imagen> img_list;
     
     private int Subv_actual;
+    private int Subv_actual2;
     
     public void setSubvActual(int v){
         Subv_actual = v;
@@ -47,7 +49,7 @@ public class Gestion_subventanas {
             //Buscar la ventana actual.
             
             //Guardar sobre la imagen actual.
-            img_list.get(0).guardarImagen(); //Cambiar el 0 por la ventana actual.
+            img_list.get(activa).guardarImagen(); //Cambiar el 0 por la ventana actual.
         }
     }
     

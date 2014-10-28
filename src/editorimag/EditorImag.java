@@ -18,6 +18,9 @@ public class EditorImag {
     /**
      * @param args the command line arguments
      */
+    
+    public static int activa = 0;
+    
     public static void main(String[] args) {
         interfaz ventana = new interfaz();
         
