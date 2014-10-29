@@ -33,7 +33,8 @@ public class Subventana extends JFrame {
     }
     
     public Subventana(BufferedImage tmp2, int tam) {
-        setTitle("Subventana"); //Cambiar el nombre por el de la función o lo que sea.
+//        setTitle("Subventana"); //Cambiar el nombre por el de la función o lo que sea.
+        setTitle("Imagen " + (tam + 1)); //Cambiar el nombre por el de la función o lo que sea.
         setVisible(true);
 //        setSize(400,300);
         setSize(tmp2.getWidth()+10, tmp2.getHeight()+35);
