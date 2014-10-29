@@ -33,11 +33,9 @@ public class Subventana extends JFrame {
     }
     
     public Subventana(BufferedImage tmp2, int tam) {
-//        setTitle("Subventana"); //Cambiar el nombre por el de la función o lo que sea.
-        setTitle("Imagen " + (tam + 1)); //Cambiar el nombre por el de la función o lo que sea.
+        setTitle("Imagen " + (tam + 1)); 
         setVisible(true);
-//        setSize(400,300);
-        setSize(tmp2.getWidth()+10, tmp2.getHeight()+35);
+        setSize(tmp2.getWidth()+10, tmp2.getHeight()+35); //Tamaño de la ventana según la imagen.
         setResizable(false);
         
         tmp = tmp2;
@@ -45,8 +43,7 @@ public class Subventana extends JFrame {
         JPanel panel = new JPanel();
         this.repaint();
         
-        //Asignar un número de subventana
-        num_subv = tam;
+        num_subv = tam; //Asignar un número de subventana
         
         addWindowListener(new WindowAdapter() {
             public void windowActivated(WindowEvent e){
@@ -56,8 +53,7 @@ public class Subventana extends JFrame {
         
     }
     
-    public void paint(Graphics g){ //Prueba de dibujar una línea.
-//        g.drawLine(30, 30, 30, 30);
+    public void paint(Graphics g){
         g.drawImage(tmp, 5, 30, this);
     }
     

@@ -34,7 +34,7 @@ public class Imagen {
         int gris;
         int rgb;
         
-        /*BufferedImage */imgGris = new BufferedImage(img.getWidth(), img.getHeight(), img.getType());
+        imgGris = new BufferedImage(img.getWidth(), img.getHeight(), img.getType());
         
         for(int i = 0; i < img.getWidth(); i++){
             for(int j = 0; j < img.getHeight(); j++){
@@ -70,16 +70,11 @@ public class Imagen {
         selector.showOpenDialog(null);
         temp = ImageIO.read(selector.getSelectedFile());
         
-        //if ()
-       /* int opcion = selector.showOpenDialog(this);
-        if (opcion == JFileChooser.APPROVE_OPTION)*/
-        
         Subventana ventana = new Subventana(pasarAEscalaGrises(temp), tam);
-//        ventana.repaint();
+        
     } 
     
     public void guardarImagen() throws FileNotFoundException, IOException{
-//        BufferedImage temp=null;
         File selec = null;
         JFileChooser selector = new JFileChooser();
         selector.setApproveButtonText("Guardar");
@@ -96,6 +91,7 @@ public class Imagen {
         ImageIO.write(imgGris, "png", selec); //Guardando imagenes en PNG.
         
     }
+    
     //VENTANA PROPIEDADES
     public void propiedades() {
         
