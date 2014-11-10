@@ -7,6 +7,7 @@
 package editorimag;
 
 import herramientas.Brillo_y_contraste;
+import herramientas.Ecualizacion_histograma;
 import imagen.Imagen;
 
 /**
@@ -25,6 +26,7 @@ public class EditorImag {
         interfaz ventana = new interfaz();
         
 //        Brillo_y_contraste aa = new Brillo_y_contraste(); //Prueba
+//        Ecualizacion_histograma bb = new Ecualizacion_histograma();
     }
     
 }
