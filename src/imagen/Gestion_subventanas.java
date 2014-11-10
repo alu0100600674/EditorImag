@@ -26,6 +26,11 @@ public class Gestion_subventanas {
         Subv_actual = v;
     }
     
+    public int getSubvActual(){
+        return Subv_actual;
+    }
+            
+    
     public ArrayList<Imagen> getListaImg(){
         return img_list;
     }
