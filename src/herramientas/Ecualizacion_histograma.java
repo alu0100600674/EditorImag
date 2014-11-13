@@ -6,6 +6,7 @@
 
 package herramientas;
 
+import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import javax.swing.JFrame;
@@ -46,7 +47,12 @@ public class Ecualizacion_histograma {
         //Obtener datos de nivel de color.
         for(int i = 0; i < img.getWidth(); i++){
             for(int j = 0; j < img.getHeight(); j++){
-                datos[img.getRGB(i, j)] += 1;
+                Color c = new Color(img.getRGB(i, j));
+                
+                datos[c.getRed()] += 1;
+//                System.out.println(i + "," + j);
+//                System.out.println(img.getRGB(i, j));
+//                System.out.println(c);
             }
         }
 
@@ -60,7 +66,7 @@ public class Ecualizacion_histograma {
         DefaultCategoryDataset data = new DefaultCategoryDataset();
         
         for(int i = 0; i < 256; i++){
-            if(datos[i] != 0) //Mostrando solo los que son distintos de 0.
+//            if(datos[i] != 0) //Mostrando solo los que son distintos de 0.
                 data.addValue(datos[i], "Histograma frec. abs.", Integer.toString(i));
         }
         
@@ -75,7 +81,7 @@ public class Ecualizacion_histograma {
     }
     
     private void histogramaAcumulativo(){
-        JFrame vHist = new JFrame("Histograma");
+        JFrame vHist = new JFrame("Histograma Acumulado");
                 
         JFreeChart graf_hist = null;
         
@@ -83,14 +89,18 @@ public class Ecualizacion_histograma {
         
         int datosAc[] = new int[256];
         
+        for(int i = 0; i < 256; i++){
+            datosAc[i] = 0;
+        }
+        
         datosAc[0] = datos[0];
         for(int i = 1; i < 256; i++){
             datosAc[i] = datos[i] + datosAc[i-1];
         }
         
         for(int i = 0; i < 256; i++){
-            if(datos[i] != 0) //Mostrando solo los que son distintos de 0.
-                data.addValue(datos[i], "Histograma frec. abs. ac.", Integer.toString(i));
+//            if(datos[i] != 0) //Mostrando solo los que son distintos de 0.
+                data.addValue(datosAc[i], "Histograma frec. abs. ac.", Integer.toString(i));
         }
         
         graf_hist = ChartFactory.createBarChart("Histograma de frecuencias absolutas acumuladas", 
@@ -104,6 +114,10 @@ public class Ecualizacion_histograma {
     }
     
     private void ecualizacion(){
+        JFrame vHist = new JFrame("Histograma Ecualizado");
+                
+        JFreeChart graf_hist = null;
+        
         int[] datos_ec = new int[256];
         int datos_ac[] = new int[256];
         
@@ -116,15 +130,23 @@ public class Ecualizacion_histograma {
         int m = 256; //2^8, Imágenes de 8 bits.
         
         for(int i = 0; i < 256; i++){
-            datos_ec[0] = Math.max(0, Math.round( ((m / size) * datos_ac[i]) - 1 ));
+            datos_ec[i] = Math.max(0, Math.round( ((m / size) * datos_ac[i]) - 1 ));
         }
         
         DefaultCategoryDataset data = new DefaultCategoryDataset();
         
         for(int i = 0; i < 256; i++){
 //            if(datos_ec[i] != 0) //Mostrando solo los que son distintos de 0.
-                data.addValue(datos_ac[i], "Histograma ec.", Integer.toString(i));
+                data.addValue(datos_ec[i], "Histograma ec.", Integer.toString(i));
         }
+        
+        graf_hist = ChartFactory.createBarChart("Histograma ecualizado", 
+                "Nivel RGB", "Número de píxeles", data, PlotOrientation.VERTICAL, false, false, false);
+        
+        ChartPanel panel = new ChartPanel(graf_hist);
+        vHist.getContentPane().add(panel);
+        vHist.pack();
+        vHist.setVisible(true);
         
     }
     
