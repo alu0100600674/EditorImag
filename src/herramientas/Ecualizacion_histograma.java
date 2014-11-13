@@ -25,10 +25,13 @@ public class Ecualizacion_histograma {
     private int[] datos;
     private BufferedImage img;
     
-    public Ecualizacion_histograma(){
+    public Ecualizacion_histograma(BufferedImage tmp){
+        img = tmp;
+        
         cogerDatos();
         histograma();
         histogramaAcumulativo();
+        ecualizacion();
     }
     
     private void cogerDatos(){
@@ -97,6 +100,31 @@ public class Ecualizacion_histograma {
         vHist.getContentPane().add(panel);
         vHist.pack();
         vHist.setVisible(true);
+        
+    }
+    
+    private void ecualizacion(){
+        int[] datos_ec = new int[256];
+        int datos_ac[] = new int[256];
+        
+        datos_ac[0] = datos[0];
+        for(int i = 1; i < 256; i++){
+            datos_ac[i] = datos[i] + datos_ac[i-1];
+        }
+        
+        int size = img.getWidth() * img.getHeight();
+        int m = 256; //2^8, Imágenes de 8 bits.
+        
+        for(int i = 0; i < 256; i++){
+            datos_ec[0] = Math.max(0, Math.round( ((m / size) * datos_ac[i]) - 1 ));
+        }
+        
+        DefaultCategoryDataset data = new DefaultCategoryDataset();
+        
+        for(int i = 0; i < 256; i++){
+//            if(datos_ec[i] != 0) //Mostrando solo los que son distintos de 0.
+                data.addValue(datos_ac[i], "Histograma ec.", Integer.toString(i));
+        }
         
     }
     
