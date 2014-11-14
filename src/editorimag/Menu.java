@@ -54,6 +54,15 @@ public class Menu extends JMenuBar{
     
     //Elementos del menú Operaciones geométricas
     private JMenu Op_geometricas;
+    private JMenu Espejo;
+    private JMenuItem E_Vertical;
+    private JMenuItem E_Horizontal;
+    private JMenuItem Traspuesta;
+    private JMenu Rotar;
+    private JMenuItem R_90;
+    private JMenuItem R_180;
+    private JMenuItem R_270;
+    private JMenuItem R_valor;
     
     //Elementos del menú Ayuda
     private JMenu Ayuda;
@@ -219,6 +228,70 @@ public class Menu extends JMenuBar{
     }
     
     private void menuOpGeometricas(){
+        Op_geometricas = new JMenu("Operaciones geométricas");
+        this.add(Op_geometricas);
+        
+        Espejo = new JMenu("Espejo");
+        Op_geometricas.add(Espejo);
+        
+        E_Vertical = new JMenuItem("Vertical");
+        Espejo.add(E_Vertical);
+        E_Vertical.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                System.out.println("Espejo Vertical");
+            }
+        });
+        
+        E_Horizontal = new JMenuItem("Horizontal");
+        Espejo.add(E_Horizontal);
+        E_Horizontal.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                System.out.println("Espejo Horizontal");
+            }
+        });
+        
+        Traspuesta = new JMenuItem("Traspuesta");
+        Op_geometricas.add(Traspuesta);
+        Traspuesta.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                System.out.println("Traspuesta");
+            }
+        });
+        
+        Rotar = new JMenu("Rotar");
+        Op_geometricas.add(Rotar);
+        
+        R_90 = new JMenuItem("90 grados");
+        Rotar.add(R_90);
+        R_90.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                System.out.println("Rotar 90 grados");
+            }
+        });
+        
+        R_180 = new JMenuItem("180 grados");
+        Rotar.add(R_180);
+        R_180.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                System.out.println("Rotar 180 grados");
+            }
+        });
+        
+        R_270 = new JMenuItem("270 grados");
+        Rotar.add(R_270);
+        R_270.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                System.out.println("Rotar 270 grados");
+            }
+        });
+        
+        R_valor = new JMenuItem("... grados");
+        Rotar.add(R_valor);
+        R_valor.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                System.out.println("Rotar ... grados");
+            }
+        });
         
     }
     
