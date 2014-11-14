@@ -7,9 +7,13 @@
 package herramientas;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -30,9 +34,10 @@ public class Ecualizacion_histograma {
         img = tmp;
         
         cogerDatos();
-        histograma();
-        histogramaAcumulativo();
-        ecualizacion();
+        controles();
+//        histograma();
+//        histogramaAcumulativo();
+//        ecualizacion();
     }
     
     private void cogerDatos(){
@@ -130,7 +135,11 @@ public class Ecualizacion_histograma {
         int m = 256; //2^8, Imágenes de 8 bits.
         
         for(int i = 0; i < 256; i++){
-            datos_ec[i] = Math.max(0, Math.round( ((m / size) * datos_ac[i]) - 1 ));
+//            datos_ec[i] = Math.max(0, Math.round( (  (m / size) * datos_ac[i])) - 1 ));
+            
+            datos_ec[i] = Math.max(0, (Math.round((m / size) * datos_ac[i]) - 1));
+            System.out.println((Math.round((m / size) * datos_ac[i]) - 1));
+            System.out.println(datos_ec[i]);
         }
         
         DefaultCategoryDataset data = new DefaultCategoryDataset();
@@ -147,6 +156,43 @@ public class Ecualizacion_histograma {
         vHist.getContentPane().add(panel);
         vHist.pack();
         vHist.setVisible(true);
+        
+    }
+    
+    private void controles(){
+        JFrame v = new JFrame();
+        v.setSize(220, 120);
+        v.setVisible(true);
+        v.setTitle("Controles");
+        
+        JPanel panel = new JPanel();
+        v.add(panel);
+        
+        JButton Hist = new JButton("Histograma");
+        Hist.setSize(220, 30);
+        panel.add(Hist);
+        JButton Hist_ac = new JButton("Histograma Acumulativo");
+        panel.add(Hist_ac);
+        JButton Hist_ec = new JButton("Histograma Ecualizado");
+        panel.add(Hist_ec);
+        
+        Hist.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                histograma();
+            }
+        });
+        
+        Hist_ac.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                histogramaAcumulativo();
+            }
+        });
+        
+        Hist_ec.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                ecualizacion();
+            }
+        });
         
     }
     

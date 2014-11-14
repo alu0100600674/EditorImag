@@ -6,6 +6,7 @@
 
 package imagen;
 
+import herramientas.Ecualizacion_histograma;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
