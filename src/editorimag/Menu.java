@@ -172,7 +172,7 @@ public class Menu extends JMenuBar{
         H_Ecualizacion.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
                 System.out.println("Ecualización del Histograma");
-                gestor_img.getListaLan().get(activa).lanzar(2);
+                gestor_img.getListaLan().get(activa).lanzar(21);
             }
         });
         
@@ -193,7 +193,7 @@ public class Menu extends JMenuBar{
         });
         
         Perfil = new JMenuItem("Perfil");
-       Op_no_lineales.add(Perfil);
+        Op_no_lineales.add(Perfil);
         Perfil.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
                 System.out.println("Perfil (Image-Cross Section)");
