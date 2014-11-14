@@ -6,11 +6,19 @@
 
 package herramientas;
 
+import java.awt.image.BufferedImage;
+
 /**
  *
  * @author jonay
  */
 public class Lanzador {
+    
+    private BufferedImage img;
+    
+    public Lanzador(BufferedImage tmp){
+        img = tmp;
+    }
     
     public void lanzar(int opcion){
         
@@ -42,7 +50,7 @@ public class Lanzador {
     }
     
     private void ecualizacionHistograma(){
-        
+        Ecualizacion_histograma ech = new Ecualizacion_histograma(img);
     }
     
     private void especificacionHistograma(){

@@ -6,6 +6,7 @@
 
 package editorimag;
 
+import static editorimag.EditorImag.activa;
 import imagen.Gestion_subventanas;
 import imagen.Imagen;
 import java.awt.event.ActionEvent;
@@ -158,6 +159,7 @@ public class Menu extends JMenuBar{
         H_Ecualizacion.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
                 System.out.println("Ecualización del Histograma");
+                gestor_img.getListaLan().get(activa).lanzar(2);
             }
         });
         

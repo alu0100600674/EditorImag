@@ -7,6 +7,7 @@
 package imagen;
 
 import static editorimag.EditorImag.activa;
+import herramientas.Lanzador;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ import java.util.ArrayList;
 public class Gestion_subventanas {
     
     private ArrayList<Imagen> img_list;
+    private ArrayList<Lanzador> lan_list;
     
     private int Subv_actual;
     private int Subv_actual2;
@@ -30,8 +32,13 @@ public class Gestion_subventanas {
         return img_list;
     }
     
+    public ArrayList<Lanzador> getListaLan(){
+        return lan_list;
+    }
+    
     public Gestion_subventanas(){
         img_list = new ArrayList<>();
+        lan_list = new ArrayList<>();
     }
     
     public void nuevaImagen() throws IOException{
@@ -42,6 +49,10 @@ public class Gestion_subventanas {
             tam = img_list.size();
         
         img_list.add(new Imagen(tam));
+        
+//        Lanzador l = new Lanzador(img_list.get(tam).getImg());
+        
+        lan_list.add(new Lanzador(img_list.get(tam).getImg()));
     }
     
     public void guardarImagen() throws IOException{

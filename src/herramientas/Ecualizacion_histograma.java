@@ -164,6 +164,7 @@ public class Ecualizacion_histograma {
         v.setSize(220, 120);
         v.setVisible(true);
         v.setTitle("Controles");
+        v.setResizable(false);
         
         JPanel panel = new JPanel();
         v.add(panel);

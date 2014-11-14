@@ -29,6 +29,10 @@ public class Imagen {
         abrirImagen(tam);
     }
     
+    public BufferedImage getImg(){
+        return imgGris;
+    }
+    
     public BufferedImage pasarAEscalaGrises(BufferedImage img){
         
         int red, green, blue;
