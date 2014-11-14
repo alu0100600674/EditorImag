@@ -34,26 +34,26 @@ public class Menu extends JMenuBar{
     private JMenuItem Salir;
     
     //Elementos del menú Ver
-    private JMenu Ver;
-    private JCheckBoxMenuItem Ver_Barra_Botones;
-    private JCheckBoxMenuItem Ver_Barra_Estado;
+//    private JMenu Ver;
+//    private JCheckBoxMenuItem Ver_Barra_Botones;
+//    private JCheckBoxMenuItem Ver_Barra_Estado;
     
-    //Elementos del menú Herramientas
-    private JMenu Herramientas;
+    //Elementos del menú Operaciones lineales
+    private JMenu Op_lineales;
+    private JMenuItem Trans_por_tramos;
     private JMenuItem Brillo_Contraste;
     
-    private JMenu Histograma;
+    //Elementos del menú Operaciones no lineales
+    private JMenu Op_no_lineales;
     private JMenuItem H_Ecualizacion;
     private JMenuItem H_Especificacion;
-    
     private JMenuItem C_Gamma;
     private JMenuItem Perfil;
     private JMenuItem Sim_Dig_Imag;
     private JMenuItem Dif_Imags;
     
-    private JMenu Transformaciones;
-    private JMenuItem T_rotacion;
-    private JMenuItem T_escalado;
+    //Elementos del menú Operaciones geométricas
+    private JMenu Op_geometricas;
     
     //Elementos del menú Ayuda
     private JMenu Ayuda;
@@ -67,8 +67,10 @@ public class Menu extends JMenuBar{
     public Menu(){
         
         menuArchivo();
-        menuVer();
-        menuHerramientas();
+//        menuVer();
+        menuOpLineales();
+        menuOpNoLineales();
+        menuOpGeometricas();
         menuAyuda();
         
         gestor_img = new Gestion_subventanas(); //Usando gestor de subventanas.
@@ -128,34 +130,45 @@ public class Menu extends JMenuBar{
         });
     }
     
-    private void menuVer(){
-        Ver = new JMenu("Ver");
-        this.add(Ver);
-        
-        Ver_Barra_Botones = new JCheckBoxMenuItem("Barra de Botones");
-        Ver.add(Ver_Barra_Botones);
-        
-        Ver_Barra_Estado = new JCheckBoxMenuItem("Barra de Estado");
-        Ver.add(Ver_Barra_Estado);
-    }
+//    private void menuVer(){
+//        Ver = new JMenu("Ver");
+//        this.add(Ver);
+//        
+//        Ver_Barra_Botones = new JCheckBoxMenuItem("Barra de Botones");
+//        Ver.add(Ver_Barra_Botones);
+//        
+//        Ver_Barra_Estado = new JCheckBoxMenuItem("Barra de Estado");
+//        Ver.add(Ver_Barra_Estado);
+//    }
     
-    private void menuHerramientas(){
-        Herramientas = new JMenu("Herramientas");
-        this.add(Herramientas);
+    private void menuOpLineales(){
+        Op_lineales = new JMenu("Operaciones lineales");
+        this.add(Op_lineales);
         
         Brillo_Contraste = new JMenuItem("Brillo y Contraste");
-        Herramientas.add(Brillo_Contraste);
+        Op_lineales.add(Brillo_Contraste);
         Brillo_Contraste.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
                 System.out.println("Brillo y Constraste");
             }
         });
         
-        Histograma = new JMenu("Histograma");
-        Herramientas.add(Histograma);
+        Trans_por_tramos = new JMenuItem("Transformaciones por tramos");
+        Op_lineales.add(Trans_por_tramos);
+        Brillo_Contraste.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                System.out.println("Transformaciones por tramos");
+            }
+        });
         
-        H_Ecualizacion = new JMenuItem("Ecualización");
-        Histograma.add(H_Ecualizacion);
+    }
+    
+    private void menuOpNoLineales(){
+        Op_no_lineales = new JMenu("Operaciones no lineales");
+        this.add(Op_no_lineales);
+        
+        H_Ecualizacion = new JMenuItem("Ecualización del Histograma");
+        Op_no_lineales.add(H_Ecualizacion);
         H_Ecualizacion.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
                 System.out.println("Ecualización del Histograma");
@@ -163,8 +176,8 @@ public class Menu extends JMenuBar{
             }
         });
         
-        H_Especificacion = new JMenuItem("Especificación");
-        Histograma.add(H_Especificacion);
+        H_Especificacion = new JMenuItem("Especificación del Histograma");
+        Op_no_lineales.add(H_Especificacion);
         H_Especificacion.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
                 System.out.println("Especificación del Histograma");
@@ -172,7 +185,7 @@ public class Menu extends JMenuBar{
         });
         
         C_Gamma = new JMenuItem("Correción Gamma");
-        Herramientas.add(C_Gamma);
+        Op_no_lineales.add(C_Gamma);
         C_Gamma.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
                 System.out.println("Correción Gamma");
@@ -180,7 +193,7 @@ public class Menu extends JMenuBar{
         });
         
         Perfil = new JMenuItem("Perfil");
-        Herramientas.add(Perfil);
+       Op_no_lineales.add(Perfil);
         Perfil.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
                 System.out.println("Perfil (Image-Cross Section)");
@@ -188,7 +201,7 @@ public class Menu extends JMenuBar{
         });
         
         Sim_Dig_Imag = new JMenuItem("Simulación de la digitalización de una Imagen");
-        Herramientas.add(Sim_Dig_Imag);
+        Op_no_lineales.add(Sim_Dig_Imag);
         Sim_Dig_Imag.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
                 System.out.println("Simulación de la digitalización de una Imagen");
@@ -196,21 +209,17 @@ public class Menu extends JMenuBar{
         });
         
         Dif_Imags = new JMenuItem("Diferencia entre dos imágenes");
-        Herramientas.add(Dif_Imags);
+        Op_no_lineales.add(Dif_Imags);
         Dif_Imags.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
                 System.out.println("Diferencia entre dos imágenes");
             }
         });
         
-        Transformaciones = new JMenu("Transformaciones");
-        Herramientas.add(Transformaciones);
+    }
+    
+    private void menuOpGeometricas(){
         
-        T_rotacion = new JMenuItem("De rotación");
-        Transformaciones.add(T_rotacion);
-        
-        T_escalado = new JMenuItem("De escalado");
-        Transformaciones.add(T_escalado);
     }
     
     private void menuAyuda(){
