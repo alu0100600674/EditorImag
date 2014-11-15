@@ -59,7 +59,7 @@ public class Menu extends JMenuBar{
     private JMenuItem Acerca_de;
     
 //    private Imagen i;
-    private Gestion_subventanas gestor_img; //Usando gestor de subventanas.
+    Gestion_subventanas gestor_img; //Usando gestor de subventanas.
 
     
     
