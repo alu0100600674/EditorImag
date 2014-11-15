@@ -7,6 +7,7 @@
 package imagen;
 
 import static editorimag.EditorImag.activa;
+import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -56,7 +57,8 @@ public class Gestion_subventanas {
     }
     
     public void abrirPropiedades(){
-        img_list.get(activa).propiedades(); 
+        img_list.get(activa).propiedades(img_list.get(activa).getGraphics());
+        System.out.print("hola");
     }
     
     public void buscarSubventanaActual(){

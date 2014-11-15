@@ -109,7 +109,7 @@ public class Subventana extends JFrame {
 
 		setPosX(r.getX());
                 setPosY(r.getY());
-                System.out.println(r.getX() + "," + r.getY());
+                //System.out.println(r.getX() + "," + r.getY());
                 repaint();
 			
             }
