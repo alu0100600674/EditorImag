@@ -98,14 +98,22 @@ public class Imagen extends JFrame{
         selector.setDialogTitle("Guarde la imagen con el nombre y extension que desee");
 //        FileNameExtensionFilter filtro_jpg = new FileNameExtensionFilter("JPG", "jpg");
         FileNameExtensionFilter filtro_png = new FileNameExtensionFilter("PNG", "png");
+        FileNameExtensionFilter filtro_jpg = new FileNameExtensionFilter("JPG", "jpg");
+        FileNameExtensionFilter filtro_gif = new FileNameExtensionFilter("GIF", "gif");
+
 //        FileNameExtensionFilter filtro_gif = new FileNameExtensionFilter("GIF", "gif");
 //        selector.setFileFilter(filtro_jpg);
         selector.setFileFilter(filtro_png);
+        selector.setFileFilter(filtro_jpg);
+        selector.setFileFilter(filtro_gif);
 //        selector.setFileFilter(filtro_gif);
         selector.showOpenDialog(null);
         selec = selector.getSelectedFile();
         
         ImageIO.write(imgGris, "png", selec); //Guardando imagenes en PNG.
+        ImageIO.write(imgGris, "jpg", selec); //Guardando imagenes en PNG.
+        ImageIO.write(imgGris, "gif", selec); //Guardando imagenes en PNG.
+        
         
     }
     
@@ -126,18 +134,15 @@ public class Imagen extends JFrame{
 //VENTANA PROPIEDADES
     public void propiedades(Graphics g) {
         
-        System.out.print("hola");
+                System.out.print("hola");
         
                 jf = new JFrame();
-                //jf.getDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                
+                jf.setDefaultCloseOperation(EXIT_ON_CLOSE);   
 		jf.setLayout(new BorderLayout());
                 
                 jf.setBounds(0, 0, imgGris.getWidth(), imgGris.getHeight());
-		//setRefBufImg(imgGris.getRefImg());
-	
-		//Graphics2D gr = (Graphics2D) g;
-		jf.setBackground(Color.WHITE);
+		
+		jf.setBackground(Color.GREEN);
                 
 		/*gr.fillRect(0, 0, imgGris.getWidth(), imgGris.getHeight());
 		gr.setColor(Color.BLACK);
@@ -152,8 +157,8 @@ public class Imagen extends JFrame{
 		gr.drawString(" Alto: " + altoImg, 25, 210);*/
                 
                 JLabel nombreJLabel = new JLabel("Nombre: " + nombre);
-                JLabel FormatoJLabel = new JLabel("Formato: " + obtenerFormato(nombre));
-                JLabel DimensionesJLabel = new JLabel("Dimensiones: "/* + anchoImg + "X " + altoImg + "]"*/);
+                JLabel FormatoJLabel = new JLabel("Formato: " /*+ obtenerFormato(nombre)*/);
+                JLabel DimensionesJLabel = new JLabel("Dimensiones: " /*+ anchoImg + "X " + altoImg + "]"*/);
                 JLabel AnchoJLabel = new JLabel("Ancho: " /*+ anchoImg*/);
                 JLabel AltoJLabel = new JLabel("Alto: " /*+ altoImg*/);
                 

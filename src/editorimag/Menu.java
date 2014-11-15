@@ -111,10 +111,11 @@ public class Menu extends JMenuBar{
         Archivo.add(Propiedades);
         Propiedades.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
+                System.out.println("Propiedades");
                 gestor_img.abrirPropiedades();
                 //Imagen i = new Imagen();
 //                i.propiedades();
-                //System.out.println("Propiedades");
+                
             }
         });
         
