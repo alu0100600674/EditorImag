@@ -23,6 +23,7 @@ public class EditorImag {
     
     public static void main(String[] args) {
         interfaz ventana = new interfaz();
+        ventana.setVisible(true);
         
 //        Brillo_y_contraste aa = new Brillo_y_contraste(); //Prueba
     }

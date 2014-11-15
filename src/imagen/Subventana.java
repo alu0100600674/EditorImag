@@ -76,7 +76,6 @@ public class Subventana extends JFrame {
     //haciendo subventana
     public Subventana(BufferedImage tmp2, int tam) {
         setTitle("Imagen " + (tam + 1)); 
-        setVisible(true);
         //caso imagen pequeña, no se ve panel pixel RGB
         
         if (tmp2.getWidth()<220)
@@ -114,6 +113,8 @@ public class Subventana extends JFrame {
 			
             }
         });
+        
+        setVisible(true);
         
     }
     
