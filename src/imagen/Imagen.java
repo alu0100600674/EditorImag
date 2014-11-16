@@ -120,9 +120,9 @@ public class Imagen extends JFrame{
         FileNameExtensionFilter filtro_jpg = new FileNameExtensionFilter("JPG", "jpg");
         FileNameExtensionFilter filtro_png = new FileNameExtensionFilter("PNG", "png");
         FileNameExtensionFilter filtro_gif = new FileNameExtensionFilter("GIF", "gif");
-        selector.setFileFilter(filtro_jpg);
-        selector.setFileFilter(filtro_png);
         selector.setFileFilter(filtro_gif);
+        selector.setFileFilter(filtro_png);
+        selector.setFileFilter(filtro_jpg);
         selector.showOpenDialog(null);
        
         nombre = String.valueOf(selector.getSelectedFile());
@@ -145,8 +145,8 @@ public class Imagen extends JFrame{
 
 
         selector.setFileFilter(filtro_png);
-        selector.setFileFilter(filtro_jpg);
         selector.setFileFilter(filtro_gif);
+        selector.setFileFilter(filtro_jpg);
 
         selector.showOpenDialog(null);
         selec = selector.getSelectedFile();
