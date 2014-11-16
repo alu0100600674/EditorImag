@@ -36,12 +36,13 @@ public class Brillo_y_contraste {
     
     private void controles(){
         JFrame control = new JFrame();
-//        JPanel panel = new JPanel();
-//        control.add(panel);
+        JPanel panel = new JPanel();
+        control.add(panel);
+        
         control.setTitle("Brillo y Contraste");
         control.setSize(300, 200);
         control.setVisible(true);
-//        control.setResizable(false);
+        control.setResizable(false);
         
         JLabel L_Brillo = new JLabel("Brillo");
         Scrollbar Brillo = new Scrollbar(HORIZONTAL, 0, 0, 0, 255);
@@ -51,14 +52,14 @@ public class Brillo_y_contraste {
         Scrollbar Contraste = new Scrollbar(HORIZONTAL, 0, 0, 0, 255);
         Contraste.setSize(270, 20);
         
-        JButton Aceptar = new JButton();
+        JButton Aceptar = new JButton("Aceptar");
         Aceptar.setSize(100, 30);
         
-        control.add(L_Brillo).setLocation(30, 15);
-        control.add(Brillo).setLocation(15, 30);
-        control.add(L_Contraste);
-        control.add(Contraste).setLocation(15, 80);
-//        control.add(Aceptar).setLocation(200, 150);
+        panel.add(L_Brillo).setLocation(30, 15);
+        panel.add(Brillo).setLocation(15, 30);
+        panel.add(L_Contraste);
+        panel.add(Contraste).setLocation(15, 80);
+        panel.add(Aceptar).setLocation(200, 150);
     }
     
     private void imagenResultado(){
