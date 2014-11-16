@@ -26,7 +26,7 @@ public class EditorImag {
         interfaz ventana = new interfaz();
         ventana.setVisible(true);
         
-        Brillo_y_contraste aa = new Brillo_y_contraste(); //Prueba
+//        Brillo_y_contraste aa = new Brillo_y_contraste(); //Prueba
 //        Ecualizacion_histograma bb = new Ecualizacion_histograma();
     }
     
