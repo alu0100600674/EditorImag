@@ -7,7 +7,6 @@
 package editorimag;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import javax.swing.JFrame;
 
 /**
@@ -20,17 +19,15 @@ public class interfaz extends JFrame {
         setTitle("EditorImag");
 //        setLayout(null);
         //setVisible(true);
-        setSize(800, 600);
+        setSize(800, 80);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         
         Menu menu_principal = new Menu();
         setJMenuBar(menu_principal);
         
-        Barra_botones barra_botones = new Barra_botones();
-        getContentPane().add(barra_botones, BorderLayout.NORTH);
+//        Barra_botones barra_botones = new Barra_botones();
+//        getContentPane().add(barra_botones, BorderLayout.NORTH);
         
-        //PRUEBA
-        Dimension tamanyo = getSize();
        
     }
     
