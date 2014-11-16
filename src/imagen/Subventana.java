@@ -100,6 +100,7 @@ public class Subventana extends JFrame {
         
         addMouseMotionListener(new MouseMotionAdapter(){
         
+            @Override
             public void mouseMoved(MouseEvent r) {
 	
 		setR(new Color(tmp.getRGB(r.getX(), r.getY())).getRed());
