@@ -58,7 +58,7 @@ public class Gestion_subventanas {
     
     public void abrirPropiedades(){
         img_list.get(activa).propiedades(img_list.get(activa).getGraphics());
-        System.out.print("hola");
+        //System.out.print("hola");
     }
     
     public void buscarSubventanaActual(){

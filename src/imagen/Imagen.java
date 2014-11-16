@@ -37,12 +37,47 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class Imagen extends JFrame{
     
     private BufferedImage imgGris;
+    //variables prueba
+    public String nombre = "Sin nombre";
+    public String formatoImg; //= new String("Desconocido");
+    public int anchoImg = 0;
+    public int altoImg = 0;
+    public int min = -1;
+    public int max = -1;
+    public double entropia = 0.0;
+    public double brillo = 0.0;
+    public double contraste = 0.0;
+    public JFrame jf;
+        //letra especificada empezando la clase
+    
+    BufferedImage temp=null;     //nombre imagen
+        
     
     //prueba letra
     public Font letra = new Font(Font.SERIF, Font.BOLD, 15);
+    public Font letra1 = new Font(Font.SERIF, Font.BOLD, 25);
     
     public Imagen(int tam) throws IOException{
         abrirImagen(tam);
+        nombre = "sin nombre.jpg";
+        formatoImg= obtenerFormato(nombre);
+        anchoImg = imgGris.getWidth();
+        altoImg = imgGris.getHeight();
+        min = obtenerMinGris(imgGris);
+        max =obtenerMaxGris(imgGris);
+        /*se definiran cuando esten hechas las funciones
+        entropia =
+        brillo =
+        contraste=*/
+                
+              
+        
+        
+        
+        
+        
+        
+        
     }
     
     public BufferedImage pasarAEscalaGrises(BufferedImage img){
@@ -74,7 +109,7 @@ public class Imagen extends JFrame{
     }
     
     public void abrirImagen(int tam) throws IOException{
-        BufferedImage temp=null;
+        
         
         JFileChooser selector = new JFileChooser();
         selector.setDialogTitle("Seleccione una imagen");
@@ -85,82 +120,65 @@ public class Imagen extends JFrame{
         selector.setFileFilter(filtro_png);
         selector.setFileFilter(filtro_gif);
         selector.showOpenDialog(null);
+       
         temp = ImageIO.read(selector.getSelectedFile());
-        
+        System.out.println(selector.getSelectedFile());
+        //nombre = selector.getSelectedFile();
         Subventana ventana = new Subventana(pasarAEscalaGrises(temp), tam);
         
     } 
+    
     
     public void guardarImagen() throws FileNotFoundException, IOException{
         File selec = null;
         JFileChooser selector = new JFileChooser();
         selector.setApproveButtonText("Guardar");
         selector.setDialogTitle("Guarde la imagen con el nombre y extension que desee");
-//        FileNameExtensionFilter filtro_jpg = new FileNameExtensionFilter("JPG", "jpg");
         FileNameExtensionFilter filtro_png = new FileNameExtensionFilter("PNG", "png");
         FileNameExtensionFilter filtro_jpg = new FileNameExtensionFilter("JPG", "jpg");
         FileNameExtensionFilter filtro_gif = new FileNameExtensionFilter("GIF", "gif");
 
-//        FileNameExtensionFilter filtro_gif = new FileNameExtensionFilter("GIF", "gif");
-//        selector.setFileFilter(filtro_jpg);
+
         selector.setFileFilter(filtro_png);
         selector.setFileFilter(filtro_jpg);
         selector.setFileFilter(filtro_gif);
-//        selector.setFileFilter(filtro_gif);
+
         selector.showOpenDialog(null);
         selec = selector.getSelectedFile();
         
         ImageIO.write(imgGris, "png", selec); //Guardando imagenes en PNG.
-        ImageIO.write(imgGris, "jpg", selec); //Guardando imagenes en PNG.
-        ImageIO.write(imgGris, "gif", selec); //Guardando imagenes en PNG.
+        ImageIO.write(imgGris, "jpg", selec); //Guardando imagenes en JPG.
+        ImageIO.write(imgGris, "gif", selec); //Guardando imagenes en GIF.
         
         
     }
     
-    
-    //variables prueba
-        public String nombre = "Sin nombre";
-	//public String formatoImg = new String("Desconocido");
-	public int anchoImg = 0;
-	public int altoImg = 0;
-	public int min = -1;
-	public int max = -1;
-	public double entropia = 0.0;
-	public double brillo = 0.0;
-	public double contraste = 0.0;
-        public JFrame jf;
-        //letra especificada empezando la clase
-    
 //VENTANA PROPIEDADES
     public void propiedades(Graphics g) {
         
-                System.out.print("hola");
-        
+                
+                setTitle("Propiedades");
                 jf = new JFrame();
+              
                 jf.setDefaultCloseOperation(EXIT_ON_CLOSE);   
 		jf.setLayout(new BorderLayout());
                 
                 jf.setBounds(0, 0, imgGris.getWidth(), imgGris.getHeight());
 		
-		jf.setBackground(Color.GREEN);
-                
-		/*gr.fillRect(0, 0, imgGris.getWidth(), imgGris.getHeight());
-		gr.setColor(Color.BLACK);
-		gr.setFont(letra);
-		gr.drawString("�Propiedades de la imagen:", 55, 35);
-		
-		gr.setColor(Color.DARK_GRAY);
-		gr.drawString("Nombre: " + nombre, 20, 90);
-		gr.drawString("Formato: " + obtenerFormato(nombre), 20, 120);
-		gr.drawString("Dimensiones: [" + anchoImg + " X " + altoImg + "]", 20, 150);
-		gr.drawString(" Ancho: " + anchoImg, 25, 180);
-		gr.drawString(" Alto: " + altoImg, 25, 210);*/
-                
+		jf.setBackground(Color.WHITE);
+
+                JLabel titleJLabel = new JLabel("Propiedades");
                 JLabel nombreJLabel = new JLabel("Nombre: " + nombre);
-                JLabel FormatoJLabel = new JLabel("Formato: " /*+ obtenerFormato(nombre)*/);
-                JLabel DimensionesJLabel = new JLabel("Dimensiones: " /*+ anchoImg + "X " + altoImg + "]"*/);
-                JLabel AnchoJLabel = new JLabel("Ancho: " /*+ anchoImg*/);
-                JLabel AltoJLabel = new JLabel("Alto: " /*+ altoImg*/);
+                JLabel FormatoJLabel = new JLabel("Formato: " + formatoImg);
+                JLabel DimensionesJLabel = new JLabel("Dimensiones: [" + anchoImg + "X " + altoImg + "]");
+                JLabel AnchoJLabel = new JLabel("Ancho: " + anchoImg);
+                JLabel AltoJLabel = new JLabel("Alto: " + altoImg);
+                JLabel minJLabel = new JLabel("Minimo: " + min);
+                JLabel maxJLabel = new JLabel("Maximo: " + max);
+                JLabel EntropiaJLabel = new JLabel("Entropia: " + entropia);
+                JLabel BrilloJLabel = new JLabel ("Brillo: " + brillo);
+                JLabel ContrasteJLabel = new JLabel ("Contraste: " + contraste);
+                
                 
                 JButton aceptar = new JButton("Aceptar");
 		aceptar.setBounds(300, 410, 100, 30);
@@ -173,18 +191,26 @@ public class Imagen extends JFrame{
 			}
 		});
 		JPanel jp = new JPanel();
-                jp.setLayout(new GridLayout(0,1)); 
+                jp.setLayout(new GridLayout(8,2)); 
+                //jp.setFont(letra1);
+                jp.add(titleJLabel).setFont(letra1);
+                //jp.setFont(letra);
                 jp.add(nombreJLabel);
                 jp.add(FormatoJLabel);
                 jp.add(DimensionesJLabel);
                 jp.add(AnchoJLabel);
                 jp.add(AnchoJLabel);
+                jp.add(minJLabel);
+                jp.add(maxJLabel);
+                jp.add(EntropiaJLabel);
+                jp.add(BrilloJLabel);
+                jp.add(ContrasteJLabel);
 
                 jf.add (aceptar, BorderLayout.SOUTH);
                 
                // jp.paint(gr);
                 jf.add(jp, BorderLayout.CENTER);
-                       
+                jf.add(titleJLabel, BorderLayout.BEFORE_FIRST_LINE);
                 jf.setVisible(true);
 		
 	/*	gr.setColor(Color.GRAY);
@@ -199,13 +225,13 @@ public class Imagen extends JFrame{
     }
 	
 	public String obtenerFormato(String nombreImagen) {
-            System.out.print("caca");
+           // System.out.print("caca");
 		String [] nombre_Punto_Formato = {"a.jpg"};
 		if (nombreImagen.length() > 5){
 			nombre_Punto_Formato = nombreImagen.split("\\.");
-                        System.out.print(nombreImagen.split("\\."));
+                        //System.out.print(nombreImagen.split("\\."));
 			return nombre_Punto_Formato[1];
-		}System.out.print("pedo");
+		}//System.out.print("pedo");
 		return "UNKNOWN FORMAT";
 	}
         
@@ -226,50 +252,6 @@ public class Imagen extends JFrame{
 					temp = new Color (bf.getRGB(i, j)).getRed();
 		return temp;
 	}
-        
-	
-	// Manejadores de atributos
-/*	
-	public Font getLetra() { return letra; }
-	public double getBrillo() { return brillo; }
-	public void setBrillo(double brillo) { this.brillo = brillo; }
-	public double getContraste() { return contraste; }
-	public void setContraste(double contraste) { this.contraste = contraste; }
-	
-	public void setLetra(Font letra) { this.letra = letra; }
-	
-	public String getNombre() { return nombre; }
-	public void setNombre(String nombre) { this.nombre = nombre; }
-	
-	public int getAnchoImg() { return anchoImg; }
-	public void setAnchoImg(int anchoImg) { this.anchoImg = anchoImg; }
-	
-	public int getAltoImg() { return altoImg; }
-	public void setAltoImg(int altoImg) { this.altoImg = altoImg; }
-	
-	public int getMin() { return min; }
-	public void setMin(int min) { this.min = min; }
-	
-	public int getMax() { return max; }
-	public void setMax(int max) { this.max = max; }
-	
-	public double getEntropia() { return entropia; }
-	public void setEntropia(double entropia) { this.entropia = entropia; }
-	
-	public BufferedImage getRefBufImg() { return refBufImg; }
-	public void setRefBufImg(BufferedImage refBufImg) { this.refBufImg = refBufImg; }
-        */
-    /*    
-        setTitle("Propiedades de la imagen");
-        setVisible(true);
-        setSize(200, 300);
-     */   
-        //setDefaultCloseOperation(EXIT_ON_CLOSE);
-    
-        
-        
-        
-                
     } 
     
 
