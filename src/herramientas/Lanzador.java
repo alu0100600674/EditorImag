@@ -6,46 +6,61 @@
 
 package herramientas;
 
+import java.awt.image.BufferedImage;
+
 /**
  *
  * @author jonay
  */
 public class Lanzador {
     
+    private BufferedImage img;
+    
+    public Lanzador(BufferedImage tmp){
+        img = tmp;
+    }
+    
     public void lanzar(int opcion){
         
         switch(opcion){
-            case 1:
+            //Operaciones Lineales
+            case 11:
                 transfLinealesTramos();
                 break;
-            case 2:
+            case 12:
+                brilloYContraste();
+                
+                break;
+            
+            //Operaciones No Lineales
+            case 21:
                 ecualizacionHistograma();
                 break;
-            case 3:
+            case 22:
                 especificacionHistograma();
                 break;
-            case 4:
-                brilloYContraste();
-                break;
-            case 5:
+            case 23:
                 correccionGamma();
                 break;
-            case 6:
+            case 24:
+                perfil();
+                break;
+            case 25:
+                simulacionDigitalizacionImagen();
+                break;
+            case 26:
                 diferenciaDosImagenes();
                 break;
+            
+            //Operaciones Geométricas
+                
         }
         
     }
     
+    
+    //Operaciones Lineales
     private void transfLinealesTramos(){
-        
-    }
-    
-    private void ecualizacionHistograma(){
-        
-    }
-    
-    private void especificacionHistograma(){
         
     }
     
@@ -53,12 +68,34 @@ public class Lanzador {
         
     }
     
+    
+    //Operaciones No Lineales
+    private void ecualizacionHistograma(){
+        Ecualizacion_histograma ech = new Ecualizacion_histograma(img);
+    }
+    
+    private void especificacionHistograma(){
+        
+    }
+    
     private void correccionGamma(){
+        
+    }
+    
+    private void perfil(){
+        
+    }
+    
+    private void simulacionDigitalizacionImagen(){
         
     }
     
     private void diferenciaDosImagenes(){
         
     }
+    
+    
+    //Operaciones Geométricas
+    
     
 }

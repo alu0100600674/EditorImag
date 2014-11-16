@@ -7,6 +7,7 @@
 package imagen;
 
 import java.awt.BorderLayout;
+import herramientas.Ecualizacion_histograma;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -77,6 +78,10 @@ public class Imagen extends JFrame{
         
         
         
+    }
+    
+    public BufferedImage getImg(){
+        return imgGris;
     }
     
     public BufferedImage pasarAEscalaGrises(BufferedImage img){
