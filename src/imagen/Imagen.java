@@ -171,7 +171,13 @@ public class Imagen extends JFrame{
                 jf.setBounds(0, 0, imgGris.getWidth(), imgGris.getHeight());
 		
 		jf.setBackground(Color.WHITE);
-
+                
+                
+                
+                //transformacion ruta a nombre
+                File f = new File (nombre);
+                nombre = f.getName();
+                
                 JLabel titleJLabel = new JLabel("Propiedades");
                 JLabel nombreJLabel = new JLabel("Nombre: " + nombre);
                 JLabel FormatoJLabel = new JLabel("Formato: " + formatoImg);
