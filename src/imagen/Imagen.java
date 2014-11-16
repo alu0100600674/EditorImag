@@ -59,7 +59,7 @@ public class Imagen extends JFrame{
     
     public Imagen(int tam) throws IOException{
         abrirImagen(tam);
-        nombre = "sin nombre.jpg";
+        //nombre = "sin nombre.jpg";
         formatoImg= obtenerFormato(nombre);
         anchoImg = imgGris.getWidth();
         altoImg = imgGris.getHeight();
@@ -121,8 +121,9 @@ public class Imagen extends JFrame{
         selector.setFileFilter(filtro_gif);
         selector.showOpenDialog(null);
        
+        nombre = String.valueOf(selector.getSelectedFile());
         temp = ImageIO.read(selector.getSelectedFile());
-        System.out.println(selector.getSelectedFile());
+        //System.out.println(selector.getSelectedFile());
         //nombre = selector.getSelectedFile();
         Subventana ventana = new Subventana(pasarAEscalaGrises(temp), tam);
         
