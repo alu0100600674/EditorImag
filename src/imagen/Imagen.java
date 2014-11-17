@@ -44,7 +44,7 @@ public class Imagen extends JFrame{
     public int altoImg = 0;
     public int min = -1;
     public int max = -1;
-    public double entropia = 0.0;
+    
     
     public JFrame jf;
     
@@ -52,6 +52,7 @@ public class Imagen extends JFrame{
     private int datos[];
     private double brillo = 0.0;
     private double contraste = 0.0; 
+    private double entropia = 0.0;
     
     public double get_brillo(){
         return brillo;
@@ -67,6 +68,10 @@ public class Imagen extends JFrame{
     
     public void set_contraste(double b){
         contraste = b;
+    }
+    
+    public double get_entropia(){
+        return entropia;
     }
     
     public void set_entropia(double e){
