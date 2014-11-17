@@ -7,6 +7,7 @@
 package herramientas;
 
 import editorimag.interfaz;
+import imagen.Gestion_subventanas;
 import imagen.Subventana; //pruebas
 
 import static java.awt.Adjustable.HORIZONTAL;
@@ -39,8 +40,8 @@ public class Brillo_y_contraste extends JDialog{
     private JSlider SBrillo = new JSlider();
     private JSlider SContraste = new JSlider();
     
-    private interfaz ventana;
-    private Subventana vOriginal;
+    public interfaz ventana;
+    private Gestion_subventanas vOriginal;
   
 //    private Scrollbar Brillo;
 //    private Scrollbar Contraste;
@@ -49,23 +50,27 @@ public class Brillo_y_contraste extends JDialog{
    // private int Brillo;
     //private int Contraste;
     //private BufferedImage mod;
+    
+    getVentanaActual(){
+        return vOriginal.getSubvActual();
+    }
     JSlider getBrillo(){
         return SBrillo;
     }
     
-    JSlider setBrillo(JSlider a){
+    void setBrillo(JSlider a){
         SBrillo= a;
     }
     
-    JSlider getConstraste(){
+    JSlider getContraste(){
         return SContraste;
     }
     
-    JSlider setContraste(JSlider a){
+    void setContraste(JSlider a){
         SContraste=a;
     }
     
-    public Brillo_y_contraste() {	
+    public Brillo_y_contraste(BufferedImage actual) {	
     
 	// NUEVO !! --> TENEMOS LA IMAGEN, SU BRILLO Y CONTRASTE -> ORIGINALES!! (no actualizar !!)
 		
@@ -74,10 +79,10 @@ public class Brillo_y_contraste extends JDialog{
 	setLayout(null);
 	setAlwaysOnTop(true);
 	setResizable(false);
-	iniciarPanel();
+	iniciarPanel(actual);
     }
     
-    public iniciarPanel(){
+    public iniciarPanel(BufferedImage tmp){
         JLabel titulo = new JLabel("Ajustes Lineales (Brillo y Contraste)");
 		titulo.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 20));
 		titulo.setBounds(50, 10, 400, 30);
@@ -88,7 +93,8 @@ public class Brillo_y_contraste extends JDialog{
 		etBrillo.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 15));
 		add (etBrillo);
 		getBrillo().setBounds(80, 105, 400, 50);
-		getBrillo().setValue((int) getRefVp().getGestorSubVentanas().getRefSubVentActual().getBrillo());
+		getBrillo().setValue((int) a.getBrillo());
+                //getRefVp().getGestorSubVentanas().getRefSubVentActual().getBrillo());
 		getBrillo().setBackground(Color.WHITE);
 		getBrillo().setMinimum(0);
 		getBrillo().setMaximum(255);
@@ -111,23 +117,23 @@ public class Brillo_y_contraste extends JDialog{
 				} catch (Exception ex) {}
 			}
 		});
-		add (getSBrillo());
+		add (getBrillo());
 
 		JLabel etContr = new JLabel("Contraste");
 		etContr.setBounds(20, 180, 400, 50);
 		etContr.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 15));
 		add (etContr);
-		getSContraste().setBounds(100, 180, 380, 50);
-		getSContraste().setValue((int) getRefVp().getGestorSubVentanas().getRefSubVentActual().getContraste());
-		getSContraste().setBackground(Color.WHITE);
-		getSContraste().setMinimum(0);
-		getSContraste().setMaximum(127);
-		getSContraste().setPaintTicks(true);
-		getSContraste().setPaintTrack(true);
-		getSContraste().setMajorTickSpacing(20);
-		getSContraste().setMinorTickSpacing(10);
-		getSContraste().setPaintLabels(true);
-		getSContraste().addChangeListener(new ChangeListener() {
+		getContraste().setBounds(100, 180, 380, 50);
+		getContraste().setValue((int) /*getRefVp().getGestorSubVentanas().getRefSubVentActual().*/getContraste());
+		getContraste().setBackground(Color.WHITE);
+		getContraste().setMinimum(0);
+		getContraste().setMaximum(127);
+		getContraste().setPaintTicks(true);
+		getContraste().setPaintTrack(true);
+		getContraste().setMajorTickSpacing(20);
+		getContraste().setMinorTickSpacing(10);
+		getContraste().setPaintLabels(true);
+		getContraste().addChangeListener(new ChangeListener() {
 
 			@Override
 			public void stateChanged(ChangeEvent e) {
@@ -141,7 +147,7 @@ public class Brillo_y_contraste extends JDialog{
 				} catch (Exception ex) {}
 			}
 		});
-		add (getSContraste());
+		add (getContraste());
 		
 		JButton aceptar = new JButton("Aceptar");
 		aceptar.setBounds(200, 240, 100, 20);
@@ -159,7 +165,7 @@ public class Brillo_y_contraste extends JDialog{
     
     
     
-    private void controles(){
+ /*   private void controles(){
         JFrame control = new JFrame();
         JPanel panel = new JPanel();
         control.add(panel);
@@ -189,8 +195,43 @@ public class Brillo_y_contraste extends JDialog{
     
     private void imagenResultado(){
         JFrame resultado = new JFrame();
-    }
+    }*/
     
+//}
+
+	public HashMap <Integer, Integer> tablaTransformacionBrillo (double brillo, double contraste) {
+		HashMap <Integer, Integer> tabla = new HashMap <Integer, Integer>();
+		double A = contraste / getvOriginal().getContraste();
+		double B = brillo - A * getvOriginal().getBrillo();
+		int temp = 0;
+		/*vout = A*vin + B*/
+		for (int i = 0; i < 256; ++i) {
+			temp = (int)(Math.round (((A * i) + B)));
+			if (temp < 0)
+				temp = 0;
+			if (temp > 255)
+				temp = 255;
+			tabla.put (i, temp);
+		}
+
+		return tabla;
+	}
+
+
+
+	public void actualizarBrillo (double brillo, double contraste) {
+		HashMap <Integer, Integer> tabla = tablaTransformacionBrillo (brillo, contraste);
+		int valorNuevo = 0;
+		for (int i = 0; i < getvOriginal().getRefBufImg().getWidth(); ++i) {
+			for (int j = 0; j < getvOriginal().getRefBufImg().getHeight(); ++j) {
+				
+				valorNuevo = tabla.get(new Color (getvOriginal().getRefBufImg().getRGB(i, j)).getRed());
+			
+				getRefVp().getGestorSubVentanas().getRefSubVentActual().getRefBufImg().setRGB(i, j, new Color (
+								valorNuevo, valorNuevo, valorNuevo).getRGB());
+			}
+		}
+		getRefVp().getGestorSubVentanas().getRefSubVentActual().obtenerHistograma(getRefVp().getGestorSubVentanas().getRefSubVentActual().getRefBufImg());
+
+	}
 }
-
-
