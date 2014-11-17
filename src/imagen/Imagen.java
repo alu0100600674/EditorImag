@@ -107,9 +107,9 @@ public class Imagen extends JFrame{
     }
     
     public Imagen(BufferedImage tmp, int tam){
-        Subventana ventana = new Subventana(tmp, tam);
+        Subventana ventana = new Subventana(pasarAEscalaGrises(tmp), tam);
         
-        formatoImg= obtenerFormato(nombre);
+//        formatoImg= obtenerFormato(nombre);
         anchoImg = imgGris.getWidth();
         altoImg = imgGris.getHeight();
         min = obtenerMinGris(imgGris);
