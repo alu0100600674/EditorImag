@@ -134,11 +134,14 @@ public class Ecualizacion_histograma {
         int size = img.getWidth() * img.getHeight();
         int m = 256; //2^8, Imágenes de 8 bits.
         
+        double factor = (double) m / size;
+        
         for(int i = 0; i < 256; i++){
-//            datos_ec[i] = Math.max(0, Math.round( (  (m / size) * datos_ac[i])) - 1 ));
+//            datos_ec[i] = Math.max(0, ((int) Math.round((m / size) * datos_ac[i]) - 1));
             
-            datos_ec[i] = Math.max(0, (Math.round((m / size) * datos_ac[i]) - 1));
-            System.out.println((Math.round((m / size) * datos_ac[i]) - 1));
+            datos_ec[i] = Math.max(0, ((int) Math.round(factor * datos_ac[i])-1));
+            
+            System.out.println((Math.round((m / size) * datos_ac[i]) )-1 );
             System.out.println(datos_ec[i]);
         }
         
