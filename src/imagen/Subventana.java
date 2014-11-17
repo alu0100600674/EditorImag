@@ -6,6 +6,8 @@
 
 package imagen;
 
+
+import herramientas.Ecualizacion_histograma;
 import static editorimag.EditorImag.activa;
 import java.awt.Color;
 import java.awt.Font;
@@ -28,7 +30,8 @@ import javax.swing.border.LineBorder;
 public class Subventana extends JFrame {
     
     //gestion de la subventana activa
-    private BufferedImage tmp;
+    
+    private BufferedImage tmp; //referencia imagen actual
     private int num_subv;
     private int num_subv2;
     
@@ -43,6 +46,10 @@ public class Subventana extends JFrame {
     private int posY = 0;
     
     private int alto = 30; //gestion de posicion del mouse
+
+    public BufferedImage getImagenActual(){
+        return tmp;
+    }
     
     public int getNumSubv(){
         return num_subv;
@@ -55,6 +62,7 @@ public class Subventana extends JFrame {
     //control del panel RGB
     public Font getLetra() { return letra; }
     public void setLetra(Font letra) { this.letra = letra; }
+    
     public int getR() { return r; }
     public void setR(int r) { this.r = r; }
 	
@@ -77,7 +85,7 @@ public class Subventana extends JFrame {
     public Subventana(BufferedImage tmp2, int tam) {
         setTitle("Imagen " + (tam + 1)); 
         //caso imagen pequeña, no se ve panel pixel RGB
-        
+
         if (tmp2.getWidth()<220)
             setSize(350+10, tmp2.getHeight()+35);
         else
@@ -169,7 +177,25 @@ public class Subventana extends JFrame {
 		
 	}
         
-        
+      
+ /*   public final void obtenerBrillo () {
+		// Media de las frecuencias de los valores del histograma
+        double brill = 0.0;
+	for (int i = 0; i < 256; i++) {
+		brill += (histo.get_datos(i)*i);
+	}
+	set_brillo (brill / (tmp.getWidth() * tmp.getHeight()));
+    }
+	
+    public final void obtenerContraste () {
+		
+	double contrast = 0.0;
+	for (int i = 0; i < 256; i++) {
+            contrast += (Math.pow (i - get_brillo(), 2) * histo.get_datos(i)); 
+
+	}
+	set_contraste(Math.sqrt(contrast / tmp.getWidth() * tmp.getHeight()));
+}*/
         
     public void paint(Graphics g){
         infoRGB(g);
