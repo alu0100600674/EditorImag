@@ -25,7 +25,7 @@ public class Traspuesta {
         
         for(int i = 0; i < img.getWidth(); i++){
             for(int j = 0; j < img.getHeight(); j++){
-                resultado.setRGB(i, j, img.getRGB(j, i));
+                resultado.setRGB(j, i, img.getRGB(i, j));
             }
         }
         
