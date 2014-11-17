@@ -44,10 +44,39 @@ public class Imagen extends JFrame{
     public int altoImg = 0;
     public int min = -1;
     public int max = -1;
-    public double entropia = 0.0;
-    public double brillo = 0.0;
-    public double contraste = 0.0;
+    
+    
     public JFrame jf;
+    
+    //public Ecualizacion_histograma histo;
+    private int datos[];
+    private double brillo = 0.0;
+    private double contraste = 0.0; 
+    private double entropia = 0.0;
+    
+    public double get_brillo(){
+        return brillo;
+    }
+    
+    public void set_brillo(double b){
+        brillo=b;
+    }
+   
+    public double get_contraste(){
+        return contraste;
+    }
+    
+    public void set_contraste(double b){
+        contraste = b;
+    }
+    
+    public double get_entropia(){
+        return entropia;
+    }
+    
+    public void set_entropia(double e){
+        entropia = e;
+    }
         //letra especificada empezando la clase
     
     BufferedImage temp=null;     //nombre imagen
@@ -59,25 +88,22 @@ public class Imagen extends JFrame{
     
     public Imagen(int tam) throws IOException{
         abrirImagen(tam);
+        //histo = new Ecualizacion_histograma(imgGris);
         //nombre = "sin nombre.jpg";
         formatoImg= obtenerFormato(nombre);
         anchoImg = imgGris.getWidth();
         altoImg = imgGris.getHeight();
         min = obtenerMinGris(imgGris);
         max =obtenerMaxGris(imgGris);
+        obtenerdatoshistograma();
+        obtenerBrillo();
+        obtenerContraste();
+        obtenerEntropia();
         /*se definiran cuando esten hechas las funciones
         entropia =
         brillo =
         contraste=*/
-                
-              
-        
-        
-        
-        
-        
-        
-        
+
     }
     
     public BufferedImage getImg(){
@@ -106,6 +132,58 @@ public class Imagen extends JFrame{
             }
         }
         return imgGris;
+    }
+    
+    private void obtenerdatoshistograma(){
+        
+        datos = new int[256];
+        
+        //Inicializar datos a 0.
+        for(int i = 0; i < 256; i++){
+            datos[i] = 0;
+        }
+        
+        //Obtener datos de nivel de color.
+        for(int i = 0; i < imgGris.getWidth(); i++){
+            for(int j = 0; j < imgGris.getHeight(); j++){
+                Color c = new Color(imgGris.getRGB(i, j));
+                
+                datos[c.getRed()] += 1;
+//                System.out.println(i + "," + j);
+//                System.out.println(img.getRGB(i, j));
+//                System.out.println(c);
+            }
+        }
+    }
+    public void obtenerBrillo () {
+
+        double brill = 0.0;
+	for (int i = 0; i < 256; i++) {
+		brill += (datos[i]*i);
+	}
+	set_brillo (brill / (imgGris.getWidth() * imgGris.getHeight()));
+    }
+	
+    public void obtenerContraste () {
+	double contrast = 0.0;
+	for (int i = 0; i < 256; i++) {
+            contrast += (Math.pow (i - get_brillo(), 2) * datos[i]); 
+
+	}
+	set_contraste(Math.sqrt(contrast / (imgGris.getWidth() * imgGris.getHeight())));
+    }
+    
+    public void obtenerEntropia () {
+		double prob = 0.0;
+		double ent = 0.0;
+		double size = imgGris.getWidth() * imgGris.getHeight();
+		for (int i = 0; i < 256; ++i) {
+			if (datos[i] != 0) {
+				prob = datos[i] / size;
+				ent += (-prob * (Math.log10(prob) / Math.log10(2)));
+			}
+		}
+		set_entropia(ent);
     }
     
     private void pintarImagen(Graphics g, BufferedImage temp){

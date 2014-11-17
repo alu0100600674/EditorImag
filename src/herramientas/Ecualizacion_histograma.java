@@ -30,6 +30,11 @@ public class Ecualizacion_histograma {
     private int[] datos;
     private BufferedImage img;
     
+    
+    public int get_datos(int i){
+            return datos[i];
+    }
+    
     public Ecualizacion_histograma(BufferedImage tmp){
         img = tmp;
         
