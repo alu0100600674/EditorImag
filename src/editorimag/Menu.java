@@ -166,7 +166,7 @@ public class Menu extends JMenuBar{
         
         Trans_por_tramos = new JMenuItem("Transformaciones por tramos");
         Op_lineales.add(Trans_por_tramos);
-        Brillo_Contraste.addActionListener(new ActionListener() {
+        Trans_por_tramos.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
                 System.out.println("Transformaciones por tramos");
             }
