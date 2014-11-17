@@ -190,7 +190,6 @@ public class Menu extends JMenuBar{
         Op_no_lineales.add(H_Ecualizacion);
         H_Ecualizacion.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                System.out.println("Ecualización del Histograma");
                 gestor_img.getListaLan().get(activa).lanzar(21);
             }
         });
@@ -249,7 +248,6 @@ public class Menu extends JMenuBar{
         Espejo.add(E_Vertical);
         E_Vertical.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                System.out.println("Espejo Vertical");
                 gestor_img.getListaLan().get(activa).lanzar(31);
             }
         });
@@ -258,7 +256,6 @@ public class Menu extends JMenuBar{
         Espejo.add(E_Horizontal);
         E_Horizontal.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                System.out.println("Espejo Horizontal");
                 gestor_img.getListaLan().get(activa).lanzar(32);
             }
         });
