@@ -316,13 +316,6 @@ public class Menu extends JMenuBar{
             }
         });
         
-        
     }
 
-    class gestor_img {
-
-        public gestor_img() {
-        }
-    }
-    
 }
