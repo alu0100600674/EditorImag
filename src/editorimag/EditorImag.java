@@ -8,6 +8,7 @@ package editorimag;
 
 import herramientas.Brillo_y_contraste;
 import herramientas.Ecualizacion_histograma;
+import imagen.Gestion_subventanas;
 import imagen.Imagen;
 
 /**
@@ -22,9 +23,15 @@ public class EditorImag {
     
     public static int activa = 0;
     
+    public static Gestion_subventanas gestor_img;
+    
     public static void main(String[] args) {
+        gestor_img = new Gestion_subventanas();
+        
         interfaz ventana = new interfaz();
         ventana.setVisible(true);
+        
+        
         
 //        Brillo_y_contraste aa = new Brillo_y_contraste(); //Prueba
 //        Ecualizacion_histograma bb = new Ecualizacion_histograma();

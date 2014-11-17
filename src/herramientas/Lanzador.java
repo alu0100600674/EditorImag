@@ -7,6 +7,7 @@
 package herramientas;
 
 import java.awt.image.BufferedImage;
+import static editorimag.EditorImag.gestor_img;
 
 /**
  *
@@ -23,6 +24,10 @@ public class Lanzador {
     public void lanzar(int opcion){
         
         switch(opcion){
+            //Pruebas
+            case 01:
+                herramientaDePrueba();
+            
             //Operaciones Lineales
             case 11:
                 transfLinealesTramos();
@@ -58,6 +63,10 @@ public class Lanzador {
         
     }
     
+    private void herramientaDePrueba(){
+        H_Prueba prueba = new H_Prueba(img);
+        gestor_img.anadirImagen(prueba.guardarOtra());
+    }
     
     //Operaciones Lineales
     private void transfLinealesTramos(){
@@ -75,7 +84,7 @@ public class Lanzador {
     }
     
     private void especificacionHistograma(){
-        
+       
     }
     
     private void correccionGamma(){

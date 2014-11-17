@@ -7,6 +7,7 @@
 package editorimag;
 
 import static editorimag.EditorImag.activa;
+import static editorimag.EditorImag.gestor_img;
 import imagen.Gestion_subventanas;
 import imagen.Imagen;
 import java.awt.event.ActionEvent;
@@ -30,6 +31,7 @@ public class Menu extends JMenuBar{
     private JMenu Archivo;
     private JMenuItem Abrir;
     private JMenuItem Guardar;
+    private JMenuItem Copia;
     private JMenuItem Propiedades;
     private JMenuItem Salir;
     
@@ -69,7 +71,7 @@ public class Menu extends JMenuBar{
     private JMenuItem Acerca_de;
     
 //    private Imagen i;
-    Gestion_subventanas gestor_img; //Usando gestor de subventanas.
+//    Gestion_subventanas gestor_img; //Usando gestor de subventanas.
 
     
     
@@ -82,7 +84,7 @@ public class Menu extends JMenuBar{
         menuOpGeometricas();
         menuAyuda();
         
-        gestor_img = new Gestion_subventanas(); //Usando gestor de subventanas.
+//        gestor_img = new Gestion_subventanas(); //Usando gestor de subventanas.
         
     }
     
@@ -116,7 +118,13 @@ public class Menu extends JMenuBar{
             }
         });
         
-        
+        Copia = new JMenuItem("Copiar Imagen");
+        Archivo.add(Copia);
+        Copia.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                gestor_img.getListaLan().get(activa).lanzar(01);
+            }
+        });
         
         
         Propiedades = new JMenuItem("Propiedades");
@@ -192,6 +200,7 @@ public class Menu extends JMenuBar{
         H_Especificacion.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
                 System.out.println("Especificación del Histograma");
+                
             }
         });
         
@@ -309,6 +318,12 @@ public class Menu extends JMenuBar{
         });
         
         
+    }
+
+    class gestor_img {
+
+        public gestor_img() {
+        }
     }
     
 }
