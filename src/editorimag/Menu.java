@@ -264,7 +264,7 @@ public class Menu extends JMenuBar{
         Op_geometricas.add(Traspuesta);
         Traspuesta.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                System.out.println("Traspuesta");
+                gestor_img.getListaLan().get(activa).lanzar(33);
             }
         });
         

@@ -64,6 +64,9 @@ public class Lanzador {
             case 32:
                 espejoHorizontal();
                 break;
+            case 33:
+                traspuesta();
+                break;
         }
         
     }
@@ -118,6 +121,11 @@ public class Lanzador {
     private void espejoHorizontal(){
         Espejo e = new Espejo(img);
         gestor_img.anadirImagen(e.espejoHorizontal());
+    }
+    
+    private void traspuesta(){
+        Traspuesta t = new Traspuesta(img);
+        gestor_img.anadirImagen(t.trasponer());
     }
     
 }
