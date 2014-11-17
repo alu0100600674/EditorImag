@@ -31,6 +31,7 @@ public class Acerca_de extends JFrame {
     public Acerca_de(){
         setTitle("Acerca de");
         setSize(300, 200);
+        setLocationRelativeTo(null);
         setResizable(false);
         
         JPanel panel = new JPanel();
