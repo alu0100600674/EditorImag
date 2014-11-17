@@ -250,6 +250,7 @@ public class Menu extends JMenuBar{
         E_Vertical.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
                 System.out.println("Espejo Vertical");
+                gestor_img.getListaLan().get(activa).lanzar(31);
             }
         });
         
@@ -258,6 +259,7 @@ public class Menu extends JMenuBar{
         E_Horizontal.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
                 System.out.println("Espejo Horizontal");
+                gestor_img.getListaLan().get(activa).lanzar(32);
             }
         });
         

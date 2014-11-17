@@ -58,7 +58,12 @@ public class Lanzador {
                 break;
             
             //Operaciones Geométricas
-                
+            case 31:
+                espejoVertical();
+                break;
+            case 32:
+                espejoHorizontal();
+                break;
         }
         
     }
@@ -105,6 +110,14 @@ public class Lanzador {
     
     
     //Operaciones Geométricas
+    private void espejoVertical(){
+        Espejo e = new Espejo(img);
+        gestor_img.anadirImagen(e.espejoVertical());
+    }
     
+    private void espejoHorizontal(){
+        Espejo e = new Espejo(img);
+        gestor_img.anadirImagen(e.espejoHorizontal());
+    }
     
 }

@@ -24,7 +24,7 @@ public class Espejo {
     public BufferedImage espejoHorizontal(){
         BufferedImage resultado = new BufferedImage(img.getWidth(), img.getHeight(), img.getType());
         
-        int pos = img.getWidth();
+        int pos = img.getWidth() - 1;
         for(int i = 0; i < img.getWidth(); i++){
             for(int j = 0; j < img.getHeight(); j++){
                 resultado.setRGB(i, j, img.getRGB(pos, j));
@@ -38,10 +38,10 @@ public class Espejo {
     public BufferedImage espejoVertical(){
         BufferedImage resultado = new BufferedImage(img.getWidth(), img.getHeight(), img.getType());
         
-        int pos = img.getHeight();
+        int pos = img.getHeight() - 1;
         for(int i = 0; i < img.getHeight(); i++){
             for(int j = 0; j < img.getWidth(); j++){
-                resultado.setRGB(i, j, img.getRGB(pos, j));
+                resultado.setRGB(j, i, img.getRGB(j, pos));
             }
             pos--;
         }
