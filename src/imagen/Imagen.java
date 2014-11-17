@@ -68,6 +68,10 @@ public class Imagen extends JFrame{
     public void set_contraste(double b){
         contraste = b;
     }
+    
+    public void set_entropia(double e){
+        entropia = e;
+    }
         //letra especificada empezando la clase
     
     BufferedImage temp=null;     //nombre imagen
@@ -86,8 +90,10 @@ public class Imagen extends JFrame{
         altoImg = imgGris.getHeight();
         min = obtenerMinGris(imgGris);
         max =obtenerMaxGris(imgGris);
+        obtenerdatoshistograma();
         obtenerBrillo();
         obtenerContraste();
+        obtenerEntropia();
         /*se definiran cuando esten hechas las funciones
         entropia =
         brillo =
@@ -146,7 +152,6 @@ public class Imagen extends JFrame{
     }
     public void obtenerBrillo () {
 
-        obtenerdatoshistograma();
         double brill = 0.0;
 	for (int i = 0; i < 256; i++) {
 		brill += (datos[i]*i);
@@ -155,22 +160,26 @@ public class Imagen extends JFrame{
     }
 	
     public void obtenerContraste () {
-        System.out.println(get_brillo());
-	obtenerdatoshistograma();
-        System.out.println(get_brillo());
 	double contrast = 0.0;
 	for (int i = 0; i < 256; i++) {
             contrast += (Math.pow (i - get_brillo(), 2) * datos[i]); 
 
 	}
 	set_contraste(Math.sqrt(contrast / (imgGris.getWidth() * imgGris.getHeight())));
-}
-    /*double contrast = 0.0;
-		for (int i = 0; i < getHistogramaAbs().length; i++) {
-			contrast += (Math.pow (i - getBrillo(), 2) * getHistogramaAbs()[i]); 
+    }
+    
+    public void obtenerEntropia () {
+		double prob = 0.0;
+		double ent = 0.0;
+		double size = imgGris.getWidth() * imgGris.getHeight();
+		for (int i = 0; i < 256; ++i) {
+			if (datos[i] != 0) {
+				prob = datos[i] / size;
+				ent += (-prob * (Math.log10(prob) / Math.log10(2)));
+			}
 		}
-		setContraste(Math.sqrt(contrast / (getRefBufImg().getWidth() * getRefBufImg().getHeight())));
-	}*/
+		set_entropia(ent);
+    }
     
     private void pintarImagen(Graphics g, BufferedImage temp){
         g.drawImage(temp, 100, 100, null);
