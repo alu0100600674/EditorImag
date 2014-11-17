@@ -168,7 +168,7 @@ public class Imagen extends JFrame{
                 jf.setDefaultCloseOperation(EXIT_ON_CLOSE);   
 		jf.setLayout(new BorderLayout());
                 
-                jf.setBounds(0, 0, imgGris.getWidth(), imgGris.getHeight());
+                jf.setBounds(0, 0, 400, 300);
 		
 		jf.setBackground(Color.WHITE);
                 
@@ -202,7 +202,7 @@ public class Imagen extends JFrame{
 			}
 		});
 		JPanel jp = new JPanel();
-                jp.setLayout(new GridLayout(8,2)); 
+                jp.setLayout(new GridLayout(6,2)); 
                 //jp.setFont(letra1);
                 jp.add(titleJLabel).setFont(letra1);
                 //jp.setFont(letra);

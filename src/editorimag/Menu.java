@@ -302,6 +302,13 @@ public class Menu extends JMenuBar{
         this.add(Ayuda);
         Acerca_de = new JMenuItem("Acerca de");
         Ayuda.add(Acerca_de);
+        Acerca_de.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                Acerca_de ad = new Acerca_de();
+            }
+        });
+        
+        
     }
     
 }
