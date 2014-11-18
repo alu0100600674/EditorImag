@@ -65,6 +65,7 @@ public class Menu extends JMenuBar{
     private JMenuItem R_180;
     private JMenuItem R_270;
     private JMenuItem R_valor;
+    private JMenuItem Escalar;
     
     //Elementos del menú Ayuda
     private JMenu Ayuda;
@@ -299,7 +300,15 @@ public class Menu extends JMenuBar{
         Rotar.add(R_valor);
         R_valor.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                System.out.println("Rotar ... grados");
+                gestor_img.getListaLan().get(activa).lanzar(37);
+            }
+        });
+        
+        Escalar = new JMenuItem("Escalar");
+        Rotar.add(Escalar);
+        Escalar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                gestor_img.getListaLan().get(activa).lanzar(38);
             }
         });
         

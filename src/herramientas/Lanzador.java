@@ -79,6 +79,8 @@ public class Lanzador {
             case 37:
                 rotar();
                 break;
+            case 38:
+                escalar();
         }
         
     }
@@ -158,6 +160,10 @@ public class Lanzador {
     private void rotar(){
         Rotacion r = new Rotacion(img);
         gestor_img.anadirImagen(r.rotar());
+    }
+    
+    private void escalar(){
+        
     }
     
 }

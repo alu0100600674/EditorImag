@@ -258,7 +258,7 @@ public class Imagen extends JFrame{
                 setTitle("Propiedades");
                 jf = new JFrame();
               
-                jf.setDefaultCloseOperation(EXIT_ON_CLOSE);   
+//                jf.setDefaultCloseOperation(EXIT_ON_CLOSE);   
 		jf.setLayout(new BorderLayout());
                 
                 jf.setBounds(0, 0, 400, 300);
