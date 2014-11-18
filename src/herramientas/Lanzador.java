@@ -67,6 +67,18 @@ public class Lanzador {
             case 33:
                 traspuesta();
                 break;
+            case 34:
+                rotar90();
+                break;
+            case 35:
+                rotar180();
+                break;
+            case 36:
+                rotar270();
+                break;
+            case 37:
+                rotar();
+                break;
         }
         
     }
@@ -126,6 +138,26 @@ public class Lanzador {
     private void traspuesta(){
         Traspuesta t = new Traspuesta(img);
         gestor_img.anadirImagen(t.trasponer());
+    }
+    
+    private void rotar90(){
+        Rotacion r = new Rotacion(img);
+        gestor_img.anadirImagen(r.rotar90());
+    }
+    
+    private void rotar180(){
+        Rotacion r = new Rotacion(img);
+        gestor_img.anadirImagen(r.rotar180());
+    }
+    
+    private void rotar270(){
+        Rotacion r = new Rotacion(img);
+        gestor_img.anadirImagen(r.rotar270());
+    }
+    
+    private void rotar(){
+        Rotacion r = new Rotacion(img);
+        gestor_img.anadirImagen(r.rotar());
     }
     
 }
