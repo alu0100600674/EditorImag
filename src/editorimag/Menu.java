@@ -275,7 +275,7 @@ public class Menu extends JMenuBar{
         Rotar.add(R_90);
         R_90.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                System.out.println("Rotar 90 grados");
+                gestor_img.getListaLan().get(activa).lanzar(34);
             }
         });
         
@@ -283,7 +283,7 @@ public class Menu extends JMenuBar{
         Rotar.add(R_180);
         R_180.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                System.out.println("Rotar 180 grados");
+                gestor_img.getListaLan().get(activa).lanzar(35);
             }
         });
         
@@ -291,7 +291,7 @@ public class Menu extends JMenuBar{
         Rotar.add(R_270);
         R_270.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                System.out.println("Rotar 270 grados");
+                gestor_img.getListaLan().get(activa).lanzar(36);
             }
         });
         
