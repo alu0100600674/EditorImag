@@ -169,7 +169,8 @@ public class Menu extends JMenuBar{
         Op_lineales.add(Brillo_Contraste);
         Brillo_Contraste.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                System.out.println("Brillo y Constraste");
+                gestor_img.getListaLan().get(activa).lanzar(12);
+                //System.out.println("Brillo y Constraste");
             }
         });
         
