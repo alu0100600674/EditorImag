@@ -143,6 +143,7 @@ public class Brillo_y_contraste extends JDialog{
 		getContraste().setMajorTickSpacing(20);
 		getContraste().setMinorTickSpacing(10);
 		getContraste().setPaintLabels(true);
+                setVisible(true);
 		getContraste().addChangeListener(new ChangeListener() {
 
 			@Override
@@ -169,7 +170,8 @@ public class Brillo_y_contraste extends JDialog{
 				dispose();
 			}
 		});
-		add (aceptar);    
+		add (aceptar);
+                setVisible(true);
     }
     
     
