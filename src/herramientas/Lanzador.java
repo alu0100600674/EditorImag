@@ -111,7 +111,7 @@ public class Lanzador {
     }
     
     private void correccionGamma(){
-        
+        Correccion_gamma cg = new Correccion_gamma(img);
     }
     
     private void perfil(){

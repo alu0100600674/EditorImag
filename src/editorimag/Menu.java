@@ -209,7 +209,7 @@ public class Menu extends JMenuBar{
         Op_no_lineales.add(C_Gamma);
         C_Gamma.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                System.out.println("Correción Gamma");
+                gestor_img.getListaLan().get(activa).lanzar(23);
             }
         });
         
