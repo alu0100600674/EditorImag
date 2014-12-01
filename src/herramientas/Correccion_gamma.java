@@ -28,7 +28,6 @@ public class Correccion_gamma extends JFrame {
     
     private BufferedImage img;
     
-    private double trans[];
     double n_gamma;
     
     private ArrayList<ArrayList<Integer>> valoresAcotados = new ArrayList<ArrayList<Integer>>();
@@ -99,22 +98,5 @@ public class Correccion_gamma extends JFrame {
         
         return resultado;
     }
-    
-
-    
-//    public void actualizarGamma (double gamma) {
-//		double color = 0.0;
-//		HashMap<Integer, Double> tabla = tablaDeTransformacion(gamma);
-//		for (int i = 0; i < getValoresAcotados().size(); ++i) {
-//			for (int j = 0; j < getValoresAcotados().get(i).size(); ++j) {
-//				color = tabla.get(getValoresAcotados().get(i).get(j));
-//				getRefVp().getGestorSubVentanas().getRefSubVentActual().getRefBufImg().setRGB(i, j,
-//						new Color ((int) Math.round(color), (int) Math.round(color), (int) Math.round(color)).getRGB());
-//			}
-//		}
-//		getRefVp().getGestorSubVentanas().getRefSubVentActual().obtenerHistograma(getRefVp().getGestorSubVentanas().getRefSubVentActual().getRefBufImg());
-//	}
-    
-    
     
 }
