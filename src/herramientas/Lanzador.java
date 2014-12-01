@@ -96,6 +96,7 @@ public class Lanzador {
     }
     
     private void brilloYContraste(){
+        Brillo_y_contraste byc = new Brillo_y_contraste(img);
         
     }
     
