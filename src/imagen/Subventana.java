@@ -7,14 +7,17 @@
 package imagen;
 
 
+import editorimag.EditorImag;
 import herramientas.Ecualizacion_histograma;
 import static editorimag.EditorImag.activa;
+import static editorimag.EditorImag.gestor_img;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionAdapter;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -46,6 +49,11 @@ public class Subventana extends JFrame {
     private int posY = 0;
     
     private int alto = 30; //gestion de posicion del mouse
+    
+    private int iniX = 0;
+    private int iniY = 0;
+    private int finX = 0;
+    private int finY = 0;
 
     public BufferedImage getImagenActual(){
         return tmp;
@@ -123,8 +131,69 @@ public class Subventana extends JFrame {
             }
         });
         
+        addMouseListener(new MouseListener() {
+
+            @Override
+            public void mouseClicked(MouseEvent me) {
+                
+            }
+
+            @Override
+            public void mousePressed(MouseEvent me) {
+                iniX = me.getX();
+                iniY = me.getY();
+//                System.out.println(iniX + " " + iniY);
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent me) {
+                finX = me.getX();
+                finY = me.getY();
+//                System.out.println(finX + " " + finY);
+//                gestor_img.anadirImagen(recorte());
+                gestor_img.anadirImagen(copia());
+//                System.out.println("aaaaaaaaaaaaaaaaaaaaa");
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent me) {
+                
+            }
+
+            @Override
+            public void mouseExited(MouseEvent me) {
+                
+            }
+            
+        });
+        
         setVisible(true);
         
+    }
+    
+    public BufferedImage recorte(){
+        BufferedImage resultado = new BufferedImage(finX - iniX + 1, finY - iniY + 1, tmp.getType());
+        
+        for(int i = iniX; i < finX; i++){
+            for(int j = iniY; j < finY; j++){
+                resultado.setRGB(i, j, tmp.getRGB(i, j));
+                System.out.println(i + " " + j);
+            }
+        }
+        
+        return resultado;
+    }
+    
+    public BufferedImage copia(){
+        BufferedImage resultado = new BufferedImage(tmp.getWidth(), tmp.getHeight(), tmp.getType());
+        
+        for(int i = 0; i < tmp.getWidth(); i++){
+            for(int j = 0; j < tmp.getHeight(); j++){
+                resultado.setRGB(i, j, tmp.getRGB(i, j));
+            }
+        }
+        
+        return resultado;
     }
     
     public void infoRGB(Graphics gr){
