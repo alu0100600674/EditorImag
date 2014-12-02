@@ -166,8 +166,6 @@ public class Subventana extends JFrame {
                     gestor_img.anadirImagen(recorte());
                     recortar = false;
                 }
-//                gestor_img.anadirImagen(copia());
-//                System.out.println("aaaaaaaaaaaaaaaaaaaaa");
             }
 
             @Override
@@ -187,12 +185,13 @@ public class Subventana extends JFrame {
     }
     
     public BufferedImage recorte(){
-        BufferedImage resultado = new BufferedImage(200, 200, tmp.getType());
+        BufferedImage resultado = new BufferedImage(finX - iniX + 1, finY - iniY + 1, tmp.getType());
+//        BufferedImage resultado = new BufferedImage(200, 200, tmp.getType());
         
         for(int i = iniX; i < finX; i++){
             for(int j = iniY; j < finY; j++){
                 resultado.setRGB(i, j, tmp.getRGB(i, j));
-//                System.out.println(i + " " + j);
+                System.out.println(i + " " + j);
 //                System.out.println("----------");
             }
         }
