@@ -19,6 +19,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
+import javax.swing.JTextField;
 
 /**
  *
@@ -49,12 +50,16 @@ public class Correccion_gamma extends JFrame {
         add(panel);
 
         JLabel Gamma = new JLabel(" Introduce el gamma");
-        final JSpinner Dat_gamma = new JSpinner();
+//        final JSpinner Dat_gamma = new JSpinner();
+        
+        final JTextField Dat_gamma = new JTextField();
+        
         JButton Aceptar = new JButton("Aceptar");
 
         Aceptar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
-                n_gamma = (int) Dat_gamma.getValue();
+//                n_gamma = (int) Dat_gamma.getValue();
+                n_gamma = Double.parseDouble(Dat_gamma.getText());
                 dispose();
                 gestor_img.anadirImagen(gamma());
             }
