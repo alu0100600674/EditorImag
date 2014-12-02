@@ -17,6 +17,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
+import javax.swing.JTextField;
 
 /**
  *
@@ -26,11 +27,46 @@ public class Diferencia_dos_imagenes {
 
     private BufferedImage img1;
     private BufferedImage img2;
+    
+    private int n_umbral;
 
     public Diferencia_dos_imagenes(BufferedImage tmp1) {
         img1 = tmp1;
 
         elegirImagenDos();
+    }
+    
+    private void controles(){
+        final JFrame v = new JFrame();
+        v.setTitle("Dif. imágenes");
+        v.setSize(300, 150);
+        v.setResizable(false);
+        v.setLocationRelativeTo(null);
+
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(3, 1));
+        v.add(panel);
+
+        JLabel Umbral = new JLabel(" Introduce el umbral");
+//        final JSpinner Dat_gamma = new JSpinner();
+        
+        final JTextField Dat_umbral = new JTextField();
+        
+        JButton Aceptar = new JButton("Aceptar");
+
+        Aceptar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                n_umbral = Integer.parseInt(Dat_umbral.getText());
+                v.dispose();
+                gestor_img.anadirImagenColor(mapaDeCambios());
+            }
+        });
+
+        panel.add(Umbral);
+        panel.add(Dat_umbral);
+        panel.add(Aceptar);
+
+        v.setVisible(true);
     }
 
     private boolean comprobarDimensiones() {
@@ -91,7 +127,8 @@ public class Diferencia_dos_imagenes {
 //                guardarImg2();
 
                 if (comprobarDimensiones()) {
-                    gestor_img.anadirImagenColor(mapaDeCambios());
+                    controles();
+//                    gestor_img.anadirImagenColor(mapaDeCambios());
                 } else {
                     ventanaError();
                 }
@@ -158,8 +195,7 @@ public class Diferencia_dos_imagenes {
     private BufferedImage mapaDeCambios() {
         BufferedImage resultado = new BufferedImage(img1.getWidth(), img1.getHeight(), img1.getType());
 
-//        HashMap<Integer, Integer> tabla = tablaTransformacion(uCambio);
-        HashMap<Integer, Integer> tabla = tablaTransformacion(10);
+        HashMap<Integer, Integer> tabla = tablaTransformacion(n_umbral);
         int tmp = 0;
         for (int i = 0; i < img1.getWidth(); i++) {
             for (int j = 0; j < img1.getHeight(); j++) {
