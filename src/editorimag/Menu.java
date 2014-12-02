@@ -214,7 +214,7 @@ public class Menu extends JMenuBar{
         });
         
         Perfil = new JMenuItem("Perfil");
-        Op_no_lineales.add(Perfil);
+//        Op_no_lineales.add(Perfil);
         Perfil.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
                 System.out.println("Perfil (Image-Cross Section)");
@@ -222,7 +222,7 @@ public class Menu extends JMenuBar{
         });
         
         Sim_Dig_Imag = new JMenuItem("Simulación de la digitalización de una Imagen");
-        Op_no_lineales.add(Sim_Dig_Imag);
+//        Op_no_lineales.add(Sim_Dig_Imag);
         Sim_Dig_Imag.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
                 System.out.println("Simulación de la digitalización de una Imagen");
