@@ -8,6 +8,7 @@ package editorimag;
 
 import static editorimag.EditorImag.activa;
 import static editorimag.EditorImag.gestor_img;
+import static editorimag.EditorImag.recortar;
 import imagen.Gestion_subventanas;
 import imagen.Imagen;
 import java.awt.event.ActionEvent;
@@ -32,6 +33,7 @@ public class Menu extends JMenuBar{
     private JMenuItem Abrir;
     private JMenuItem Guardar;
     private JMenuItem Copia;
+    private JMenuItem Recortar;
     private JMenuItem Propiedades;
     private JMenuItem Salir;
     
@@ -124,6 +126,14 @@ public class Menu extends JMenuBar{
         Copia.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
                 gestor_img.getListaLan().get(activa).lanzar(01);
+            }
+        });
+        
+        Recortar = new JMenuItem("Recortar");
+        Archivo.add(Recortar);
+        Recortar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                recortar = true;
             }
         });
         

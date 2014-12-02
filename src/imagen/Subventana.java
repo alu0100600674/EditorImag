@@ -11,6 +11,7 @@ import editorimag.EditorImag;
 import herramientas.Ecualizacion_histograma;
 import static editorimag.EditorImag.activa;
 import static editorimag.EditorImag.gestor_img;
+import static editorimag.EditorImag.recortar;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -140,15 +141,15 @@ public class Subventana extends JFrame {
 
             @Override
             public void mousePressed(MouseEvent me) {
-                iniX = me.getX();
-                iniY = me.getY();
+                iniX = me.getX() - 5;
+                iniY = me.getY() - 30;
 //                System.out.println(iniX + " " + iniY);
             }
 
             @Override
             public void mouseReleased(MouseEvent me) {
-                finX = me.getX();
-                finY = me.getY();
+                finX = me.getX() - 5;
+                finY = me.getY() - 30;
                 
                 if(finX < iniX){
                     int aux = finX;
@@ -161,7 +162,10 @@ public class Subventana extends JFrame {
                     iniY = aux;
                 }
 //                System.out.println(finX + " " + finY);
-                gestor_img.anadirImagen(recorte());
+                if(recortar){
+                    gestor_img.anadirImagen(recorte());
+                    recortar = false;
+                }
 //                gestor_img.anadirImagen(copia());
 //                System.out.println("aaaaaaaaaaaaaaaaaaaaa");
             }

@@ -25,6 +25,8 @@ public class EditorImag {
     
     public static Gestion_subventanas gestor_img;
     
+    public static boolean recortar = false;
+    
     public static void main(String[] args) {
         gestor_img = new Gestion_subventanas();
         
