@@ -306,7 +306,7 @@ public class Menu extends JMenuBar{
         });
         
         Escalar = new JMenuItem("Escalar");
-        Rotar.add(Escalar);
+        Op_geometricas.add(Escalar);
         Escalar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
                 gestor_img.getListaLan().get(activa).lanzar(38);
