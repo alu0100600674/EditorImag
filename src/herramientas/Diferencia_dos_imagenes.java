@@ -37,8 +37,8 @@ public class Diferencia_dos_imagenes {
 //        else{
 //            ventanaError();
 //        }
-        guardarImg1();
-        guardarImg2();
+//        guardarImg1();
+//        guardarImg2();
     }
 
     private boolean comprobarDimensiones() {
@@ -53,15 +53,15 @@ public class Diferencia_dos_imagenes {
     private void ventanaError(){
         final JFrame error = new JFrame();
         error.setTitle("Error");
-        error.setSize(300, 150);
+        error.setSize(400, 100);
         error.setResizable(false);
         error.setLocationRelativeTo(null);
         
         JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(3, 1));
+        panel.setLayout(new GridLayout(2, 1));
         error.add(panel);
         
-        JLabel Error = new JLabel("Las dimensiones de las imágenes deben ser iguales");
+        JLabel Error = new JLabel("  Las dimensiones de las imágenes deben ser iguales");
         JButton Aceptar = new JButton("Aceptar");
 
         Aceptar.addActionListener(new ActionListener() {
@@ -96,6 +96,15 @@ public class Diferencia_dos_imagenes {
                 int i = (int) Dat_imagen.getValue();
                 elegir.dispose();
                 img2 = gestor_img.getBufferedImage(i);
+//                guardarImg1();
+//                guardarImg2();
+                
+                if(comprobarDimensiones()){
+         
+                } else {
+                    ventanaError();
+                }
+                
             }
         });
 
