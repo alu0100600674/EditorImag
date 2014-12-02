@@ -27,18 +27,8 @@ public class Diferencia_dos_imagenes {
 
     public Diferencia_dos_imagenes(BufferedImage tmp1) {
         img1 = tmp1;
-//        img2 = tmp2;
         
         elegirImagenDos();
-        
-//        if(comprobarDimensiones()){
-//            
-//        }
-//        else{
-//            ventanaError();
-//        }
-//        guardarImg1();
-//        guardarImg2();
     }
 
     private boolean comprobarDimensiones() {
@@ -61,7 +51,7 @@ public class Diferencia_dos_imagenes {
         panel.setLayout(new GridLayout(2, 1));
         error.add(panel);
         
-        JLabel Error = new JLabel("  Las dimensiones de las imágenes deben ser iguales");
+        JLabel Error = new JLabel("  Las dimensiones de las imágenes deben ser iguales.");
         JButton Aceptar = new JButton("Aceptar");
 
         Aceptar.addActionListener(new ActionListener() {
@@ -87,7 +77,7 @@ public class Diferencia_dos_imagenes {
         panel.setLayout(new GridLayout(3, 1));
         elegir.add(panel);
         
-        JLabel Imagen = new JLabel("Elige la segunda imágen:");
+        JLabel Imagen = new JLabel("Elige la segunda imagen:");
         final JSpinner Dat_imagen = new JSpinner();
         JButton Aceptar = new JButton("Aceptar");
         
