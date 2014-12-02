@@ -123,7 +123,7 @@ public class Lanzador {
     }
     
     private void diferenciaDosImagenes(){
-        
+        Diferencia_dos_imagenes ddi = new Diferencia_dos_imagenes(img);
     }
     
     

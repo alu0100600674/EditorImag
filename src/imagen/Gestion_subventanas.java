@@ -84,6 +84,10 @@ public class Gestion_subventanas {
         //System.out.print("hola");
     }
     
+    public BufferedImage getBufferedImage(int i){
+        return img_list.get(i-1).getImg();
+    }
+    
     public void buscarSubventanaActual(){
         
     }

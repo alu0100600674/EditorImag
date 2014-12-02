@@ -233,7 +233,7 @@ public class Menu extends JMenuBar{
         Op_no_lineales.add(Dif_Imags);
         Dif_Imags.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                System.out.println("Diferencia entre dos imágenes");
+                gestor_img.getListaLan().get(activa).lanzar(26);
             }
         });
         
