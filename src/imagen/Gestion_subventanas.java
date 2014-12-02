@@ -73,6 +73,18 @@ public class Gestion_subventanas {
         lan_list.add(new Lanzador(img_list.get(tam).getImg()));
     }
     
+    public void anadirImagenColor(BufferedImage tmp){
+        int tam;
+        if(img_list.size() == 0)
+            tam = 0;
+        else
+            tam = img_list.size();
+        
+        img_list.add(new Imagen(tmp, tam, 1));
+        
+        lan_list.add(new Lanzador(img_list.get(tam).getImg()));
+    }
+    
     public void guardarImagen() throws IOException{
         if(!img_list.isEmpty()){
             img_list.get(activa).guardarImagen(); //Guardar la imagen de la ventana actual.

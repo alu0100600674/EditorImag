@@ -91,7 +91,7 @@ public class Diferencia_dos_imagenes {
 //                guardarImg2();
 
                 if (comprobarDimensiones()) {
-                    gestor_img.anadirImagen(mapaDeCambios());
+                    gestor_img.anadirImagenColor(mapaDeCambios());
                 } else {
                     ventanaError();
                 }

@@ -121,6 +121,21 @@ public class Imagen extends JFrame{
         
     }
     
+    public Imagen(BufferedImage tmp, int tam, int color){
+        Subventana ventana = new Subventana(tmp, tam);
+        
+//        formatoImg= obtenerFormato(nombre);
+        anchoImg = imgGris.getWidth();
+        altoImg = imgGris.getHeight();
+        min = obtenerMinGris(imgGris);
+        max =obtenerMaxGris(imgGris);
+        obtenerdatoshistograma();
+        obtenerBrillo();
+        obtenerContraste();
+        obtenerEntropia();
+        
+    }
+    
     public BufferedImage getImg(){
         return imgGris;
     }
