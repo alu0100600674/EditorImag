@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+/*/* DESCOMENTARRRR
 package herramientas;
 
 import static editorimag.EditorImag.gestor_img;
@@ -32,24 +32,21 @@ import javax.swing.border.LineBorder;
 import imagen.Imagen;
 import java.awt.GridLayout;
 
-/**
- *
- * @author jonay
- */
 public class Transf_lineales_tramos extends JFrame{
     
         public BufferedImage img;
     
         public double transformacion; //datos recibidos por teclado transformacion
-        final int DESFACE_PUNTOS_PANEL = 44;
-	final int ALTO_PANELES = 300;
+
 	
 	/*private VentanaTransfTramos refVTramos;
 	
 	public VentanaTransfTramos getRefVTramos() { return refVTramos; }
 	public void setRefVTramos(VentanaTransfTramos refVTramos) { this.refVTramos = refVTramos; }
 */
-	public Transf_lineales_tramos(BufferedImage a) {
+	/* DESCOMENTARRRR
+
+        public Transf_lineales_tramos(BufferedImage a) {
                 img =a;
                 //super();
 
@@ -86,7 +83,6 @@ public class Transf_lineales_tramos extends JFrame{
 		gr.drawString(String.valueOf(0), posXEjeX, posYEjeX + 15); // (0, 0)
 		gr.drawString(String.valueOf(255), this.getWidth() - 30, posYEjeX + 15); // (255, 0)
 		gr.drawString(String.valueOf(255), posXEjeX - 30, 30); // (0, 255)
-		
 
 		// Pintamos las rectas entre dichos pintos
 		gr.setColor(Color.RED);
@@ -99,8 +95,7 @@ public class Transf_lineales_tramos extends JFrame{
 						(int) getPuntosEsp().get(i + 1).getX() + DESFACE_PUNTOS_PANEL, posYEjeX - (int) getPuntosEsp().get(i + 1).getY());
 				
 			}
-		}			
-					
+		}						
 		// Pintamos los puntos de las transformaciones
 		gr.setColor(Color.YELLOW);
 		for (int i = 0; i < getPuntosEsp().size(); ++i)
@@ -129,7 +124,7 @@ public class Transf_lineales_tramos extends JFrame{
     //                n_gamma = (int) Dat_gamma.getValue();
                     transformacion  = Double.parseDouble(Dat_transfTramos.getText());
                     dispose();
-                    gestor_img.anadirImagen(iniciarPanelTramos());//dovolver un img ERRORRR
+                    gestor_img.anadirImagen(iniciarPanelTramos());//devolver un img ERRORRR
                 }
         });
 
@@ -139,7 +134,7 @@ public class Transf_lineales_tramos extends JFrame{
 
         setVisible(true);
     }
-        
+
         ///////////prueba
         
         final int X = 100;
@@ -160,7 +155,7 @@ public class Transf_lineales_tramos extends JFrame{
 	public ArrayList<EcuacionRecta> ecuacionesRectas;
 	public HashMap<Integer, Integer> tablaTransf;
 
-	private VentanaPrincipal refVp; // Para eliminarla al presionar aceptar
+	//private VentanaPrincipal refVp; // Para eliminarla al presionar aceptar
 
 	public PanelTramos getPanelTramos() { return panelTramos; }
 	public void setPanelTramos(PanelTramos panelTramos) { this.panelTramos = panelTramos;	}
@@ -183,8 +178,7 @@ public class Transf_lineales_tramos extends JFrame{
 	public HashMap<Integer, Integer> getTablaTransf() { return tablaTransf; }
 	public void setTablaTransf(HashMap<Integer, Integer> tablaTransf) { this.tablaTransf = tablaTransf; }
 
-	public VentanaPrincipal getRefVp() { return refVp; }
-	public void setRefVp(VentanaPrincipal refVp) { this.refVp = refVp; }
+
 
 	public VentanaTransfTramos(BufferedImage refBfAct, VentanaPrincipal refVp) {
 		setRefImagenOriginal(copiarBufferOriginal(refBfAct)); // tomamos la imagen a transformar
@@ -192,7 +186,7 @@ public class Transf_lineales_tramos extends JFrame{
 		setRefVp(refVp);
 
 		setTablaTransf(new HashMap<Integer, Integer>());
-		iniciarVentana();
+		controles();
 		iniciarPuntos();
 		getPanelTramos().repaint();
 
@@ -214,7 +208,7 @@ public class Transf_lineales_tramos extends JFrame{
 		return copia;
 	}
 
-	public void iniciarVentana () {
+	/*public void iniciarVentana () {
 		setTitle("Transformaciones Lineales por tramos");
 		setBounds(X, Y, (ANCHO_PANELES * 2) + (SEP_HOR_PANELES * 4), (ALTO_PANELES * 2) - (SEP_HOR_PANELES * 2));
 		setLayout(null);
@@ -237,20 +231,20 @@ public class Transf_lineales_tramos extends JFrame{
 		bAceptar.setBounds((this.getWidth() / 2) - 30, this.getHeight() - 80, 80, 20);
 		bAceptar.setBackground(Color.WHITE);
 		bAceptar.setBorder(new LineBorder(Color.BLACK, 2));
-		bAceptar.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				getRefVp().getGestorSubVentanas().crearSubVentana(getImagenNueva(), "Especif. a trozos", false);
-				dispose ();
-			}
-		});
+//		bAceptar.addActionListener(new ActionListener() {
+//			@Override
+//			public void actionPerformed(ActionEvent arg0) {
+//				getRefVp().getGestorSubVentanas().crearSubVentana(getImagenNueva(), "Especif. a trozos", false);
+//				dispose ();
+//			}
+		//});
 		getContentPane().add (bAceptar);
 
 		setVisible(true);
-	}
-
+	}*/
+/*/* DESCOMENTARRRR
 	public void iniciarPanelTramos () {
-		setPanelTramos(new PanelTramos(this));
+		setPanelTramos(new Transf_lineales_tramos(img));
 		getPanelTramos().setBorder(BORDE);
 		getPanelTramos().setBounds(SEP_HOR_PANELES, Y_PANELES, ANCHO_PANELES, ALTO_PANELES);
 
@@ -525,7 +519,8 @@ public class Transf_lineales_tramos extends JFrame{
 		}
 		setPuntosEsp(temp); // Sobreescribimos el vector de puntos oficial
 	}
-        
+    
+       
 public class EcuacionRecta {
         private HashMap<Integer, Integer> recta;
 	int indiceIni = 0;
@@ -573,7 +568,29 @@ public class EcuacionRecta {
 	}
     
     }
-    }
+
+public class PanelImagenTramos extends JPanel {
+
+	private BufferedImage imagenTranf;
+	
+	public BufferedImage getImagenTranf() { return imagenTranf; }
+	public void setImagenTranf(BufferedImage imagenTranf) { this.imagenTranf = imagenTranf; }
+
+	public PanelImagenTramos(BufferedImage imagenFinal) {
+		setImagenTranf(imagenFinal);
+	}
+	
+	protected void paintComponent(Graphics gr) {
+		gr.setColor (Color.WHITE);
+		gr.drawRect(0, 0, this.getWidth(), this.getHeight());
+		if (getImagenTranf() != null)
+			gr.drawImage(getImagenTranf(), 0, 0, this.getWidth(), this.getHeight(), this);
+	}
+
+}
+}
+
+ DESCOMENTARRRR*/
 
 
 
