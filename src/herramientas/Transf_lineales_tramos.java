@@ -30,7 +30,6 @@ import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
 import imagen.Imagen;
-import herramientas.VentanaTransfTramos;
 import java.awt.GridLayout;
 
 /**
@@ -39,20 +38,21 @@ import java.awt.GridLayout;
  */
 public class Transf_lineales_tramos extends JFrame{
     
-        private BufferedImage img;
+        public BufferedImage img;
     
-    
+        public double transformacion; //datos recibidos por teclado transformacion
         final int DESFACE_PUNTOS_PANEL = 44;
 	final int ALTO_PANELES = 300;
 	
-	private VentanaTransfTramos refVTramos;
+	/*private VentanaTransfTramos refVTramos;
 	
 	public VentanaTransfTramos getRefVTramos() { return refVTramos; }
 	public void setRefVTramos(VentanaTransfTramos refVTramos) { this.refVTramos = refVTramos; }
+*/
+	public Transf_lineales_tramos(BufferedImage a) {
+                img =a;
+                //super();
 
-	public PanelTramos(VentanaTransfTramos refVt) {
-		super();
-		setRefVTramos(refVt);
 	}
 
 	public void pintarPunto (Point p) {
@@ -92,19 +92,19 @@ public class Transf_lineales_tramos extends JFrame{
 		gr.setColor(Color.RED);
 		Graphics2D g2d = (Graphics2D) gr;
 		g2d.setStroke(new BasicStroke(2));
-		int numPuntos = getRefVTramos().getPuntosEsp().size();
+		int numPuntos = getPuntosEsp().size();
 		if (numPuntos >= 2) {
-			for (int i = 0; i < getRefVTramos().getPuntosEsp().size() - 1; ++i) {
-				g2d.drawLine((int) getRefVTramos().getPuntosEsp().get(i).getX() + DESFACE_PUNTOS_PANEL, posYEjeX - (int) getRefVTramos().getPuntosEsp().get(i).getY(), 
-						(int) getRefVTramos().getPuntosEsp().get(i + 1).getX() + DESFACE_PUNTOS_PANEL, posYEjeX - (int) getRefVTramos().getPuntosEsp().get(i + 1).getY());
+			for (int i = 0; i < getPuntosEsp().size() - 1; ++i) {
+				g2d.drawLine((int) getPuntosEsp().get(i).getX() + DESFACE_PUNTOS_PANEL, posYEjeX - (int) getPuntosEsp().get(i).getY(), 
+						(int) getPuntosEsp().get(i + 1).getX() + DESFACE_PUNTOS_PANEL, posYEjeX - (int) getPuntosEsp().get(i + 1).getY());
 				
 			}
 		}			
 					
 		// Pintamos los puntos de las transformaciones
 		gr.setColor(Color.YELLOW);
-		for (int i = 0; i < getRefVTramos().getPuntosEsp().size(); ++i)
-			gr.fillOval((int) getRefVTramos().getPuntosEsp().get(i).getX() + DESFACE_PUNTOS_PANEL - 5, posYEjeX - (int) getRefVTramos().getPuntosEsp().get(i).getY() - 5, 10, 10);
+		for (int i = 0; i < getPuntosEsp().size(); ++i)
+			gr.fillOval((int) getPuntosEsp().get(i).getX() + DESFACE_PUNTOS_PANEL - 5, posYEjeX - (int) getPuntosEsp().get(i).getY() - 5, 10, 10);
 	}
         
         public void controles(){
@@ -117,24 +117,24 @@ public class Transf_lineales_tramos extends JFrame{
             panel.setLayout(new GridLayout(3, 1));
             add(panel);
 
-            JLabel Gamma = new JLabel("  - Especifique los puntos para realizar las transformaciones lineales.");
+            JLabel TransfTramos = new JLabel("  - Especifique los puntos para realizar las transformaciones lineales.");
     //        final JSpinner Dat_gamma = new JSpinner();
 
-            final JTextField Dat_gamma = new JTextField();
+            final JTextField Dat_transfTramos = new JTextField();
 
             JButton Aceptar = new JButton("Aceptar");
 
             Aceptar.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent arg0) {
     //                n_gamma = (int) Dat_gamma.getValue();
-                    n_gamma = Double.parseDouble(Dat_gamma.getText());
+                    transformacion  = Double.parseDouble(Dat_transfTramos.getText());
                     dispose();
-                    gestor_img.anadirImagen(gamma());
+                    gestor_img.anadirImagen(iniciarPanelTramos());//dovolver un img ERRORRR
                 }
         });
 
-        panel.add(Gamma);
-        panel.add(Dat_gamma);
+        panel.add(TransfTramos);
+        panel.add(Dat_transfTramos);
         panel.add(Aceptar);
 
         setVisible(true);
@@ -152,13 +152,13 @@ public class Transf_lineales_tramos extends JFrame{
 	final int DESFACE_PUNTOS_PANEL = 44;
 	final LineBorder BORDE = new LineBorder(Color.BLACK, 2);
 
-	private PanelTramos panelTramos;
-	private PanelImagenTramos panelImResultado;
-	private ArrayList<Point> puntosEsp;
+	public PanelTramos panelTramos;
+	public PanelImagenTramos panelImResultado;
+	public ArrayList<Point> puntosEsp;
 	private BufferedImage refImagenOriginal;
 	private BufferedImage imagenNueva;
-	private ArrayList<EcuacionRecta> ecuacionesRectas;
-	private HashMap<Integer, Integer> tablaTransf;
+	public ArrayList<EcuacionRecta> ecuacionesRectas;
+	public HashMap<Integer, Integer> tablaTransf;
 
 	private VentanaPrincipal refVp; // Para eliminarla al presionar aceptar
 
@@ -188,7 +188,7 @@ public class Transf_lineales_tramos extends JFrame{
 
 	public VentanaTransfTramos(BufferedImage refBfAct, VentanaPrincipal refVp) {
 		setRefImagenOriginal(copiarBufferOriginal(refBfAct)); // tomamos la imagen a transformar
-		setImagenNueva(copiarBufferOriginal(getRefImagenOriginal()));
+		setImagenNueva(copiarBufferOriginal(img));
 		setRefVp(refVp);
 
 		setTablaTransf(new HashMap<Integer, Integer>());
@@ -575,7 +575,5 @@ public class EcuacionRecta {
     }
     }
 
-
-}
 
 
