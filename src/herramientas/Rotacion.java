@@ -6,6 +6,8 @@
 
 package herramientas;
 
+import editorimag.EditorImag;
+import static editorimag.EditorImag.gestor_img;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,6 +15,7 @@ import java.awt.image.BufferedImage;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -65,21 +68,39 @@ public class Rotacion {
         return resultado;
     }
     
-    public BufferedImage rotar(){
+    public void rotar(){
         controles();
+
+    }
+    
+    private BufferedImage rotar_x(int rot){
+        BufferedImage resultado = null;
         
-        if(rotacion >= 360){ //Si la rotación es mayor a 360º, convertir a una vuelta.
-            rotacion -= 360;
+        if(rot >= 360){ //Si la rotación es mayor a 360º, convertir a una vuelta.
+            rot -= 360;
         }
         
-        if((rotacion != 90) && (rotacion != 180) && (rotacion != 270) && (rotacion != 0)){
+        if((rot != 90) && (rot != 180) && (rot != 270) && (rot != 0)){
             
         }
         else{
-            
+            switch(rot){
+                case 90:
+                    resultado = rotar90();
+                    break;
+                case 180:
+                    resultado = rotar180();
+                    break;
+                case 270:
+                    resultado = rotar270();
+                    break;
+                case 0:
+                    JOptionPane.showMessageDialog(null, "No se han hecho cambios respecto a la imagen original.");
+                    break;
+            }
+//            return resultado;
         }
-        
-        return null; //Cambiar cuando se haga este método.
+        return resultado;
     }
     
     private void controles(){
@@ -104,6 +125,7 @@ public class Rotacion {
             public void actionPerformed(ActionEvent arg0) {
                 rotacion = Integer.parseInt(Dat_rotar.getText());
                 v.dispose();
+                gestor_img.anadirImagen(rotar_x(rotacion));
             }
         });
 

@@ -160,7 +160,7 @@ public class Lanzador {
     
     private void rotar(){
         Rotacion r = new Rotacion(img);
-        gestor_img.anadirImagen(r.rotar());
+        r.rotar();
     }
     
     private void escalar(){
