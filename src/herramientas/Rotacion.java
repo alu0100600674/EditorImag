@@ -7,6 +7,7 @@ package herramientas;
 
 import editorimag.EditorImag;
 import static editorimag.EditorImag.gestor_img;
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -117,14 +118,40 @@ public class Rotacion {
             int alto = img.getHeight();
             contadorFondo = 0;
             double grados = Math.toRadians(rotacion);
-            ArrayList<Punto> esquinas;
+            ArrayList<Punto> esquinas = rotarEsquina(grados);
+            Punto dimension = anchoAlto(esquinas);
+            resultado = new BufferedImage((int) dimension.getX() + 1, (int) dimension.getY() + 1, img.getType());
+            
+            int colorNuevo;
+            
+            Punto oPrima = calcularIzquierdaSuperior(esquinas);
+            Punto traslado;
+            Punto mapInverso;
 
-            if (opcion == 1) {
-
-            } else if (opcion == 2) {
-
-            } else if (opcion == 3) {
-
+            if (opcion == 1) { //Normal
+                
+                for(int i = 0; i < dimension.getY(); i++){
+                    for(int j = 0; j < dimension.getX(); j++){
+                        traslado = trasladar(oPrima, new Punto((double) j, (double) i));
+                        mapInverso = transformacionInversa(grados, (int) traslado.getX(), (int) traslado.getY());
+                        if((mapInverso.getX() < ancho) && (mapInverso.getX() >= 0) && (mapInverso.getY() < alto) && (mapInverso.getY() >= 0)){
+                            colorNuevo = new Color( img.getRGB((int) mapInverso.getX(), (int) mapInverso.getY())).getRed();
+                            resultado.setRGB(j, i, new Color(colorNuevo, colorNuevo, colorNuevo).getRGB());
+                        }
+                        else {
+                            contadorFondo += 1;
+                        }
+                    }
+                }
+                
+            } else if (opcion == 2) { //Vecino más próximo
+                
+                
+                
+            } else if (opcion == 3) { //Bilineal
+                
+                
+                
             }
 
         } else { //Si las rotaciones son de 90, 180 o 270; usar los métodos específicos para ello.
