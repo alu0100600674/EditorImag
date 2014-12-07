@@ -26,6 +26,8 @@ public class Barra_botones extends JToolBar {
 
     private final Boton Abrir;
     private final Boton Guardar;
+    
+    private Boton Recortar;
 
     private Boton Espejo_H;
     private Boton Espejo_V;
@@ -39,6 +41,7 @@ public class Barra_botones extends JToolBar {
     private int tam = 30;
     private ImageIcon abrir = new ImageIcon("src/images/abrir.png");
     private ImageIcon guardar = new ImageIcon("src/images/guardar.png");
+    private ImageIcon recortari = new ImageIcon("src/images/recortar.png");
     private ImageIcon espejoH = new ImageIcon("src/images/espejoH.png");
     private ImageIcon espejoV = new ImageIcon("src/images/espejoV.png");
     private ImageIcon rotar90 = new ImageIcon("src/images/rotar90.png");
@@ -54,6 +57,11 @@ public class Barra_botones extends JToolBar {
         Guardar = new Boton("Guardar", guardar);
         this.add(Guardar);
 
+        this.addSeparator();
+        
+        Recortar = new Boton("Recortar", recortari);
+        this.add(Recortar);
+        
         this.addSeparator();
 
         Espejo_H = new Boton("Espejo Horizontal", espejoH);
@@ -79,6 +87,7 @@ public class Barra_botones extends JToolBar {
     private void escalarImagenes() {
         abrir = new ImageIcon(abrir.getImage().getScaledInstance(tam, tam, Image.SCALE_DEFAULT));
         guardar = new ImageIcon(guardar.getImage().getScaledInstance(tam, tam, Image.SCALE_DEFAULT));
+        recortari = new ImageIcon(recortari.getImage().getScaledInstance(tam, tam, Image.SCALE_DEFAULT));
         espejoH = new ImageIcon(espejoH.getImage().getScaledInstance(tam, tam, Image.SCALE_DEFAULT));
         espejoV = new ImageIcon(espejoV.getImage().getScaledInstance(tam, tam, Image.SCALE_DEFAULT));
         rotar90 = new ImageIcon(rotar90.getImage().getScaledInstance(tam, tam, Image.SCALE_DEFAULT));
@@ -106,6 +115,12 @@ public class Barra_botones extends JToolBar {
                 } catch (IOException ex) {
                     Logger.getLogger(Barra_botones.class.getName()).log(Level.SEVERE, null, ex);
                 }
+            }
+        });
+        
+        Recortar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                //recortar = true;
             }
         });
 
