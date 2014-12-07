@@ -11,6 +11,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 import javafx.scene.control.RadioButton;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -30,6 +31,33 @@ public class Rotacion {
     private BufferedImage img;
     private int rotacion;
     private int contadorFondo;
+
+    public class Punto {
+
+        private double x;
+        private double y;
+
+        public Punto(double x, double y) {
+            setX(x);
+            setY(y);
+        }
+
+        public double getX() {
+            return x;
+        }
+
+        public void setX(double x) {
+            this.x = x;
+        }
+
+        public double getY() {
+            return y;
+        }
+
+        public void setY(double y) {
+            this.y = y;
+        }
+    }
 
     public Rotacion(BufferedImage tmp) {
         img = tmp;
@@ -85,17 +113,20 @@ public class Rotacion {
 
         if ((rot != 90) && (rot != 180) && (rot != 270) && (rot != 0)) {
 
+            int ancho = img.getWidth();
+            int alto = img.getHeight();
             contadorFondo = 0;
+            double grados = Math.toRadians(rotacion);
+            ArrayList<Punto> esquinas;
+
             if (opcion == 1) {
-                
+
+            } else if (opcion == 2) {
+
+            } else if (opcion == 3) {
+
             }
-            else if (opcion == 2) {
-                
-            }
-            else if (opcion == 3) {
-                
-            }
-            
+
         } else { //Si las rotaciones son de 90, 180 o 270; usar los métodos específicos para ello.
             switch (rot) {
                 case 90:
@@ -167,6 +198,69 @@ public class Rotacion {
 
         v.setVisible(true);
 
+    }
+
+    public ArrayList<Punto> rotarEsquina(double grados) {
+        int ancho = img.getWidth();
+        int alto = img.getHeight();
+
+        ArrayList<Punto> tmp = new ArrayList<Punto>();
+        tmp.add(transformacionDirecta(grados, 0, 0));
+        tmp.add(transformacionDirecta(grados, 0, alto - 1));
+        tmp.add(transformacionDirecta(grados, ancho - 1, 0));
+        tmp.add(transformacionDirecta(grados, ancho - 1, alto - 1));
+
+        return tmp;
+    }
+
+    public Punto transformacionDirecta(double grados, int x, int y) {
+        return new Punto((Math.cos(grados) * x - Math.sin(grados) * y), (Math.sin(grados) * x + Math.cos(grados) * y));
+    }
+
+    public Punto transformacionInversa(double grados, int x, int y) {
+        return new Punto((Math.cos(grados) * x + Math.sin(grados) * y), (-Math.sin(grados) * x + Math.cos(grados) * y)); //REVISAR, está mal.
+    }
+
+    public Punto trasladar(Punto o, Punto p) {
+        return new Punto(p.getX() - o.getX(), p.getY() - o.getY());
+    }
+
+    public Punto anchoAlto(ArrayList<Punto> p) {
+        double iz = Double.MAX_VALUE;
+        double der = -Double.MAX_VALUE;
+        double arriba = Double.MAX_VALUE;
+        double abajo = -Double.MAX_VALUE;
+
+        for (int i = 0; i < p.size(); i++) {
+            if (iz >= p.get(i).getX()) {
+                iz = p.get(i).getX();
+            }
+            if (der <= p.get(i).getX()) {
+                der = p.get(i).getX();
+            }
+            if (arriba >= p.get(i).getY()) {
+                arriba = p.get(i).getY();
+            }
+            if (abajo <= p.get(i).getY()) {
+                abajo = p.get(i).getY();
+            }
+        }
+        return new Punto((Math.abs(der) + Math.abs(iz)), (Math.abs(abajo) + Math.abs(arriba)));
+    }
+
+    public Punto calcularIzquierdaSuperior(ArrayList<Punto> p) {
+        double iz = Double.MAX_VALUE;
+        double arriba = Double.MAX_VALUE;
+        
+        for(int i = 0; i < p.size(); i++){
+            if (iz >= p.get(i).getX()) {
+                iz = p.get(i).getX();
+            }
+            if (arriba >= p.get(i).getY()) {
+                arriba = p.get(i).getY();
+            }
+        }
+        return new Punto(Math.abs(iz), Math.abs(arriba));
     }
 
 }
