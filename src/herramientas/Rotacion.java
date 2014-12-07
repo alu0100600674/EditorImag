@@ -9,6 +9,7 @@ import editorimag.EditorImag;
 import static editorimag.EditorImag.gestor_img;
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -146,11 +147,36 @@ public class Rotacion {
                 
             } else if (opcion == 2) { //Vecino más próximo
                 
-                
+                for(int i = 0; i < dimension.getY(); i++){
+                    for(int j = 0; j < dimension.getX(); j++){
+                        traslado = trasladar(oPrima, new Punto((double) j, (double) i));
+                        mapInverso = transformacionInversa(grados, (int) traslado.getX(), (int) traslado.getY());
+                        if((mapInverso.getX() < ancho) && (mapInverso.getX() >= 0) && (mapInverso.getY() < alto) && (mapInverso.getY() >= 0)){
+                            //colorNuevo = new Color( img.getRGB((int) mapInverso.getX(), (int) mapInverso.getY())).getRed();
+                            colorNuevo = new Color(img.getRGB((int) vecinoMasCercano(mapInverso.getX(), mapInverso.getY()).getX(), (int) vecinoMasCercano(mapInverso.getX(), mapInverso.getY()).getY())).getRed();
+                            resultado.setRGB(j, i, new Color(colorNuevo, colorNuevo, colorNuevo).getRGB());
+                        }
+                        else {
+                            contadorFondo += 1;
+                        }
+                    }
+                }
                 
             } else if (opcion == 3) { //Bilineal
                 
-                
+                for(int i = 0; i < dimension.getY(); i++){
+                    for(int j = 0; j < dimension.getX(); j++){
+                        traslado = trasladar(oPrima, new Punto((double) j, (double) i));
+                        mapInverso = transformacionInversa(grados, (int) traslado.getX(), (int) traslado.getY());
+                        if((mapInverso.getX() < ancho) && (mapInverso.getX() >= 0) && (mapInverso.getY() < alto) && (mapInverso.getY() >= 0)){
+                            colorNuevo = bilineal(mapInverso.getX(), mapInverso.getY());
+                            resultado.setRGB(j, i, new Color(colorNuevo, colorNuevo, colorNuevo).getRGB());
+                        }
+                        else {
+                            contadorFondo += 1;
+                        }
+                    }
+                }
                 
             }
 
@@ -288,6 +314,62 @@ public class Rotacion {
             }
         }
         return new Punto(Math.abs(iz), Math.abs(arriba));
+    }
+    
+    public Point vecinoMasCercano(double j, double i) {
+        double jI = Math.round(j);
+        double iI = Math.round(i);
+        int ancho = img.getWidth();
+        int alto = img.getHeight();
+
+        if (jI >= ancho) {
+            jI = ancho - 1;
+        }
+        if (iI >= alto) {
+            iI = alto - 1;
+        }
+
+        Point tmp = new Point((int) jI, (int) iI);
+        return tmp;
+    }
+
+    public int bilineal(double j, double i) {
+        int ancho = img.getWidth();
+        int alto = img.getHeight();
+
+        int A = new Color(img.getRGB((int) j, (int) i)).getRed();
+        int B;
+        int C;
+        int D;
+
+        if (j + 1 >= ancho) {
+            B = new Color(img.getRGB((int) j, (int) i)).getRed();
+            if(i + 1 >= alto) {
+                C = new Color(img.getRGB((int) j, (int) i)).getRed();
+                D = new Color(img.getRGB((int) j, (int) i)).getRed();
+            } else {
+                C = new Color(img.getRGB((int) j, (int) i + 1)).getRed();
+                D = new Color(img.getRGB((int) j, (int) i + 1)).getRed();
+            }
+        } else {
+            B = new Color(img.getRGB((int) j + 1, (int) i)).getRed();
+            if (i + 1 >= alto) {
+                C = new Color(img.getRGB((int) j, (int) i)).getRed();
+                D = new Color(img.getRGB((int) j + 1, (int) i)).getRed();
+            } else {
+                C = new Color(img.getRGB((int) j, (int) i + 1)).getRed();
+                D = new Color(img.getRGB((int) j + 1, (int) i + 1)).getRed();
+            }
+        }
+        
+        double p = j - (int) j;
+        double q = i - (int) i;
+        
+        double Q = A + (B - A) * p;
+        double R = C + (D - C) * q;
+        int P = (int) (R + (Q - R) * q);
+        
+        return P;
     }
 
 }
