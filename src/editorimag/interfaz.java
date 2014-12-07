@@ -19,7 +19,7 @@ public class interfaz extends JFrame {
         setTitle("EditorImag");
 //        setLayout(null);
         //setVisible(true);
-        setSize(800, 80);
+        setSize(800, 85);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         
         Menu menu_principal = new Menu();
