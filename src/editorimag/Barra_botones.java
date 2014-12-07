@@ -6,6 +6,7 @@
 
 package editorimag;
 
+import static editorimag.EditorImag.activa;
 import static editorimag.EditorImag.gestor_img;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -24,6 +25,12 @@ public class Barra_botones extends JToolBar{
     private final Boton Abrir;
     private final Boton Guardar;
     
+    private Boton Espejo_H;
+    private Boton Espejo_V;
+    
+    private Boton Rotar_90;
+    private Boton Rotar_180;
+    private Boton Rotar_270;
     
     //Iconos
     private ImageIcon abrir = new ImageIcon("src/images/abrir2.png");
@@ -39,6 +46,19 @@ public class Barra_botones extends JToolBar{
         
         this.addSeparator();
         
+        Espejo_H = new Boton("Espejo Horizontal", null);
+        this.add(Espejo_H);
+        Espejo_V = new Boton("Espejo Vertical", null);
+        this.add(Espejo_V);
+        
+        this.addSeparator();
+        
+        Rotar_90 = new Boton("Rotar 90º", null);
+        this.add(Rotar_90);
+        Rotar_180 = new Boton("Rotar 180º", null);
+        this.add(Rotar_180);
+        Rotar_270 = new Boton("Rotar 270º", null);
+        this.add(Rotar_270);
         
         activarBotones();
         
@@ -67,6 +87,36 @@ public class Barra_botones extends JToolBar{
                 } catch (IOException ex) {
                     Logger.getLogger(Barra_botones.class.getName()).log(Level.SEVERE, null, ex);
                 }
+            }
+        });
+        
+        Espejo_H.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                gestor_img.getListaLan().get(activa).lanzar(32);
+            }
+        });
+        
+        Espejo_V.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                gestor_img.getListaLan().get(activa).lanzar(31);
+            }
+        });
+        
+        Rotar_90.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                gestor_img.getListaLan().get(activa).lanzar(34);
+            }
+        });
+        
+        Rotar_180.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                gestor_img.getListaLan().get(activa).lanzar(35);
+            }
+        });
+        
+        Rotar_270.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                gestor_img.getListaLan().get(activa).lanzar(36);
             }
         });
         
