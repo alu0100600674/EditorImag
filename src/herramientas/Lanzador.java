@@ -164,7 +164,7 @@ public class Lanzador {
     }
     
     private void escalar(){
-        
+        Escalado e = new Escalado(img);
     }
     
 }

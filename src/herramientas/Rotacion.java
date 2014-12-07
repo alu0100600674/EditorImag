@@ -86,15 +86,16 @@ public class Rotacion {
         if ((rot != 90) && (rot != 180) && (rot != 270) && (rot != 0)) {
 
             contadorFondo = 0;
-            switch(opcion){
-                case 1:
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    break;
+            if (opcion == 1) {
+                
             }
-
+            else if (opcion == 2) {
+                
+            }
+            else if (opcion == 3) {
+                
+            }
+            
         } else { //Si las rotaciones son de 90, 180 o 270; usar los métodos específicos para ello.
             switch (rot) {
                 case 90:
