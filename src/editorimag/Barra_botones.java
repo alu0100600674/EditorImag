@@ -29,6 +29,8 @@ public class Barra_botones extends JToolBar {
     private final Boton Guardar;
     
     private Boton Recortar;
+    
+    private Boton ByC;
 
     private Boton Espejo_H;
     private Boton Espejo_V;
@@ -43,6 +45,7 @@ public class Barra_botones extends JToolBar {
     private ImageIcon abrir = new ImageIcon("src/images/abrir.png");
     private ImageIcon guardar = new ImageIcon("src/images/guardar.png");
     private ImageIcon recortari = new ImageIcon("src/images/recortar.png");
+    private ImageIcon byc = new ImageIcon("src/images/brilloycontraste.png");
     private ImageIcon espejoH = new ImageIcon("src/images/espejoH.png");
     private ImageIcon espejoV = new ImageIcon("src/images/espejoV.png");
     private ImageIcon rotar90 = new ImageIcon("src/images/rotar90.png");
@@ -62,6 +65,11 @@ public class Barra_botones extends JToolBar {
         
         Recortar = new Boton("Recortar", recortari);
         this.add(Recortar);
+        
+        this.addSeparator();
+        
+        ByC = new Boton("Brillo y Contraste", byc);
+        this.add(ByC);
         
         this.addSeparator();
 
@@ -89,6 +97,7 @@ public class Barra_botones extends JToolBar {
         abrir = new ImageIcon(abrir.getImage().getScaledInstance(tam, tam, Image.SCALE_DEFAULT));
         guardar = new ImageIcon(guardar.getImage().getScaledInstance(tam, tam, Image.SCALE_DEFAULT));
         recortari = new ImageIcon(recortari.getImage().getScaledInstance(tam, tam, Image.SCALE_DEFAULT));
+        byc = new ImageIcon(byc.getImage().getScaledInstance(tam, tam, Image.SCALE_DEFAULT));
         espejoH = new ImageIcon(espejoH.getImage().getScaledInstance(tam, tam, Image.SCALE_DEFAULT));
         espejoV = new ImageIcon(espejoV.getImage().getScaledInstance(tam, tam, Image.SCALE_DEFAULT));
         rotar90 = new ImageIcon(rotar90.getImage().getScaledInstance(tam, tam, Image.SCALE_DEFAULT));
@@ -122,6 +131,12 @@ public class Barra_botones extends JToolBar {
         Recortar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 recortar = true;
+            }
+        });
+        
+        ByC.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                gestor_img.getListaLan().get(activa).lanzar(12);
             }
         });
 
