@@ -6,6 +6,7 @@
 package editorimag;
 
 import static editorimag.EditorImag.activa;
+import static editorimag.EditorImag.recortar;
 import static editorimag.EditorImag.gestor_img;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -120,7 +121,7 @@ public class Barra_botones extends JToolBar {
         
         Recortar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                //recortar = true;
+                recortar = true;
             }
         });
 
