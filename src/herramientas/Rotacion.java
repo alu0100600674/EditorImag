@@ -237,6 +237,7 @@ public class Rotacion {
                     opcion = 3;
                 }
                 rotacion = Integer.parseInt(Dat_rotar.getText());
+                rotacion = -rotacion;
                 v.dispose();
                 gestor_img.anadirImagen(rotar_x(rotacion, opcion));
             }
