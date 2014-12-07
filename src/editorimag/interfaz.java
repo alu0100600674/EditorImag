@@ -22,6 +22,9 @@ public class interfaz extends JFrame {
         setSize(800, 85);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         
+        setResizable(false);
+//        setLocationRelativeTo(null);
+        
         Menu menu_principal = new Menu();
         setJMenuBar(menu_principal);
         
