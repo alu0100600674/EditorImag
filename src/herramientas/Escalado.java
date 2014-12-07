@@ -30,7 +30,6 @@ public class Escalado {
 
 //    private int p_ancho;
 //    private int p_alto;
-
     public Escalado(BufferedImage tmp) {
         img = tmp;
 
@@ -71,11 +70,11 @@ public class Escalado {
                 }
                 int p_ancho = Integer.parseInt(Dat_ancho.getText());
                 int p_alto = Integer.parseInt(Dat_alto.getText());
-                
+
                 System.out.println("p_ancho " + p_ancho);
                 System.out.println(" p_alto " + p_alto);
                 System.out.println("---------------------");
-                
+
                 v.dispose();
                 gestor_img.anadirImagen(escalar(p_ancho, p_alto, opcion));
             }
@@ -95,57 +94,100 @@ public class Escalado {
     private BufferedImage escalar(int p_ancho, int p_alto, int opcion) {
         int ancho = img.getWidth();
         int alto = img.getWidth();
-        
+
         System.out.println(" ancho1 " + ancho);
         System.out.println("  alto1 " + alto);
-        
+
         p_ancho /= 100;
         p_alto /= 100;
         ancho *= p_ancho;
         alto *= p_alto;
-        
+
         System.out.println("p_ancho " + p_ancho);
         System.out.println(" p_alto " + p_alto);
         System.out.println(" ancho2 " + ancho);
         System.out.println("  alto2 " + alto);
-        
+
         BufferedImage resultado = new BufferedImage(ancho, alto, img.getType());
         int colorNuevo;
         int jI = 0;
         int iI = 0;
-        
-        if(opcion == 1){ //Vecino más cercano
-            for(int i = 0; i < alto; i++){
-                for(int j = 0; j < ancho; j++){
-                    jI = (int) vecinoMasCercano(j/p_ancho, i/p_alto).getX();
-                    iI = (int) vecinoMasCercano(j/p_ancho, i/p_alto).getY();
+
+        if (opcion == 1) { //Vecino más cercano
+            for (int i = 0; i < alto; i++) {
+                for (int j = 0; j < ancho; j++) {
+                    jI = (int) vecinoMasCercano(j / p_ancho, i / p_alto).getX();
+                    iI = (int) vecinoMasCercano(j / p_ancho, i / p_alto).getY();
                     colorNuevo = new Color(img.getRGB(jI, iI)).getRed();
                     resultado.setRGB(j, i, new Color(colorNuevo, colorNuevo, colorNuevo).getRGB());
                 }
             }
+        } else if (opcion == 2) { //Bilineal
+            for (int i = 0; i < alto; i++){
+                for (int j = 0; j < ancho; j++){
+                    colorNuevo = bilineal(j / p_ancho, i / p_alto);
+                    resultado.setRGB(j, i, new Color(colorNuevo, colorNuevo, colorNuevo).getRGB());
+                }
+            }
         }
-        else if (opcion == 2){ //Bilineal
-            
-        }
-        
+
         return resultado;
     }
-    
-    public Point vecinoMasCercano(double j, double i){
+
+    public Point vecinoMasCercano(double j, double i) {
         double jI = Math.round(j);
         double iI = Math.round(i);
         int ancho = img.getWidth();
         int alto = img.getHeight();
-        
-        if(jI >= ancho){
+
+        if (jI >= ancho) {
             jI = ancho - 1;
         }
-        if(iI >= alto){
+        if (iI >= alto) {
             iI = alto - 1;
         }
-        
+
         Point tmp = new Point((int) jI, (int) iI);
         return tmp;
+    }
+
+    public int bilineal(double j, double i) {
+        int ancho = img.getWidth();
+        int alto = img.getHeight();
+
+        int A = new Color(img.getRGB((int) j, (int) i)).getRed();
+        int B;
+        int C;
+        int D;
+
+        if (j + 1 >= ancho) {
+            B = new Color(img.getRGB((int) j, (int) i)).getRed();
+            if(i + 1 >= alto) {
+                C = new Color(img.getRGB((int) j, (int) i)).getRed();
+                D = new Color(img.getRGB((int) j, (int) i)).getRed();
+            } else {
+                C = new Color(img.getRGB((int) j, (int) i + 1)).getRed();
+                D = new Color(img.getRGB((int) j, (int) i + 1)).getRed();
+            }
+        } else {
+            B = new Color(img.getRGB((int) j + 1, (int) i)).getRed();
+            if (i + 1 >= alto) {
+                C = new Color(img.getRGB((int) j, (int) i)).getRed();
+                D = new Color(img.getRGB((int) j + 1, (int) i)).getRed();
+            } else {
+                C = new Color(img.getRGB((int) j, (int) i + 1)).getRed();
+                D = new Color(img.getRGB((int) j + 1, (int) i + 1)).getRed();
+            }
+        }
+        
+        double p = j - (int) j;
+        double q = i - (int) i;
+        
+        double Q = A + (B - A) * p;
+        double R = C + (D - C) * q;
+        int P = (int) (R + (Q - R) * q);
+        
+        return P;
     }
 
 }
