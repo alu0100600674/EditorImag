@@ -42,6 +42,8 @@ public class Barra_botones extends JToolBar {
     private Boton Rotar_180;
     private Boton Rotar_270;
     private Boton Rotar;
+    
+    private Boton Escalar;
 
     //Iconos
     private int tam = 30;
@@ -57,6 +59,7 @@ public class Barra_botones extends JToolBar {
     private ImageIcon rotar180 = new ImageIcon("src/images/rotar180.png");
     private ImageIcon rotar270 = new ImageIcon("src/images/rotar270.png");
     private ImageIcon rotar = new ImageIcon("src/images/rotar.png");
+    private ImageIcon escalar = new ImageIcon("src/images/escalar.png");
 
     public Barra_botones() {
         escalarImagenes();
@@ -100,6 +103,11 @@ public class Barra_botones extends JToolBar {
         this.add(Rotar_270);
         Rotar = new Boton("Rotar", rotar);
         this.add(Rotar);
+        
+        this.addSeparator();
+        
+        Escalar = new Boton("Escalar", escalar);
+        this.add(Escalar);
 
         activarBotones();
 
@@ -118,6 +126,7 @@ public class Barra_botones extends JToolBar {
         rotar180 = new ImageIcon(rotar180.getImage().getScaledInstance(tam, tam, Image.SCALE_DEFAULT));
         rotar270 = new ImageIcon(rotar270.getImage().getScaledInstance(tam, tam, Image.SCALE_DEFAULT));
         rotar = new ImageIcon(rotar.getImage().getScaledInstance(tam, tam, Image.SCALE_DEFAULT));
+        escalar = new ImageIcon(escalar.getImage().getScaledInstance(tam, tam, Image.SCALE_DEFAULT));
     }
 
     private void activarBotones() {
@@ -199,6 +208,12 @@ public class Barra_botones extends JToolBar {
         Rotar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 gestor_img.getListaLan().get(activa).lanzar(37);
+            }
+        });
+        
+        Escalar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                gestor_img.getListaLan().get(activa).lanzar(38);
             }
         });
 
