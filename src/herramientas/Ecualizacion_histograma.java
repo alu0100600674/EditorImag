@@ -39,7 +39,7 @@ public class Ecualizacion_histograma {
         img = tmp;
 
         cogerDatos();
-        controles();
+//        controles();
 //        histograma();
 //        histogramaAcumulativo();
 //        ecualizacion();
@@ -68,7 +68,7 @@ public class Ecualizacion_histograma {
 
     }
 
-    private void histograma() {
+    public void histograma() {
         JFrame vHist = new JFrame("Histograma");
 
         JFreeChart graf_hist = null;
@@ -90,7 +90,7 @@ public class Ecualizacion_histograma {
 
     }
 
-    private void histogramaAcumulativo() {
+    public void histogramaAcumulativo() {
         JFrame vHist = new JFrame("Histograma Acumulado");
 
         JFreeChart graf_hist = null;
@@ -123,7 +123,7 @@ public class Ecualizacion_histograma {
 
     }
 
-    private BufferedImage ecualizacion() {
+    public BufferedImage ecualizacion() {
         BufferedImage resultado = new BufferedImage(img.getWidth(), img.getHeight(), img.getType());
 
         int[] datos_ec = new int[256];

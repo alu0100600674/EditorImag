@@ -41,6 +41,15 @@ public class Lanzador {
             case 21:
                 ecualizacionHistograma();
                 break;
+            case 211:
+                histograma();
+                break;
+            case 212:
+                histogramaAcumulativo();
+                break;
+            case 213:
+                ecualizarHistograma();
+                break;
             case 22:
                 especificacionHistograma();
                 break;
@@ -104,6 +113,21 @@ public class Lanzador {
     //Operaciones No Lineales
     private void ecualizacionHistograma(){
         Ecualizacion_histograma ech = new Ecualizacion_histograma(img);
+    }
+    
+    private void histograma(){
+        Ecualizacion_histograma ech1 = new Ecualizacion_histograma(img);
+        ech1.histograma();
+    }
+    
+    private void histogramaAcumulativo(){
+        Ecualizacion_histograma ech2 = new Ecualizacion_histograma(img);
+        ech2.histogramaAcumulativo();
+    }
+    
+    private void ecualizarHistograma(){
+        Ecualizacion_histograma ech3 = new Ecualizacion_histograma(img);
+        gestor_img.anadirImagen(ech3.ecualizacion());
     }
     
     private void especificacionHistograma(){

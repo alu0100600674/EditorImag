@@ -31,6 +31,9 @@ public class Barra_botones extends JToolBar {
     private Boton Recortar;
     
     private Boton ByC;
+    
+    private Boton Histograma;
+    private Boton Histograma_Ac;
 
     private Boton Espejo_H;
     private Boton Espejo_V;
@@ -46,6 +49,8 @@ public class Barra_botones extends JToolBar {
     private ImageIcon guardar = new ImageIcon("src/images/guardar.png");
     private ImageIcon recortari = new ImageIcon("src/images/recortar.png");
     private ImageIcon byc = new ImageIcon("src/images/brilloycontraste.png");
+    private ImageIcon histograma = new ImageIcon("src/images/histograma.png");
+    private ImageIcon histogramaac = new ImageIcon("src/images/histogramaac.png");
     private ImageIcon espejoH = new ImageIcon("src/images/espejoH.png");
     private ImageIcon espejoV = new ImageIcon("src/images/espejoV.png");
     private ImageIcon rotar90 = new ImageIcon("src/images/rotar90.png");
@@ -70,6 +75,13 @@ public class Barra_botones extends JToolBar {
         
         ByC = new Boton("Brillo y Contraste", byc);
         this.add(ByC);
+        
+        this.addSeparator();
+        
+        Histograma = new Boton("Histograma", histograma);
+        this.add(Histograma);
+        Histograma_Ac = new Boton("Histograma Acumulativo", histogramaac);
+        this.add(Histograma_Ac);
         
         this.addSeparator();
 
@@ -98,6 +110,8 @@ public class Barra_botones extends JToolBar {
         guardar = new ImageIcon(guardar.getImage().getScaledInstance(tam, tam, Image.SCALE_DEFAULT));
         recortari = new ImageIcon(recortari.getImage().getScaledInstance(tam, tam, Image.SCALE_DEFAULT));
         byc = new ImageIcon(byc.getImage().getScaledInstance(tam, tam, Image.SCALE_DEFAULT));
+        histograma = new ImageIcon(histograma.getImage().getScaledInstance(tam, tam, Image.SCALE_DEFAULT));
+        histogramaac = new ImageIcon(histogramaac.getImage().getScaledInstance(tam, tam, Image.SCALE_DEFAULT));
         espejoH = new ImageIcon(espejoH.getImage().getScaledInstance(tam, tam, Image.SCALE_DEFAULT));
         espejoV = new ImageIcon(espejoV.getImage().getScaledInstance(tam, tam, Image.SCALE_DEFAULT));
         rotar90 = new ImageIcon(rotar90.getImage().getScaledInstance(tam, tam, Image.SCALE_DEFAULT));
@@ -137,6 +151,18 @@ public class Barra_botones extends JToolBar {
         ByC.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 gestor_img.getListaLan().get(activa).lanzar(12);
+            }
+        });
+        
+        Histograma.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                gestor_img.getListaLan().get(activa).lanzar(211);
+            }
+        });
+        
+        Histograma_Ac.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                gestor_img.getListaLan().get(activa).lanzar(212);
             }
         });
 

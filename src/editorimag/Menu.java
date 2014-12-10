@@ -50,6 +50,9 @@ public class Menu extends JMenuBar{
     //Elementos del menú Operaciones no lineales
     private JMenu Op_no_lineales;
     private JMenuItem H_Ecualizacion;
+    private JMenuItem Histograma;
+    private JMenuItem Histograma_Ac;
+    private JMenuItem Histograma_Ec;
     private JMenuItem H_Especificacion;
     private JMenuItem C_Gamma;
     private JMenuItem Perfil;
@@ -198,11 +201,35 @@ public class Menu extends JMenuBar{
         Op_no_lineales = new JMenu("Operaciones no lineales");
         this.add(Op_no_lineales);
         
-        H_Ecualizacion = new JMenuItem("Ecualización del Histograma");
-        Op_no_lineales.add(H_Ecualizacion);
-        H_Ecualizacion.addActionListener(new ActionListener() {
+//        H_Ecualizacion = new JMenuItem("Ecualización del Histograma");
+//        Op_no_lineales.add(H_Ecualizacion);
+//        H_Ecualizacion.addActionListener(new ActionListener() {
+//            public void actionPerformed(ActionEvent e){
+//                gestor_img.getListaLan().get(activa).lanzar(21);
+//            }
+//        });
+        
+        Histograma = new JMenuItem("Histograma");
+        Op_no_lineales.add(Histograma);
+        Histograma.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                gestor_img.getListaLan().get(activa).lanzar(21);
+                gestor_img.getListaLan().get(activa).lanzar(211);
+            }
+        });
+        
+        Histograma_Ac = new JMenuItem("Histograma Acumulativo");
+        Op_no_lineales.add(Histograma_Ac);
+        Histograma_Ac.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                gestor_img.getListaLan().get(activa).lanzar(212);
+            }
+        });
+        
+        Histograma_Ec = new JMenuItem("Ecualizar histograma");
+        Op_no_lineales.add(Histograma_Ec);
+        Histograma_Ec.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                gestor_img.getListaLan().get(activa).lanzar(213);
             }
         });
         
