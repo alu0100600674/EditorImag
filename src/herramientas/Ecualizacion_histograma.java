@@ -160,7 +160,7 @@ public class Ecualizacion_histograma {
 
 
     private void controles() {
-        JFrame v = new JFrame();
+        final JFrame v = new JFrame();
         v.setSize(220, 120);
         v.setVisible(true);
         v.setTitle("Controles");
@@ -179,12 +179,14 @@ public class Ecualizacion_histograma {
 
         Hist.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                v.dispose();
                 histograma();
             }
         });
 
         Hist_ac.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                v.dispose();
                 histogramaAcumulativo();
             }
         });
@@ -192,6 +194,7 @@ public class Ecualizacion_histograma {
         Hist_ec.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 //                ecualizacion();
+                v.dispose();
                 gestor_img.anadirImagen(ecualizacion());
             }
         });
