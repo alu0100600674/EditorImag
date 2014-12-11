@@ -129,7 +129,7 @@ public class Rotacion {
             Punto traslado;
             Punto mapInverso;
 
-            if (opcion == 1) { //Normal
+            if (opcion == 1) { //Rotar y pintar
                 
                 for(int i = 0; i < dimension.getY(); i++){
                     for(int j = 0; j < dimension.getX(); j++){
@@ -211,7 +211,7 @@ public class Rotacion {
         panel.setLayout(new GridLayout(6, 1));
         v.add(panel);
 
-        final JRadioButton Normal = new JRadioButton("Normal");
+        final JRadioButton Normal = new JRadioButton("Rotar y pintar");
         final JRadioButton Vecino = new JRadioButton("Vecino más cercano");
         final JRadioButton Bilineal = new JRadioButton("Bilineal");
         ButtonGroup Grupo = new ButtonGroup();
@@ -269,10 +269,12 @@ public class Rotacion {
 
     public Punto transformacionDirecta(double grados, int x, int y) {
         return new Punto((Math.cos(grados) * x - Math.sin(grados) * y), (Math.sin(grados) * x + Math.cos(grados) * y));
+//        return new Punto((Math.cos(grados) * x + Math.sin(grados) * y), (-Math.sin(grados) * x + Math.cos(grados) * y));
     }
 
     public Punto transformacionInversa(double grados, int x, int y) {
         return new Punto((Math.cos(grados) * x + Math.sin(grados) * y), (-Math.sin(grados) * x + Math.cos(grados) * y)); //REVISAR, está mal.
+//        return new Punto((Math.cos(grados) * x - Math.sin(grados) * y), (Math.sin(grados) * x + Math.cos(grados) * y)); 
     }
 
     public Punto trasladar(Punto o, Punto p) {
