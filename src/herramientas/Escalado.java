@@ -48,6 +48,7 @@ public class Escalado {
         v.add(panel);
 
         final JRadioButton Vecino = new JRadioButton("Vecino más cercano");
+        Vecino.setSelected(true);
         final JRadioButton Bilineal = new JRadioButton("Bilineal");
         ButtonGroup Grupo = new ButtonGroup();
         Grupo.add(Vecino);

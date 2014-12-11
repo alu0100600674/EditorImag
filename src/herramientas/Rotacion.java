@@ -238,6 +238,7 @@ public class Rotacion {
 
         final JRadioButton Normal = new JRadioButton("Rotar y pintar");
         final JRadioButton Vecino = new JRadioButton("Vecino más cercano");
+        Vecino.setSelected(true);
         final JRadioButton Bilineal = new JRadioButton("Bilineal");
         ButtonGroup Grupo = new ButtonGroup();
         Grupo.add(Normal);
