@@ -38,7 +38,7 @@ public class Escalado {
 
     public void controles() {
         final JFrame v = new JFrame();
-        v.setTitle("Rotar");
+        v.setTitle("Escalar");
         v.setSize(300, 300);
         v.setResizable(false);
         v.setLocationRelativeTo(null);
