@@ -45,6 +45,7 @@ public class Imagen extends JFrame{
     public int min = -1;
     public int max = -1;
     
+    private int cfondo = 0;
     
     public JFrame jf;
     
@@ -53,6 +54,10 @@ public class Imagen extends JFrame{
     private double brillo = 0.0;
     private double contraste = 0.0; 
     private double entropia = 0.0;
+    
+    public int getICFondo (){
+        return cfondo;
+    }
     
     public double get_brillo(){
         return brillo;
@@ -136,6 +141,22 @@ public class Imagen extends JFrame{
         
     }
     
+    public Imagen(int r, BufferedImage tmp, int tam){
+        cfondo = r;
+        Subventana ventana = new Subventana(pasarAEscalaGrises(tmp), tam);
+        
+//        formatoImg= obtenerFormato(nombre);
+        anchoImg = imgGris.getWidth();
+        altoImg = imgGris.getHeight();
+        min = obtenerMinGris(imgGris);
+        max =obtenerMaxGris(imgGris);
+        obtenerdatoshistograma();
+        obtenerBrillo();
+        obtenerContraste();
+        obtenerEntropia();
+        
+    }
+    
     public BufferedImage getImg(){
         return imgGris;
     }
@@ -184,6 +205,7 @@ public class Imagen extends JFrame{
 //                System.out.println(c);
             }
         }
+        datos[0] -= cfondo;
     }
     public void obtenerBrillo () {
 

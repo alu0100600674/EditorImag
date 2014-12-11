@@ -59,6 +59,14 @@ public class Rotacion {
         public void setY(double y) {
             this.y = y;
         }
+        
+        public Punto opuesto () {
+            return new Punto (-getX(), -getY());
+        }
+    }
+    
+    public int getContadorFondo() {
+        return contadorFondo;
     }
 
     public Rotacion(BufferedImage tmp) {
@@ -124,22 +132,37 @@ public class Rotacion {
             resultado = new BufferedImage((int) dimension.getX() + 1, (int) dimension.getY() + 1, img.getType());
             
             int colorNuevo;
+            int clr = -1;
             
             Punto oPrima = calcularIzquierdaSuperior(esquinas);
             Punto traslado;
             Punto mapInverso;
 
-            if (opcion == 1) { //Normal
+            if (opcion == 1) { //Rotar y pintar
                 
-                for(int i = 0; i < dimension.getY(); i++){
-                    for(int j = 0; j < dimension.getX(); j++){
-                        traslado = trasladar(oPrima, new Punto((double) j, (double) i));
-                        mapInverso = transformacionInversa(grados, (int) traslado.getX(), (int) traslado.getY());
-                        if((mapInverso.getX() < ancho) && (mapInverso.getX() >= 0) && (mapInverso.getY() < alto) && (mapInverso.getY() >= 0)){
-                            colorNuevo = new Color( img.getRGB((int) mapInverso.getX(), (int) mapInverso.getY())).getRed();
-                            resultado.setRGB(j, i, new Color(colorNuevo, colorNuevo, colorNuevo).getRGB());
-                        }
-                        else {
+//                for(int i = 0; i < dimension.getY(); i++){
+//                    for(int j = 0; j < dimension.getX(); j++){
+//                        traslado = trasladar(oPrima, new Punto((double) j, (double) i));
+//                        mapInverso = transformacionInversa(grados, (int) traslado.getX(), (int) traslado.getY());
+//                        if((mapInverso.getX() < ancho) && (mapInverso.getX() >= 0) && (mapInverso.getY() < alto) && (mapInverso.getY() >= 0)){
+//                            colorNuevo = new Color( img.getRGB((int) mapInverso.getX(), (int) mapInverso.getY())).getRed();
+//                            resultado.setRGB(j, i, new Color(colorNuevo, colorNuevo, colorNuevo).getRGB());
+//                        }
+//                        else {
+//                            contadorFondo += 1;
+//                        }
+//                    }
+//                }
+                
+                for(int i = 0; i < alto; i++){
+                    for(int j = 0; j < ancho; j++){
+                        mapInverso = transformacionDirecta(grados, j, i);
+                        traslado = trasladar(oPrima.opuesto(), new Punto(mapInverso.getX(), mapInverso.getY()));
+                        colorNuevo = new Color(img.getRGB(j, i)).getRed();
+                        clr = new Color(resultado.getRGB((int) traslado.getX(), (int) traslado.getY())).getRed();
+                        
+                        if(clr == 0){
+                            resultado.setRGB((int) traslado.getX(), (int) traslado.getY(), new Color(colorNuevo, colorNuevo, colorNuevo).getRGB());
                             contadorFondo += 1;
                         }
                     }
@@ -179,6 +202,8 @@ public class Rotacion {
                 }
                 
             }
+            
+            System.out.println("fondo en rot " + contadorFondo);
 
         } else { //Si las rotaciones son de 90, 180 o 270; usar los métodos específicos para ello.
             switch (rot) {
@@ -211,7 +236,7 @@ public class Rotacion {
         panel.setLayout(new GridLayout(6, 1));
         v.add(panel);
 
-        final JRadioButton Normal = new JRadioButton("Normal");
+        final JRadioButton Normal = new JRadioButton("Rotar y pintar");
         final JRadioButton Vecino = new JRadioButton("Vecino más cercano");
         final JRadioButton Bilineal = new JRadioButton("Bilineal");
         ButtonGroup Grupo = new ButtonGroup();
@@ -239,7 +264,8 @@ public class Rotacion {
                 rotacion = Integer.parseInt(Dat_rotar.getText());
                 rotacion = -rotacion;
                 v.dispose();
-                gestor_img.anadirImagen(rotar_x(rotacion, opcion));
+//                gestor_img.anadirImagen(rotar_x(rotacion, opcion));
+                gestor_img.anadirImagenRotada(rotar_x(rotacion, opcion), contadorFondo);
             }
         });
 
@@ -269,10 +295,12 @@ public class Rotacion {
 
     public Punto transformacionDirecta(double grados, int x, int y) {
         return new Punto((Math.cos(grados) * x - Math.sin(grados) * y), (Math.sin(grados) * x + Math.cos(grados) * y));
+//        return new Punto((Math.cos(grados) * x + Math.sin(grados) * y), (-Math.sin(grados) * x + Math.cos(grados) * y));
     }
 
     public Punto transformacionInversa(double grados, int x, int y) {
         return new Punto((Math.cos(grados) * x + Math.sin(grados) * y), (-Math.sin(grados) * x + Math.cos(grados) * y)); //REVISAR, está mal.
+//        return new Punto((Math.cos(grados) * x - Math.sin(grados) * y), (Math.sin(grados) * x + Math.cos(grados) * y)); 
     }
 
     public Punto trasladar(Punto o, Punto p) {
