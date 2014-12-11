@@ -16,9 +16,15 @@ import static editorimag.EditorImag.gestor_img;
 public class Lanzador {
     
     private BufferedImage img;
+    private int fondo;
     
     public Lanzador(BufferedImage tmp){
         img = tmp;
+    }
+    
+    public Lanzador(BufferedImage tmp, int f){
+        img = tmp;
+        fondo = f;
     }
     
     public void lanzar(int opcion){
@@ -112,21 +118,25 @@ public class Lanzador {
     
     //Operaciones No Lineales
     private void ecualizacionHistograma(){
-        Ecualizacion_histograma ech = new Ecualizacion_histograma(img);
+//        Ecualizacion_histograma ech = new Ecualizacion_histograma(img);
+        Ecualizacion_histograma ech = new Ecualizacion_histograma(img, fondo);
     }
     
     private void histograma(){
-        Ecualizacion_histograma ech1 = new Ecualizacion_histograma(img);
+//        Ecualizacion_histograma ech1 = new Ecualizacion_histograma(img);
+        Ecualizacion_histograma ech1 = new Ecualizacion_histograma(img, fondo);
         ech1.histograma();
     }
     
     private void histogramaAcumulativo(){
-        Ecualizacion_histograma ech2 = new Ecualizacion_histograma(img);
+//        Ecualizacion_histograma ech2 = new Ecualizacion_histograma(img);
+        Ecualizacion_histograma ech2 = new Ecualizacion_histograma(img, fondo);
         ech2.histogramaAcumulativo();
     }
     
     private void ecualizarHistograma(){
-        Ecualizacion_histograma ech3 = new Ecualizacion_histograma(img);
+//        Ecualizacion_histograma ech3 = new Ecualizacion_histograma(img);
+        Ecualizacion_histograma ech3 = new Ecualizacion_histograma(img, fondo);
         gestor_img.anadirImagen(ech3.ecualizacion());
     }
     

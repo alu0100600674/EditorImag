@@ -202,6 +202,8 @@ public class Rotacion {
                 }
                 
             }
+            
+            System.out.println("fondo en rot " + contadorFondo);
 
         } else { //Si las rotaciones son de 90, 180 o 270; usar los métodos específicos para ello.
             switch (rot) {

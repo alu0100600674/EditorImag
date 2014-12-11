@@ -30,7 +30,7 @@ public class Ecualizacion_histograma {
 //    private int size;
     private int[] datos;
     private BufferedImage img;
-    
+
     private int fondo;
 
     public int get_datos(int i) {
@@ -39,7 +39,7 @@ public class Ecualizacion_histograma {
 
     public Ecualizacion_histograma(BufferedImage tmp) {
         fondo = 0;
-        
+
         img = tmp;
 
         cogerDatos();
@@ -48,10 +48,11 @@ public class Ecualizacion_histograma {
 //        histogramaAcumulativo();
 //        ecualizacion();
     }
-    
+
     public Ecualizacion_histograma(BufferedImage tmp, int nfondo) {
         fondo = nfondo;
-        
+//        System.out.println("ec fondo" + fondo);
+
         img = tmp;
 
         cogerDatos();
@@ -82,6 +83,7 @@ public class Ecualizacion_histograma {
             }
         }
         datos[0] -= fondo;
+        System.out.println("ec fondo" + fondo);
 
     }
 
@@ -164,9 +166,9 @@ public class Ecualizacion_histograma {
 //            System.out.println((Math.round((m / size) * datos_ac[i])) - 1);
 //            System.out.println(datos_ec[i]);
         }
-        
-        for(int i = 0; i < resultado.getWidth(); i++){
-            for(int j = 0; j < resultado.getHeight(); j++){
+
+        for (int i = 0; i < resultado.getWidth(); i++) {
+            for (int j = 0; j < resultado.getHeight(); j++) {
                 int viejo = new Color(img.getRGB(i, j)).getRed();
                 int nuevo = datos_ec[viejo];
                 resultado.setRGB(i, j, new Color(nuevo, nuevo, nuevo).getRGB());
@@ -174,7 +176,6 @@ public class Ecualizacion_histograma {
         }
         return resultado;
     }
-
 
     private void controles() {
         final JFrame v = new JFrame();

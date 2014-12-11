@@ -94,7 +94,7 @@ public class Gestion_subventanas {
         
         img_list.add(new Imagen(ro, tmp, tam));
         
-        lan_list.add(new Lanzador(img_list.get(tam).getImg()));
+        lan_list.add(new Lanzador(img_list.get(tam).getImg(), ro));
     }
     
     public void guardarImagen() throws IOException{
