@@ -30,12 +30,28 @@ public class Ecualizacion_histograma {
 //    private int size;
     private int[] datos;
     private BufferedImage img;
+    
+    private int fondo;
 
     public int get_datos(int i) {
         return datos[i];
     }
 
     public Ecualizacion_histograma(BufferedImage tmp) {
+        fondo = 0;
+        
+        img = tmp;
+
+        cogerDatos();
+//        controles();
+//        histograma();
+//        histogramaAcumulativo();
+//        ecualizacion();
+    }
+    
+    public Ecualizacion_histograma(BufferedImage tmp, int nfondo) {
+        fondo = nfondo;
+        
         img = tmp;
 
         cogerDatos();
@@ -65,6 +81,7 @@ public class Ecualizacion_histograma {
 //                System.out.println(c);
             }
         }
+        datos[0] -= fondo;
 
     }
 
