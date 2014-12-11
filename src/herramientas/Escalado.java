@@ -91,9 +91,9 @@ public class Escalado {
         v.setVisible(true);
     }
 
-    private BufferedImage escalar(int p_ancho, int p_alto, int opcion) {
+    private BufferedImage escalar(double p_ancho, double p_alto, int opcion) {
         int ancho = img.getWidth();
-        int alto = img.getWidth();
+        int alto = img.getHeight();
 
         System.out.println(" ancho1 " + ancho);
         System.out.println("  alto1 " + alto);
@@ -130,6 +130,7 @@ public class Escalado {
                 }
             }
         }
+        System.out.println("resultado esc" + resultado.getWidth() + " " + resultado.getHeight());
 
         return resultado;
     }
