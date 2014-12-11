@@ -143,7 +143,7 @@ public class Subventana extends JFrame {
             public void mousePressed(MouseEvent me) {
                 iniX = me.getX() - 5;
                 iniY = me.getY() - 30;
-//                System.out.println(iniX + " " + iniY);
+                System.out.println("Pressed" +  iniX + " " + iniY);
             }
 
             @Override
@@ -161,7 +161,7 @@ public class Subventana extends JFrame {
                     finY = iniY;
                     iniY = aux;
                 }
-//                System.out.println(finX + " " + finY);
+                System.out.println("Released" + finX + " " + finY);
                 if(recortar){
                     gestor_img.anadirImagen(recorte());
                     recortar = false;
@@ -187,13 +187,19 @@ public class Subventana extends JFrame {
     public BufferedImage recorte(){
         BufferedImage resultado = new BufferedImage(finX - iniX + 1, finY - iniY + 1, tmp.getType());
 //        BufferedImage resultado = new BufferedImage(200, 200, tmp.getType());
-        
+        System.out.println("CACAAAAA");
+        int i_ = 0;
+        int j_ = 0;
         for(int i = iniX; i < finX; i++){
             for(int j = iniY; j < finY; j++){
-                resultado.setRGB(i, j, tmp.getRGB(i, j));
+                resultado.setRGB(i_, j_, tmp.getRGB(i, j));
                 System.out.println(i + " " + j);
-//                System.out.println("----------");
+                System.out.println("----------");
+                System.out.println("i,j " + i_ + " " + j_);
+                j_ += 1;
+                
             }
+            i_ += 1;
         }
         
         return resultado;

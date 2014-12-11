@@ -2,6 +2,29 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/home/johnspirit/NetBeansProjects/EditorImag/src/editorimag/EditorImag.java</file>
+            <file>file:/home/johnspirit/NetBeansProjects/EditorImag/src/editorimag/Barra_botones.java</file>
+            <file>file:/home/johnspirit/NetBeansProjects/EditorImag/src/herramientas/Especificacion_histograma.java</file>
+            <file>file:/home/johnspirit/NetBeansProjects/EditorImag/src/editorimag/Acerca_de.java</file>
+            <file>file:/home/johnspirit/NetBeansProjects/EditorImag/src/herramientas/Espejo.java</file>
+            <file>file:/home/johnspirit/NetBeansProjects/EditorImag/src/herramientas/Brillo_y_contraste.java</file>
+            <file>file:/home/johnspirit/NetBeansProjects/EditorImag/src/herramientas/Transf_lineales_tramos.java</file>
+            <file>file:/home/johnspirit/NetBeansProjects/EditorImag/src/editorimag/Boton.java</file>
+            <file>file:/home/johnspirit/NetBeansProjects/EditorImag/src/imagen/Subventana.java</file>
+            <file>file:/home/johnspirit/NetBeansProjects/EditorImag/src/editorimag/Menu.java</file>
+            <file>file:/home/johnspirit/NetBeansProjects/EditorImag/src/editorimag/Barra_estado.java</file>
+            <file>file:/home/johnspirit/NetBeansProjects/EditorImag/src/herramientas/Lanzador.java</file>
+            <file>file:/home/johnspirit/NetBeansProjects/EditorImag/src/herramientas/Ecualizacion_histograma.java</file>
+            <file>file:/home/johnspirit/NetBeansProjects/EditorImag/src/herramientas/H_Prueba.java</file>
+            <file>file:/home/johnspirit/NetBeansProjects/EditorImag/src/editorimag/interfaz.java</file>
+            <file>file:/home/johnspirit/NetBeansProjects/EditorImag/src/herramientas/Escalado.java</file>
+            <file>file:/home/johnspirit/NetBeansProjects/EditorImag/src/imagen/Imagen.java</file>
+            <file>file:/home/johnspirit/NetBeansProjects/EditorImag/src/imagen/Gestion_subventanas.java</file>
+            <file>file:/home/johnspirit/NetBeansProjects/EditorImag/src/herramientas/Diferencia_dos_imagenes.java</file>
+            <file>file:/home/johnspirit/NetBeansProjects/EditorImag/src/herramientas/Traspuesta.java</file>
+            <file>file:/home/johnspirit/NetBeansProjects/EditorImag/src/herramientas/Correccion_gamma.java</file>
+            <file>file:/home/johnspirit/NetBeansProjects/EditorImag/src/herramientas/Rotacion.java</file>
+        </group>
     </open-files>
 </project-private>
