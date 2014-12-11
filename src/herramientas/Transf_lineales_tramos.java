@@ -40,6 +40,16 @@ public void setRefVTramos(VentanaTransfTramos refVTramos) { this.refVTramos = re
 
 public Transf_lineales_tramos(BufferedImage a) {
     img =a;
+    setRefImagenOriginal(copiarBufferOriginal(img)); // tomamos la imagen a transformar
+    setImagenNueva(copiarBufferOriginal(img));
+    setTablaTransf(new HashMap<Integer, Integer>());
+    controles();
+    iniciarPuntos();
+    getPanelTramos().repaint();
+    crearImagenTransformada();
+    getPanelImResultado().setImagenTranf(getImagenNueva());
+    getPanelImResultado().repaint();
+    iniciarInsertarPuntoManual ();
     //super();
 }
 public void pintarPunto (Point p) {
@@ -111,7 +121,7 @@ public void controles(){
     setVisible(true);
 }
 
-/*///////////prueba
+///////////prueba
 final int X = 100;
 final int Y = 30;
 final int Y_PANELES = 100;
@@ -128,7 +138,6 @@ private BufferedImage refImagenOriginal;
 private BufferedImage imagenNueva;
 public ArrayList<EcuacionRecta> ecuacionesRectas;
 public HashMap<Integer, Integer> tablaTransf;
-//private VentanaPrincipal refVp; // Para eliminarla al presionar aceptar
 public PanelTramos getPanelTramos() { return panelTramos; }
 public void setPanelTramos(PanelTramos panelTramos) { this.panelTramos = panelTramos; }
 public PanelImagenTramos getPanelImResultado() { return panelImResultado; }
@@ -144,28 +153,15 @@ public void setEcuacionesRectas(ArrayList<EcuacionRecta> ecuaciones) { this.ecua
 public HashMap<Integer, Integer> getTablaTransf() { return tablaTransf; }
 public void setTablaTransf(HashMap<Integer, Integer> tablaTransf) { this.tablaTransf = tablaTransf; }
 
-/*public VentanaTransfTramos(BufferedImage refBfAct, VentanaPrincipal refVp) {
-setRefImagenOriginal(copiarBufferOriginal(refBfAct)); // tomamos la imagen a transformar
-setImagenNueva(copiarBufferOriginal(img));
-setRefVp(refVp);
-setTablaTransf(new HashMap<Integer, Integer>());
-controles();
-iniciarPuntos();
-getPanelTramos().repaint();
-crearImagenTransformada();
-getPanelImResultado().setImagenTranf(getImagenNueva());
-getPanelImResultado().repaint();
-iniciarInsertarPuntoManual ();
-}
 
 public BufferedImage copiarBufferOriginal (BufferedImage original) {
-BufferedImage copia = new BufferedImage(original.getWidth(), original.getHeight(), original.getType());
-for (int i = 0; i < original.getWidth(); ++i) {
-for (int j = 0; j < original.getHeight(); ++j) {
-copia.setRGB(i, j, original.getRGB(i, j));
-}
-}
-return copia;
+    BufferedImage copia = new BufferedImage(original.getWidth(), original.getHeight(), original.getType());
+    for (int i = 0; i < original.getWidth(); ++i) {
+        for (int j = 0; j < original.getHeight(); ++j) {
+            copia.setRGB(i, j, original.getRGB(i, j));
+        }
+    }
+    return copia;
 }
 
 public void iniciarVentana () {
@@ -198,48 +194,6 @@ public void iniciarVentana () {
     setVisible(true);
 }
 
-
-public void iniciarPanelTramos () {
-    setPanelTramos(new Transf_lineales_tramos(img));
-    getPanelTramos().setBorder(BORDE);
-    getPanelTramos().setBounds(SEP_HOR_PANELES, Y_PANELES, ANCHO_PANELES, ALTO_PANELES);
-    getPanelTramos().addMouseMotionListener(new MouseMotionAdapter() {
-        @Override
-        public void mouseMoved(MouseEvent r) {
-        if (r.isAltDown()) {
-            getPanelTramos().pintarPunto (new Point (r.getX() - 5, r.getY() - 5));
-            getPanelTramos().repaint();
-            }
-        }
-    });
-    getPanelTramos().addMouseListener(new MouseAdapter() {
-
-        public void mousePressed(MouseEvent raton) {
-            try {
-                if (raton.isAltDown()) {
-                    insertarPunto(new Point (raton.getX(), raton.getY()), true);
-                    modificarEcuacionesRectas ();
-                    getPanelTramos().repaint();
-                    rellenarTablaDeTransformacion();
-                    crearImagenTransformada();
-                    getPanelImResultado().repaint();
-                    } 
-                else {
-                    int ind = buscarCoincidenteEnX(new Point (raton.getX() - DESFACE_PUNTOS_PANEL, raton.getY()));
-                    if (getPuntosEsp().size() > 1 && ind > 0 && ind != getPuntosEsp().size() - 1) {
-                        eliminarPunto (ind);
-                        modificarEcuacionesRectas ();
-                        getPanelTramos().repaint();
-                        rellenarTablaDeTransformacion();
-                        crearImagenTransformada();
-                        getPanelImResultado().repaint();
-                    }
-                }
-            } catch (Exception e) { }
-        }
-    });
-    getContentPane().add(getPanelTramos());
-}
 
 public void iniciarPanelImResultado () {
     setPanelImResultado(new PanelImagenTramos(getImagenNueva())); // inicialmente pinta la original
@@ -492,7 +446,79 @@ public class EcuacionRecta {
     }
 
     }
-*/}
+
+
+
+public class PanelTramos extends JPanel {
+
+	final int DESFACE_PUNTOS_PANEL = 44;
+	final int ALTO_PANELES = 300;
+	
+	private Transf_lineales_tramos refVTramos;
+	
+	public Transf_lineales_tramos getRefVTramos() { return refVTramos; }
+	public void setRefVTramos(Transf_lineales_tramos refVTramos) { this.refVTramos = refVTramos; }
+
+	public PanelTramos(Transf_lineales_tramos refVt) {
+		super();
+		setRefVTramos(refVt);
+	}
+
+	public void pintarPunto (Point p) {
+		if (comprobarLimite(p)) {
+			Graphics gr = this.getGraphics();
+			gr.setColor(Color.YELLOW);
+			gr.fillOval((int) p.getX (), (int) p.getY (), 10, 10);
+			gr.setColor(Color.WHITE);
+			gr.drawOval((int) p.getX (), (int) p.getY (), 10, 10);
+		}
+	}
+
+	public Boolean comprobarLimite (Point p) {
+		return (p.getX() < 256 && p.getX() > -1 && p.getY() < 256 && p.getY() > -1);
+	}
+
+	protected void paintComponent (Graphics gr) {
+		super.paintComponents(gr);
+		gr.fillRect(0, 0, getWidth(), getHeight());
+
+		// Pintamos los ejes cartesianos
+		gr.setColor(Color.WHITE);
+
+		int posXEjeX = 44;
+		int posYEjeX = ALTO_PANELES - 44;
+
+		gr.drawLine(posXEjeX, posYEjeX, this.getWidth() - 10, posYEjeX);
+		gr.drawLine(posXEjeX, posYEjeX, posXEjeX, 5);
+
+		// Numeramos los ejes
+		gr.drawString(String.valueOf(0), posXEjeX, posYEjeX + 15); // (0, 0)
+		gr.drawString(String.valueOf(255), this.getWidth() - 30, posYEjeX + 15); // (255, 0)
+		gr.drawString(String.valueOf(255), posXEjeX - 30, 30); // (0, 255)
+		
+
+		// Pintamos las rectas entre dichos pintos
+		gr.setColor(Color.RED);
+		Graphics2D g2d = (Graphics2D) gr;
+		g2d.setStroke(new BasicStroke(2));
+		int numPuntos = getRefVTramos().getPuntosEsp().size();
+		if (numPuntos >= 2) {
+			for (int i = 0; i < getRefVTramos().getPuntosEsp().size() - 1; ++i) {
+				g2d.drawLine((int) getRefVTramos().getPuntosEsp().get(i).getX() + DESFACE_PUNTOS_PANEL, posYEjeX - (int) getRefVTramos().getPuntosEsp().get(i).getY(), 
+						(int) getRefVTramos().getPuntosEsp().get(i + 1).getX() + DESFACE_PUNTOS_PANEL, posYEjeX - (int) getRefVTramos().getPuntosEsp().get(i + 1).getY());
+				
+			}
+		}			
+					
+		// Pintamos los puntos de las transformaciones
+		gr.setColor(Color.YELLOW);
+		for (int i = 0; i < getRefVTramos().getPuntosEsp().size(); ++i)
+			gr.fillOval((int) getRefVTramos().getPuntosEsp().get(i).getX() + DESFACE_PUNTOS_PANEL - 5, posYEjeX - (int) getRefVTramos().getPuntosEsp().get(i).getY() - 5, 10, 10);
+	}
+
+}
+}
+
 
     
 
