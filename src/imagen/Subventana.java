@@ -26,6 +26,7 @@ import java.awt.image.BufferedImage;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
+import sun.java2d.loops.DrawRect;
 
 /**
  *
@@ -129,6 +130,15 @@ public class Subventana extends JFrame {
                 //System.out.println(r.getX() + "," + r.getY());
                 repaint();
 			
+            }
+            
+            public void mouseDragged(MouseEvent r){
+//                System.out.println("dragged");
+                pintarCuadrito();
+            }
+            
+            public void pintarCuadrito () {
+                getGraphics().drawRect(iniX - 5, iniY - 30, finX - iniX, finY - iniY);
             }
         });
         
