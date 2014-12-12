@@ -134,7 +134,7 @@ public class Subventana extends JFrame {
             
             public void mouseDragged(MouseEvent r){
 //                System.out.println("dragged");
-                pintarCuadrito();
+//                pintarCuadrito();
             }
             
             public void pintarCuadrito () {
