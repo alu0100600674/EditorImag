@@ -237,8 +237,7 @@ public class Menu extends JMenuBar{
         Op_no_lineales.add(H_Especificacion);
         H_Especificacion.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                System.out.println("Especificación del Histograma");
-                
+                gestor_img.getListaLan().get(activa).lanzar(22);
             }
         });
         

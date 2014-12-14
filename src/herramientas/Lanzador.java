@@ -143,7 +143,8 @@ public class Lanzador {
     }
     
     private void especificacionHistograma(){
-       
+       Especificacion_histograma esph = new Especificacion_histograma(img);
+//       gestor_img.anadirImagen(esph.especificacionH());
     }
     
     private void correccionGamma(){
