@@ -191,7 +191,7 @@ public class Menu extends JMenuBar{
         Op_lineales.add(Trans_por_tramos);
         Trans_por_tramos.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                System.out.println("Transformaciones por tramos");
+                gestor_img.getListaLan().get(activa).lanzar(11);
             }
         });
         

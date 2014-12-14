@@ -107,7 +107,7 @@ public class Lanzador {
     
     //Operaciones Lineales
     private void transfLinealesTramos(){
-        Transf_lineales_tramos a = new Transf_lineales_tramos(img);
+        Transf_lineales_tramos tlt = new Transf_lineales_tramos(img);
         //gestor_img.añadirImagen(a.transformacion());
         //FALTA POR DEFINIR
     }
