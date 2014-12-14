@@ -26,6 +26,7 @@ import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 import imagen.Imagen;
 import java.awt.GridLayout;
+import javax.swing.JOptionPane;
 
 public class Transf_lineales_tramos extends JFrame {
 
@@ -88,6 +89,7 @@ public class Transf_lineales_tramos extends JFrame {
                 insertarPunto2(new Point(x, y));
                 modificarEcuacionesRectas();
                 rellenarTablaDeTransformacion();
+//                JOptionPane.showMessageDialog(null, "Se ha añadido el punto (" + x + "," + y + ").");
             }
         });
 
@@ -195,7 +197,7 @@ public class Transf_lineales_tramos extends JFrame {
 //    }
     
     public void insertarPunto2(Point q) {
-        Point p = new Point((int) Math.round(q.getX()), (int) Math.round(q.getY() - 1));
+        Point p = new Point((int) Math.round(q.getX()), (int) Math.round(q.getY()));
 
         int coincideX = buscarCoincidenteEnX(p);
 
@@ -203,7 +205,8 @@ public class Transf_lineales_tramos extends JFrame {
         if (coincideX != 0 && coincideX != getPuntosEsp().size() - 1) {
             if (coincideX != -1) {
                 getPuntosEsp().get(coincideX).setLocation(getPuntosEsp().get(coincideX).getX(), p.getY());
-
+//                System.out.println("cccccccccccccccccc");
+                JOptionPane.showMessageDialog(null, "Se ha añadido el punto (" + p.getX() + "," + p.getY() + ").");
             } else {
                 int puntoAnterior = buscarAnteriorPunto(p); // Comprobar entre que par de puntos est� la x
                 ArrayList<Point> puntosOrdenados = insertarPuntoOrdenado(p, puntoAnterior);
@@ -211,6 +214,8 @@ public class Transf_lineales_tramos extends JFrame {
                 // Hacer que �ste sea el nuevo vector de puntos de la clase
                 getPuntosEsp().clear();
                 setPuntosEsp(puntosOrdenados);
+//                System.out.println("ddddddddddddddddd");
+                JOptionPane.showMessageDialog(null, "Se ha añadido el punto (" + p.getX() + "," + p.getY() + ").");
             }
 
         } else if (coincideX == 0) { // Si coincide X del primer punto -> cambiamos su Y
@@ -218,12 +223,16 @@ public class Transf_lineales_tramos extends JFrame {
             modificarEcuacionesRectas();
             rellenarTablaDeTransformacion();
 //            crearImagenTransformada();
+//            System.out.println("aaaaaaaaaaaaaaaaaaaaa");
+            JOptionPane.showMessageDialog(null, "Se ha añadido el punto (" + p.getX() + "," + p.getY() + ").");
 
         } else if (coincideX == getPuntosEsp().size() - 1) { // Si coincide X del �ltimo punto -> cambiamos su Y
             getPuntosEsp().get(getPuntosEsp().size() - 1).setLocation(getPuntosEsp().get(getPuntosEsp().size() - 1).getX(), p.getY());
             modificarEcuacionesRectas();
             rellenarTablaDeTransformacion();
 //            crearImagenTransformada();
+//            System.out.println("bbbbbbbbbbbbbbbbbbbbbbb");
+            JOptionPane.showMessageDialog(null, "Se ha añadido el punto (" + p.getX() + "," + p.getY() + ").");
         }
     }
 
