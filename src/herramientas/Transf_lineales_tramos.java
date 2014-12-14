@@ -193,7 +193,7 @@ public class Transf_lineales_tramos extends JFrame {
 //        }
 ////        getPanelImResultado().repaint();
 //    }
-
+    
     public void insertarPunto2(Point q) {
         Point p = new Point((int) Math.round(q.getX()), (int) Math.round(q.getY() - 1));
 
@@ -279,6 +279,16 @@ public class Transf_lineales_tramos extends JFrame {
             getEcuacionesRectas().add(ec);
         }
 
+    }
+
+    public void eliminarPunto(int pos) {
+        ArrayList<Point> temp = new ArrayList<>();
+        for (int i = 0; i < getPuntosEsp().size(); ++i) {
+            if (i != pos) {
+                temp.add(new Point(getPuntosEsp().get(i)));
+            }
+        }
+        setPuntosEsp(temp); // Sobreescribimos el vector de puntos oficial
     }
 
 }
